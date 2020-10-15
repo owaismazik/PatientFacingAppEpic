@@ -1,7 +1,7 @@
 (function(window){
   window.extractData = function() {
-      var ret = $.Deferred();
-      debugger;
+    var ret = $.Deferred();
+
     function onError() {
       console.log('Loading error', arguments);
       ret.reject();
@@ -33,7 +33,7 @@
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
-            lname = patient.name[0].family.join(' ');
+            //lname = patient.name[0].family.join(' ');
           }
 
           var height = byCodes('8302-2');
