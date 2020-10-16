@@ -21,19 +21,19 @@
     <!-- FHIR Client JS Library -->
     <script src='./lib/js/fhir-client-v0.1.12.js'></script>
 
-    <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
+    <!-- P  revent session bleed caused by single threaded embedded browser and sessionStorage API -->
     <!-- https://github.com/cerner/fhir-client-cerner-additions -->
     <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
       <script>
       FHIR.oauth2.authorize({
-          'client_id': '3a912132-8e4f-4fdc-868f-4f5f946f9ae8',
+          'client_id': '82969083-cc1e-44d8-a199-860716904054',
         'scope': 'patient/Patient.read patient/AllergyIntolerance.read launch online_access openid profile'
       });
       </script>
       
      <script>
       FHIR.oauth2.authorize({
-          'client_id': '3a912132-8e4f-4fdc-868f-4f5f946f9ae8',
+          'client_id': '82969083-cc1e-44d8-a199-860716904054',
           'scope': 'patient/Patient.read patient/AllergyIntolerance.read launch online_access openid profile'
       });
     </script>
