@@ -14,17 +14,17 @@
       <script src='./lib/js/fhir-client.js'></script>
 
       <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
-      <!--<script>
+      <script>
         FHIR.oauth2.authorize({
             'client_id': '7885c031-c01b-40bb-a100-0715d9d9e695',
             'scope': 'patient/Patient.read patient/AllergyIntolerance.read launch online_access openid profile'
         });
-    </script>-->
-      <script>
+    </script>
+      <!--<script>
           FHIR.oauth2.authorize({
               "client_id": "7885c031-c01b-40bb-a100-0715d9d9e695",
               "scope": "patient/Patient.read"
-          });
+          });-->
       </script>
 
       <div class="spinner">
