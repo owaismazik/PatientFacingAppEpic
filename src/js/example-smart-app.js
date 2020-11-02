@@ -39,6 +39,7 @@
 
                     if (typeof patient.name[0] !== 'undefined') {
                         fname = patient.name[0].given.join(' ');
+                        ////testing 1116
                         lname = patient.name[0].family;
                     }
 
