@@ -7,14 +7,11 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
     outline: 0 none;
     padding: 0;
     vertical-align: baseline;
-    font-family: "Roboto", sans-serif;
+    font-family: arial;
     font-weight: normal;
 }
 
-body {
-    background: #fff;
-    overflow: hidden;
-}
+
 
 .subSet:before, .subSet:after {
     display: table;
@@ -127,7 +124,7 @@ body {
         font-size: 15px;
         border-radius: 5px;
         width: 250px;
-        background-color: white;
+        
         font-weight: 700;
     }
 
@@ -143,8 +140,6 @@ body {
         color: #656565;
         font-size: 16px;
         text-align: left;
-        max-height:250px;
-        overflow:auto;
     }
 
     .searchControl .checkboxEventList div {
@@ -444,7 +439,7 @@ button.ui-datepicker-trigger {
 /*** Asif ***/
 
 .container {
-    background: #f1f0f0;
+    
     box-sizing: border-box;
     margin: 0 auto;
     max-width: 1248px;
@@ -708,12 +703,13 @@ button.ui-datepicker-trigger {
     clear: both;
 }
 
-.mz-logo {    
-    padding: 5px 42px;
-    width: 290px;
+.mz-logo {
+    padding: 1em 2em;
+    width: 240px;
     /* margin: 0 auto; */
     display: initial;
     display: table;
+	float: right;
 }
 
 table {
@@ -725,8 +721,10 @@ table {
 }
 
 /* Zebra striping */
-tr:nth-of-type(odd) {
-    /*background: #f1f7fa;*/
+tr {
+    background: #f5f2f2;
+    margin: 0px 10px;
+    border-radius: 10px!important;
 }
 
 th {
@@ -744,17 +742,17 @@ td {
     padding: 20px;
     text-align: left;
     font-size: 16px;
-    border-bottom: 2px solid #9a9a9a;
-    color: #000;
+    /* border-bottom: 2px solid #9a9a9a; */
+    color: #888888;
 }
 
 tr > td:first-child {
-    color: #9a9a9a;
+    color: #ffffff;
 }
 
 tr td strong {
-    color: #000;
-    font-weight:bold;
+    color: #000000;
+    /* font-weight:bold; */
 }
 
 /* 
@@ -769,12 +767,12 @@ and also iPads specifically.
     /* width: 96%; */
     margin: 0 auto;
     /*  margin: 5% auto; */
-    text-align:center;
 }
 
     .global ul {
         background: transparent;
-        
+        margin: 0 auto;
+        display: table;
     }
 
         .global ul li {
@@ -826,27 +824,45 @@ and also iPads specifically.
         }
 
 
+@media screen and (max-width: 768px) {
+    .patientdetail {width:100% !important;}
+    .patietnTimeline {width:100% !important;}
+}
+
+@media screen and (max-width: 769px) {
+    .patientdetail {width:30%;}
+    .patietnTimeline {width:55%;}
+}
+
+		
 .patientdetail {
-    width: 100%;
-    padding: 20px;
-    display: inline-block;
-    vertical-align: top;
-    height: 370px;
-    max-height: 700px;
-    margin-bottom: 40px;
-    /* border-right: 1px solid #2493e7; */
+
+width: 100%;
+padding: 20px -1px;
+   
+display: inline-block;
+   
+vertical-align: top;
+   
+max-height: 700px;
+   
+/* margin: 20px 0px; */
+   
+/* border-right: 1px solid #2493e7; */
 }
 
     .patientdetail table {
         width:100%;
+       
     }
 
 .patietnTimeline {
     /* padding: 20px; */
-    padding: 30px;
     width: 100%;
+    padding: 0 30px;
     display: inline-block;
     vertical-align: top;
+	
 }
 
 .timelinecontrolnew {    
@@ -854,7 +870,7 @@ and also iPads specifically.
     display: inline-block;
     vertical-align: top;
     max-height: 600px;
-    /*overflow: auto;*/
+    overflow: auto;
 }
 
 /* .footer {
@@ -893,11 +909,9 @@ and also iPads specifically.
 }
 
 .patientdetailheading {
-    width: 100%;
-    padding: 5px 29px;
-    display: inline-block;
-    vertical-align: top;
+    /* padding: 4px 20px; */
     /* border-right: 1px solid; */
+    padding: 10px 0px;
 }
 .patietnTimelineheading {
     padding: 20px;
@@ -933,13 +947,17 @@ and also iPads specifically.
     width: 100%;
   }
   .mzktable td, .mzktable th {
-    border: 1px solid #9a9a9a36;
-    padding: 18px;
+    /* border: 1px solid #9a9a9a36; */
+    padding: 8px 10px;
+    font-weight: 500;
+    border-bottom: 6px solid #ffffff;
 }
   
-  .mzktable tr:nth-child(even){background-color: #f2f2f2;}
+  .mzktable tr:nth-child(even){/* background-color: #f2f2f2; */}
   
-  .mzktable tr:hover {background-color: #ddd;}
+  .mzktable tr:hover {
+ /*   background-color: #d8d8d8; */
+}
   
   .customers th {
     padding-top: 12px;
@@ -976,7 +994,7 @@ and also iPads specifically.
 {
     /* margin-left: 30px; */
     float: left;
-    height: 60vh;
+    height: 70vh;
     width: 96%;
     overflow-y: scroll;
     margin-bottom: 25px;
@@ -1003,12 +1021,32 @@ and also iPads specifically.
  }
  
 
- .mzkheading {
+/* .mzkheading {
+    font-weight: lighter;
+    color: #5c5c5c;
+    font-size: 0.9em;
+    font-family: arial;
+    display: inline;
+    margin: 20px 0px;
+}*/
+
+.mzkheading {
     font-weight: 700;
-    color: #70c1ff;
-    font-size: 2em;
-    margin: 0;
+    color: #0d87e5;
+    text-transform: uppercase;
+    font-size: 1.0em;
+    font-family: inherit;
+    display: inline;
+    margin: 20px 0px;
 }
+
+input[type=checkbox], input[type=radio] {
+    margin: 4px 6px;
+    margin-top: 1px\9;
+    line-height: normal;
+}
+
+
 
 .timeline__post {
     padding: 1.5rem 2rem;
@@ -1031,6 +1069,9 @@ and also iPads specifically.
 
    .mzknav{
     background-color: #f5f5f5;
+	background: #f5f5f5 !important;
+    overflow: auto;
+    margin-bottom: 2em;
         /*  position: fixed;
         top: 0;
         width: 100%;
@@ -1044,12 +1085,24 @@ and also iPads specifically.
         background-image:url('..src/images/bg.jpg');        
     } */
 
-    .coverbg{
-        background-image: url('../images/bg.jpg'); 
+    b, strong {
+        font-weight: 100!important;
+    }
+
+    /* .coverbg{
+        background-image: url('../images/bg.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-    
+        margin: 10px 0px;
+    } */
+
+    body{
+        background-image: url('../images/bg.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 10px 0px;
     }
 
     @media screen and (min-width: 641px)
@@ -1058,7 +1111,71 @@ and also iPads specifically.
         padding-top: 35px!important;
     }
   
+    
 
+}
+
+
+
+.fa-user:before {
+    content: "\f007";
+    background: #eed8bd;
+    border-radius: 79px;
+    padding: 5px 8px;
+    color: #fd9524;
+}
+
+.fa-user-plus:before {
+    content: "\f234";
+    background: #c9ddcb;
+    border-radius: 79px;
+    padding: 7px 5px;
+    color: #01b82a;
+}
+
+
+.fa-phone:before {
+    content: "\f095";
+    background: #d1edf8;
+    border-radius: 79px;
+    padding: 6px 8px;
+    color: #4fcad9;
+}
+
+
+.fa-vcard-o:before, .fa-address-card-o:before {
+    content: "\f2bc";
+    background: #fdd9db;
+    color: #ef0836;
+    border-radius: 79px;
+    padding: 8px 6px;
+}
+
+.fa-transgender-alt:before {
+    content: "\f225";
+    background: #e8e7f5;
+    border-radius: 79px;
+    padding: 6px 7px;
+    color: #382ad5;
+}
+
+
+.fa-calendar-minus-o:before {
+    content: "\f272";
+    background: #f4dde3;
+    color: #630bf5;
+    border-radius: 79px;
+    padding: 6px 7px;
+}
+
+
+
+
+
+
+
+
+tr td:first-child {/* background-color: #ffffff; */color: black;}
 
 /* hasan css end */
 
@@ -1106,3 +1223,280 @@ and also iPads specifically.
             font-weight: bold;
         }
 } */
+
+/* Asif */
+
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .patientdetailheading {
+        padding: 25px 0px;
+    }
+    
+
+        .coverbg {
+            margin-top: 40px;
+        }
+
+        .global ul li {
+        
+            margin: 0 auto!important;
+            display: table!important;
+        }
+
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+
+    .patientdetailheading {
+        padding: 25px 0px!important;
+    }
+    
+    td {
+        font-size: 0.9em;}
+    
+        .coverbg {
+            margin-top: 40px;
+        }
+
+        .mzktable td, .mzktable th {
+            padding: 5px 5px;}
+
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+    .coverbg {
+        margin-top: 40px;
+    }
+}
+
+/* Loading CSS */
+.grid {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-wrap: wrap; }
+
+.loader {
+  width: 30vw;
+  height: 50vh;
+  /* border: 1px solid mistyrose; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 7;
+ }
+
+#ld1 {
+  position: relative;
+  transform: rotate(45deg); }
+  #ld1 div {
+    height: 20px;
+    width: 20px;
+    background: #FE4A49;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+  #ld1 div:nth-child(1) {
+    animation: ld1_div1 1s ease-in-out infinite; }
+  #ld1 div:nth-child(2) {
+    animation: ld1_div2 1s ease-in-out infinite; }
+  #ld1 div:nth-child(3) {
+    animation: ld1_div3 1s ease-in-out infinite; }
+
+@keyframes ld1_div1 {
+  0% {
+    top: 52.5px;
+    background: #FE4A49; }
+  50% {
+    top: -52.5px;
+    background: #59CD90; }
+  100% {
+    top: 52.5px;
+    background: #009FB7; } }
+@keyframes ld1_div2 {
+  0% {
+    right: 52.5px;
+    background: #FE4A49; }
+  50% {
+    right: -52.5px;
+    background: #FED766; }
+  100% {
+    right: 52.5px;
+    background: #59CD90; } }
+@keyframes ld1_div3 {
+  0% {
+    left: 52.5px;
+    background: #FE4A49; }
+  50% {
+    left: -52.5px;
+    background: #D91E36; }
+  100% {
+    left: 52.5px;
+    background: #FE4A49; } }
+#ld2 {
+  display: flex;
+  flex-direction: row; }
+  #ld2 div {
+    height: 20px;
+    width: 5px;
+    background: #FE4A49;
+    margin: 3px;
+    border-radius: 25px; }
+  #ld2 div:nth-child(1) {
+    animation: ld2 1s ease-in-out infinite 0s; }
+  #ld2 div:nth-child(2) {
+    animation: ld2 1s ease-in-out infinite 0.1s; }
+  #ld2 div:nth-child(3) {
+    animation: ld2 1s ease-in-out infinite 0.2s; }
+  #ld2 div:nth-child(4) {
+    animation: ld2 1s ease-in-out infinite 0.3s; }
+  #ld2 div:nth-child(5) {
+    animation: ld2 1s ease-in-out infinite 0.4s; }
+  #ld2 div:nth-child(6) {
+    animation: ld2 1s ease-in-out infinite 0.5s; }
+  #ld2 div:nth-child(7) {
+    animation: ld2 1s ease-in-out infinite 0.6s; }
+
+@keyframes ld2 {
+  0% {
+    transform: scaleY(1);
+    background: #FED766; }
+  25% {
+    background: #009FB7; }
+  50% {
+    transform: scaleY(2);
+    background: #59CD90; }
+  75% {
+    background: #FE4A49; }
+  100% {
+    transform: scaleY(1);
+    background: #D91E36; } }
+#ld3 {
+  position: relative;
+  animation: outercontainer 4s linear infinite; }
+  #ld3 div {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+  #ld3 div:nth-child(1) {
+    top: 20px;
+    background: #59CD90;
+    animation: ld3_div1 2s linear infinite; }
+  #ld3 div:nth-child(2) {
+    top: -20px;
+    background: #D91E36;
+    animation: ld3_div2 2s linear infinite; }
+  #ld3 div:nth-child(3) {
+    left: 20px;
+    background: #F39237;
+    animation: ld3_div4 2s linear infinite; }
+  #ld3 div:nth-child(4) {
+    left: -20px;
+    background: #0072BB;
+    animation: ld3_div3 2s linear infinite; }
+
+@keyframes outercontainer {
+  100% {
+    transform: rotate(360deg); } }
+@keyframes ld3_div1 {
+  0% {
+    top: 20px; }
+  25% {
+    top: 0; }
+  50% {
+    top: 20px; }
+  75% {
+    top: 0; }
+  100% {
+    top: 20px; } }
+@keyframes ld3_div2 {
+  0% {
+    top: -20px; }
+  25% {
+    top: 0; }
+  50% {
+    top: -20px; }
+  75% {
+    top: 0; }
+  100% {
+    top: -20px; } }
+@keyframes ld3_div3 {
+  0% {
+    left: -20px; }
+  25% {
+    left: 0; }
+  50% {
+    left: -20px; }
+  75% {
+    left: 0; }
+  100% {
+    left: -20px; } }
+@keyframes ld3_div4 {
+  0% {
+    left: 20px; }
+  25% {
+    left: 0; }
+  50% {
+    left: 20px; }
+  75% {
+    left: 0; }
+  100% {
+    left: 20px; } }
+#ld4 {
+  position: relative;
+  display: flex;
+  width: 25%;
+  justify-content: space-between; }
+  #ld4 div {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #D91E36; }
+  #ld4 div:nth-child(1) {
+    animation: ld4 3s linear infinite 0s; }
+  #ld4 div:nth-child(2) {
+    animation: ld4 3s linear infinite 0.15s; }
+  #ld4 div:nth-child(3) {
+    animation: ld4 3s linear infinite 0.3s; }
+  #ld4 div:nth-child(4) {
+    animation: ld4 3s linear infinite 0.45s; }
+
+@keyframes ld4 {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+    background: #59CD90; }
+  25% {
+    opacity: 1;
+    transform: scale(1.8);
+    background: #0072BB; }
+  50% {
+    opacity: 0;
+    transform: scale(0.3);
+    background: #FE4A49; }
+  75% {
+    opacity: 1;
+    transform: scale(1.8);
+    background: #FED766; }
+  100% {
+    opacity: 0;
+  }
+  
