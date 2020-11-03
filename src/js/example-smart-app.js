@@ -39,7 +39,6 @@
 
                     if (typeof patient.name[0] !== 'undefined') {
                         fname = patient.name[0].given.join(' ');
-                        ////testing 1116
                         lname = patient.name[0].family;
                     }
 
@@ -920,16 +919,16 @@
                                 default:
                                     imageName = "";
                             }
-                            console.log("entity:year:item " + entity + ' - ' + year + ' - ' + item);
-                            console.log("id " + id);
-                            console.log("===============================================");
+                            //console.log("entity:year:item " + entity + ' - ' + year + ' - ' + item);
+                            //console.log("id " + id);
+                            //console.log("===============================================");
                             if (year == item) {
                                 //if (entity == "MedicationOrder") {
                                 //    console.log("===============================================");
                                 //    console.log("entity: " + entity);
                                 //    console.log("encounterID: " + encounterID);
                                 //    console.log("id: " + id);
-                                console.log("=========== "+id+" ==========");
+                                //console.log("=========== "+id+" ==========");
                                 //}
                                 var yeardivcount = $("#" + year).length;
                                 var idEncounter = '#' + encounterID;
@@ -1221,16 +1220,16 @@
                                 default:
                                     imageName = "";
                             }
-                            console.log("entity:year:item " + entity + ' - ' + year + ' - ' + item);
-                            console.log("id: " + id);
-                            console.log("===============================================");
+                            //console.log("entity:year:item " + entity + ' - ' + year + ' - ' + item);
+                            //console.log("id: " + id);
+                            //console.log("===============================================");
                             if (year == item) {
                                 //if (entity == "MedicationOrder") {
                                 //    console.log("===============================================");
                                 //    console.log("entity: " + entity);
                                 //    console.log("encounterID: " + encounterID);
                                 //    console.log("id: " + id);
-                                    console.log("=========== " + id + " ==========");
+                                    //console.log("=========== " + id + " ==========");
                                 //}
                                 var yeardivcount = $("#" + year).length;
                                 var idEncounter = '#' + encounterID;
