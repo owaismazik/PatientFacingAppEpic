@@ -15,7 +15,7 @@
                 var pt = patient.read();
 
                 var obv = smart.patient.api.fetchAll({
-                    type: 'Observation',
+                    type: 'AllergyIntolerance',
                     query: {
                         code: {
                             $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
