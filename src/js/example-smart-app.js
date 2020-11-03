@@ -847,7 +847,7 @@
                         counter = 0;
                         var item = checkedYears[j];
                         html = '<div class="timeline__group" id="' + item + '"><span class="timeline__year" >' + item + '</span></div>';
-                        console.log(html);
+                        //console.log(html);
                         $("#timeline").append(html);
                         for (var i = 0; i < newArray.length; i++) {
                             //console.log("j_i: " + j+'_'+i);
@@ -1122,7 +1122,7 @@
                                     }
                                 }
                             }
-                            console.log(html);
+                            //console.log(html);
                             $("#" + year).append(html);
                             html = ""; 
                         }
