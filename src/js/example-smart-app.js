@@ -42,11 +42,13 @@
                         lname = patient.name[0].family;
                     }
 
-                    if (typeof patient.telecom[0] !== 'undefined') {
-                        phone = patient.telecom[0].value;
-                    }
-                    if (typeof patient.telecom[1] !== 'undefined') {
-                        email = patient.telecom[1].value;
+                    if (patient.hasOwnProperty('telecom')) {
+                        if (typeof patient.telecom[0] !== 'undefined') {
+                            phone = patient.telecom[0].value;
+                        }
+                        if (typeof patient.telecom[1] !== 'undefined') {
+                            email = patient.telecom[1].value;
+                        }
                     }
 
                     var height = byCodes('8302-2');
