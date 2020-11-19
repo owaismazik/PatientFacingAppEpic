@@ -532,44 +532,46 @@
 
                     $.when(goal).done(function (Goal) {
 
-                        if (Goal != null) {
-                            if (Goal.length > 0) {
-                                for (var i = 0; i <= Goal.length; i++) {
-                                    if (Goal[i] != null) {
-                                        if (Goal[i] != undefined) {
+                        if (Goal[0].resourceType != "OperationOutcome") {
+                            if (Goal != null) {
+                                if (Goal.length > 0) {
+                                    for (var i = 0; i <= Goal.length; i++) {
+                                        if (Goal[i] != null) {
+                                            if (Goal[i] != undefined) {
 
-                                            var externalEmrId = Goal[i].id;
-                                            var startdate = Goal[i].startDate;
-                                            var targetdate = Goal[i].targetDate;
-                                            var category = Goal[i].category[0].text;
-                                            var description = Goal[i].description;
-                                            //CreateGoal(externalEmrId, $("#CRMpatietid").val(), startdate, targetdate, category, description);
-                                            var Goal = {}
-                                            Goal.Externalemrid = externalEmrId;
-                                            Goal.Patientid = $("#CRMpatietid").val();
-                                            Goal.Startdate = startdate;
-                                            Goal.TargetDate = targetdate;
-                                            Goal.Category = category;
-                                            Goal.Description = description;
-                                            //patientGoalGlobal = Goal;
-                                            var dataSet = Goal;
-                                            var item = {};
+                                                var externalEmrId = Goal[i].id;
+                                                var startdate = Goal[i].startDate;
+                                                var targetdate = Goal[i].targetDate;
+                                                var category = Goal[i].category[0].text;
+                                                var description = Goal[i].description;
+                                                //CreateGoal(externalEmrId, $("#CRMpatietid").val(), startdate, targetdate, category, description);
+                                                var Goal = {}
+                                                Goal.Externalemrid = externalEmrId;
+                                                Goal.Patientid = $("#CRMpatietid").val();
+                                                Goal.Startdate = startdate;
+                                                Goal.TargetDate = targetdate;
+                                                Goal.Category = category;
+                                                Goal.Description = description;
+                                                //patientGoalGlobal = Goal;
+                                                var dataSet = Goal;
+                                                var item = {};
 
-                                            if (dataSet.hasOwnProperty('GoalId')) {
-                                                item.id = dataSet.GoalId;
-                                            }
-                                            item.name = dataSet.Category;
+                                                if (dataSet.hasOwnProperty('GoalId')) {
+                                                    item.id = dataSet.GoalId;
+                                                }
+                                                item.name = dataSet.Category;
 
-                                            if (dataSet.hasOwnProperty('Startdate')) {
-                                                item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                                                if (dataSet.hasOwnProperty('Startdate')) {
+                                                    item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                                                    item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                                                }
+                                                if (Goal[i].hasOwnProperty("encounter")) {
+                                                    item.encounterID = Goal[i].encounter.reference.split('/')[1];
+                                                }
+                                                item.type = 10;
+                                                item.entity = "Goal";
+                                                list.push(item);
                                             }
-                                            if (Goal[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = Goal[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.type = 10;
-                                            item.entity = "Goal";
-                                            list.push(item);
                                         }
                                     }
                                 }
