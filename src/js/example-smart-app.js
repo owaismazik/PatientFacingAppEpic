@@ -37,7 +37,7 @@
                     var phone = '';
                     var email = '';
 
-                    if (patient.hasOwnProperty('name'))) {
+                    if (patient.hasOwnProperty('name')) {
                          if (typeof patient.name[0] !== 'undefined') {
                             fname = patient.name[0].given.join(' ');
                             lname = patient.name[0].family;
