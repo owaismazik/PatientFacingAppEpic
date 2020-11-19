@@ -321,57 +321,59 @@
                     });
 
                     $.when(proc).done(function (procedure) {
-                        if (procedure != null) {
-                            if (procedure.length > 0) {
-                                for (var i = 0; i <= procedure.length; i++) {
-                                    if (procedure[i] != null) {
-                                        if (procedure[i] != undefined) {
-                                            var title = procedure[i].code.coding[0].display;
-                                            var recordeddate = '';
+                        if (procedure[0].resourceType != "OperationOutcome") {
+                         if (procedure != null) {
+                                if (procedure.length > 0) {
+                                    for (var i = 0; i <= procedure.length; i++) {
+                                        if (procedure[i] != null) {
+                                            if (procedure[i] != undefined) {
+                                                var title = procedure[i].code.coding[0].display;
+                                                var recordeddate = '';
 
-                                            if (procedure[i].hasOwnProperty("performedDateTime")) {
-                                                recordeddate = procedure[i].performedDateTime;
-                                            }
-                                            else if (procedure[i].hasOwnProperty("performedPeriod")) {
-                                                recordeddate = procedure[i].performedPeriod.start;
-                                            }
-                                            else if (procedure[i].hasOwnProperty("meta")) {
-                                                if (procedure[i].meta.lastUpdated != "undefined") {
-                                                    recordeddate = procedure[i].meta.lastUpdated;
+                                                if (procedure[i].hasOwnProperty("performedDateTime")) {
+                                                    recordeddate = procedure[i].performedDateTime;
                                                 }
-                                            }
-                                            if (recordeddate.length == 4) {
-                                                if (procedure[i].meta.lastUpdated != "undefined") {
-                                                    recordeddate = procedure[i].meta.lastUpdated;
+                                                else if (procedure[i].hasOwnProperty("performedPeriod")) {
+                                                    recordeddate = procedure[i].performedPeriod.start;
                                                 }
-                                            }
+                                                else if (procedure[i].hasOwnProperty("meta")) {
+                                                    if (procedure[i].meta.lastUpdated != "undefined") {
+                                                        recordeddate = procedure[i].meta.lastUpdated;
+                                                    }
+                                                }
+                                                if (recordeddate.length == 4) {
+                                                    if (procedure[i].meta.lastUpdated != "undefined") {
+                                                        recordeddate = procedure[i].meta.lastUpdated;
+                                                    }
+                                                }
 
-                                            //CreateProcedure(procedure[i].id, $("#CRMpatietid").val(), "Procedure - " + title, recordeddate);
-                                            var patientProcedure = {}
-                                            patientProcedure.procedureID = procedure[i].id;
-                                            patientProcedure.Title = "Procedure - " + title;
-                                            patientProcedure.RecordedDate = recordeddate;
-                                            patientProcedure.PatientID = $("#CRMpatietid").val();
-                                            //patientProcedureGlobal = patientProcedure;
-                                            var dataSet = patientProcedure;
-                                            var item = {};
+                                                //CreateProcedure(procedure[i].id, $("#CRMpatietid").val(), "Procedure - " + title, recordeddate);
+                                                var patientProcedure = {}
+                                                patientProcedure.procedureID = procedure[i].id;
+                                                patientProcedure.Title = "Procedure - " + title;
+                                                patientProcedure.RecordedDate = recordeddate;
+                                                patientProcedure.PatientID = $("#CRMpatietid").val();
+                                                //patientProcedureGlobal = patientProcedure;
+                                                var dataSet = patientProcedure;
+                                                var item = {};
 
-                                            //if (dataSet.hasOwnProperty('ProcedureID')) {
-                                            //    item.id = dataSet.ProcedureID;
-                                            //}
-                                            item.name = dataSet.Title;
+                                                //if (dataSet.hasOwnProperty('ProcedureID')) {
+                                                //    item.id = dataSet.ProcedureID;
+                                                //}
+                                                item.name = dataSet.Title;
 
-                                            if (dataSet.hasOwnProperty('RecordedDate')) {
-                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                                if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                                }
+                                                item.type = 7;
+                                                item.id = dataSet.procedureID;
+                                                if (procedure[i].hasOwnProperty("encounter")) {
+                                                    item.encounterID = procedure[i].encounter.reference.split('/')[1];
+                                                }
+                                                item.entity = "Procedure";
+                                                list.push(item);
                                             }
-                                            item.type = 7;
-                                            item.id = dataSet.procedureID;
-                                            if (procedure[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = procedure[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.entity = "Procedure";
-                                            list.push(item);
                                         }
                                     }
                                 }
