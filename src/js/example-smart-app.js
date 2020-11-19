@@ -437,39 +437,41 @@
                     });
 
                     $.when(devi).done(function (device) {
-                        if (device != null) {
-                            if (device.length > 0) {
-                                for (var i = 0; i <= device.length; i++) {
-                                    if (device[i] != null) {
-                                        if (device[i] != undefined) {
-                                            var title = device[i].type.text;
-                                            var recordeddate = device[i].meta.lastUpdated;
-                                            //CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
-                                            var patientDevice = {}
-                                            patientDevice.deviceID = device[i].id;
-                                            patientDevice.Title = "Device - " + title;
-                                            patientDevice.RecordedDate = recordeddate;
-                                            patientDevice.PatientID = $("#CRMpatietid").val();
-                                            //patientDeviceGlobal = patientDevice;
-                                            var dataSet = patientDevice;
-                                            var item = {};
+                        if (device[0].resourceType != "OperationOutcome") {
+                            if (device != null) {
+                                if (device.length > 0) {
+                                    for (var i = 0; i <= device.length; i++) {
+                                        if (device[i] != null) {
+                                            if (device[i] != undefined) {
+                                                var title = device[i].type.text;
+                                                var recordeddate = device[i].meta.lastUpdated;
+                                                //CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
+                                                var patientDevice = {}
+                                                patientDevice.deviceID = device[i].id;
+                                                patientDevice.Title = "Device - " + title;
+                                                patientDevice.RecordedDate = recordeddate;
+                                                patientDevice.PatientID = $("#CRMpatietid").val();
+                                                //patientDeviceGlobal = patientDevice;
+                                                var dataSet = patientDevice;
+                                                var item = {};
 
-                                            if (dataSet.hasOwnProperty('DeviceID')) {
-                                                item.id = dataSet.DeviceID;
-                                            }
-                                            item.name = dataSet.Title;
+                                                if (dataSet.hasOwnProperty('DeviceID')) {
+                                                    item.id = dataSet.DeviceID;
+                                                }
+                                                item.name = dataSet.Title;
 
-                                            if (dataSet.hasOwnProperty('RecordedDate')) {
-                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                                if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                                }
+                                                item.type = 5;
+                                                item.id = dataSet.deviceID;
+                                                if (device[i].hasOwnProperty("encounter")) {
+                                                    item.encounterID = device[i].encounter.reference.split('/')[1];
+                                                }
+                                                item.entity = "Device";
+                                                list.push(item);
                                             }
-                                            item.type = 5;
-                                            item.id = dataSet.deviceID;
-                                            if (device[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = device[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.entity = "Device";
-                                            list.push(item);
                                         }
                                     }
                                 }
