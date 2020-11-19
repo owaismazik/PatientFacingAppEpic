@@ -37,9 +37,11 @@
                     var phone = '';
                     var email = '';
 
-                    if (typeof patient.name[0] !== 'undefined') {
-                        fname = patient.name[0].given.join(' ');
-                        lname = patient.name[0].family;
+                    if (patient.hasOwnProperty('name'))) {
+                         if (typeof patient.name[0] !== 'undefined') {
+                            fname = patient.name[0].given.join(' ');
+                            lname = patient.name[0].family;
+                        }
                     }
 
                     if (patient.hasOwnProperty('telecom')) {
