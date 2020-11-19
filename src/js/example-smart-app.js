@@ -81,38 +81,40 @@
 
                     ret.resolve(p);
 
-                    if (obv != null) {
-                        if (obv.length > 0) {
-                            for (var i = 0; i <= 10; i++) {
-                                if (obv[i] != null) {
-                                    if (obv[i] != undefined) {
-                                        var patientObservation = {};
-                                        var title = obv[i].code.coding[0].display;
-                                        var recordeddate = obv[i].issued;
-                                        patientObservation.obvID = obv[i].id;
-                                        patientObservation.Description = obv[i].code.text;
-                                        patientObservation.description = "Observation - " + title;
-                                        patientObservation.patientId = $("#CRMpatietid").val();
-                                        patientObservation.IssuedDate = recordeddate;
-                                        var dataSet = patientObservation;
-                                        var item = {};
+                    if (obv[0].resourceType != "OperationOutcome") {
+                   if (obv != null) {
+                            if (obv.length > 0) {
+                                for (var i = 0; i <= 10; i++) {
+                                    if (obv[i] != null) {
+                                        if (obv[i] != undefined) {
+                                            var patientObservation = {};
+                                            var title = obv[i].code.coding[0].display;
+                                            var recordeddate = obv[i].issued;
+                                            patientObservation.obvID = obv[i].id;
+                                            patientObservation.Description = obv[i].code.text;
+                                            patientObservation.description = "Observation - " + title;
+                                            patientObservation.patientId = $("#CRMpatietid").val();
+                                            patientObservation.IssuedDate = recordeddate;
+                                            var dataSet = patientObservation;
+                                            var item = {};
 
-                                        if (dataSet.hasOwnProperty('ObservationID')) {
-                                            item.id = dataSet.ObservationID;
-                                        }
-                                        item.name = "Observation - " + title;
+                                            if (dataSet.hasOwnProperty('ObservationID')) {
+                                                item.id = dataSet.ObservationID;
+                                            }
+                                            item.name = "Observation - " + title;
 
-                                        if (dataSet.hasOwnProperty('IssuedDate')) {
-                                            item.date = moment.utc(recordeddate).format('MM/DD/YYYY');
-                                            item.dateTime = moment.utc(recordeddate).format('YYYY-MM-DD HH:mm:ss');
+                                            if (dataSet.hasOwnProperty('IssuedDate')) {
+                                                item.date = moment.utc(recordeddate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(recordeddate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 12;
+                                            item.id = obv[i].id;
+                                            if (obv[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = obv[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "Observation";
+                                            list.push(item);
                                         }
-                                        item.type = 12;
-                                        item.id = obv[i].id;
-                                        if (obv[i].hasOwnProperty("encounter")) {
-                                            item.encounterID = obv[i].encounter.reference.split('/')[1];
-                                        }
-                                        item.entity = "Observation";
-                                        list.push(item);
                                     }
                                 }
                             }
@@ -127,37 +129,39 @@
                     });
 
                     $.when(enco).done(function (encounter) {
-                        if (encounter != null) {
-                            if (encounter.length > 0) {
-                                for (var i = 0; i <= encounter.length; i++) {
-                                    if (encounter[i] != null) {
-                                        if (encounter[i] != undefined) {
-                                            var title = encounter[i].type[0].text;
-                                            var recordeddate = "";
-                                            if (encounter[i].hasOwnProperty('period')) {
-                                                recordeddate = encounter[i].period.start;
-                                            }
-                                            else if (encounter[i].hasOwnProperty('meta')) {
-                                                recordeddate = encounter[i].meta.lastUpdated;
-                                            }
-                                            var patientEncounter = {}
-                                            patientEncounter.encounterID = encounter[i].id;
-                                            patientEncounter.Title = "Encounter - " + title;
-                                            patientEncounter.RecordedDate = recordeddate;
-                                            patientEncounter.PatientID = $("#CRMpatietid").val();
-                                            var dataSet = patientEncounter;
-                                            var item = {};
+                        if (encounter[0].resourceType != "OperationOutcome") {
+                   if (encounter != null) {
+                                if (encounter.length > 0) {
+                                    for (var i = 0; i <= encounter.length; i++) {
+                                        if (encounter[i] != null) {
+                                            if (encounter[i] != undefined) {
+                                                var title = encounter[i].type[0].text;
+                                                var recordeddate = "";
+                                                if (encounter[i].hasOwnProperty('period')) {
+                                                    recordeddate = encounter[i].period.start;
+                                                }
+                                                else if (encounter[i].hasOwnProperty('meta')) {
+                                                    recordeddate = encounter[i].meta.lastUpdated;
+                                                }
+                                                var patientEncounter = {}
+                                                patientEncounter.encounterID = encounter[i].id;
+                                                patientEncounter.Title = "Encounter - " + title;
+                                                patientEncounter.RecordedDate = recordeddate;
+                                                patientEncounter.PatientID = $("#CRMpatietid").val();
+                                                var dataSet = patientEncounter;
+                                                var item = {};
 
-                                            item.name = dataSet.Title;
+                                                item.name = dataSet.Title;
 
-                                            if (dataSet.hasOwnProperty('RecordedDate')) {
-                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                                if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                                }
+                                                item.type = 6;
+                                                item.id = dataSet.encounterID;
+                                                item.entity = "Encounter";
+                                                list.push(item);
                                             }
-                                            item.type = 6;
-                                            item.id = dataSet.encounterID;
-                                            item.entity = "Encounter";
-                                            list.push(item);
                                         }
                                     }
                                 }
@@ -179,42 +183,44 @@
 
                     $.when(alrgy).done(function (Allergy) {
                         
-                        if (Allergy != null) {
-                            if (Allergy.length > 0) {
-                                for (var i = 0; i <= Allergy.length; i++) {
-                                    if (Allergy[i] != null) {
-                                        if (Allergy[i] != undefined) {
-                                            var title = Allergy[i].substance.text;
-                                            var recordeddate = Allergy[i].recordedDate;
-                                            var patientAllergy = {}
-                                            patientAllergy.AllergyID = Allergy[i].id;
-                                            patientAllergy.name = "Allergy - " + title;
-                                            patientAllergy.patientId = $("#CRMpatietid").val();
-                                            patientAllergy.RecordedDate = recordeddate;
-                                            var dataSet = patientAllergy;
-                                            var item = {};
+                        if (Allergy[0].resourceType != "OperationOutcome") {
+                            if (Allergy != null) {
+                                if (Allergy.length > 0) {
+                                    for (var i = 0; i <= Allergy.length; i++) {
+                                        if (Allergy[i] != null) {
+                                            if (Allergy[i] != undefined) {
+                                                var title = Allergy[i].substance.text;
+                                                var recordeddate = Allergy[i].recordedDate;
+                                                var patientAllergy = {}
+                                                patientAllergy.AllergyID = Allergy[i].id;
+                                                patientAllergy.name = "Allergy - " + title;
+                                                patientAllergy.patientId = $("#CRMpatietid").val();
+                                                patientAllergy.RecordedDate = recordeddate;
+                                                var dataSet = patientAllergy;
+                                                var item = {};
 
-                                            if (dataSet.hasOwnProperty('Id')) {
-                                                item.id = dataSet.Id;
-                                            }
-                                            item.name = dataSet.name;
+                                                if (dataSet.hasOwnProperty('Id')) {
+                                                    item.id = dataSet.Id;
+                                                }
+                                                item.name = dataSet.name;
 
-                                            if (dataSet.hasOwnProperty('RecordedDate')) {
-                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                                if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                                }
+                                                item.type = 11;
+                                                item.id = dataSet.AllergyID;
+                                                if (Allergy[i].hasOwnProperty("encounter")) {
+                                                    item.encounterID = Allergy[i].encounter.reference.split('/')[1];
+                                                }
+                                                item.entity = "Allergy Intolerance";
+                                                list.push(item);
                                             }
-                                            item.type = 11;
-                                            item.id = dataSet.AllergyID;
-                                            if (Allergy[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = Allergy[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.entity = "Allergy Intolerance";
-                                            list.push(item);
                                         }
                                     }
                                 }
                             }
-                        }                        
+                        }                       
                     });
 
                     var cond = smart.patient.api.fetchAll({
