@@ -143,7 +143,9 @@
                                     for (var i = 0; i <= encounter.length; i++) {
                                         if (encounter[i] != null) {
                                             if (encounter[i] != undefined) {
-                                                var title = encounter[i].type[0].text;
+                                                if (encounter[i].hasOwnProperty('type')) {
+                                                    var title = encounter[i].type[0].text;
+                                                }
                                                 var recordeddate = "";
                                                 if (encounter[i].hasOwnProperty('period')) {
                                                     recordeddate = encounter[i].period.start;
