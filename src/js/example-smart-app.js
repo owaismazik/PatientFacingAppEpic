@@ -89,7 +89,7 @@
 
                     ret.resolve(p);
 
-                    if (obv[0].resourceType != "OperationOutcome") {
+                    if (obv[i].resourceType != "OperationOutcome") {
                         if (obv != null) {
                             if (obv.length > 0) {
                                 for (var i = 0; i <= 10; i++) {
@@ -137,7 +137,7 @@
                     });
 
                     $.when(enco).done(function (encounter) {
-                        if (encounter[0].resourceType != "OperationOutcome") {
+                        if (encounter[i].resourceType != "OperationOutcome") {
                             if (encounter != null) {
                                 if (encounter.length > 0) {
                                     for (var i = 0; i <= encounter.length; i++) {
@@ -192,8 +192,7 @@
                     });
 
                     $.when(alrgy).done(function (Allergy) {
-
-                        if (Allergy[0].resourceType != "OperationOutcome") {
+                        if (Allergy[i].resourceType != "OperationOutcome") {
                             if (Allergy != null) {
                                 if (Allergy.length > 0) {
                                     for (var i = 0; i <= Allergy.length; i++) {
@@ -241,39 +240,40 @@
                     });
 
                     $.when(cond).done(function (condition) {
-
-                        if (condition != null) {
-                            if (condition.length > 0) {
-                                for (var i = 0; i <= condition.length; i++) {
-                                    if (condition[i] != null) {
-                                        if (condition[i] != undefined) {
-                                            var title = "";
-                                            if (condition[i].code.coding != undefined) {
-                                                title = condition[i].code.coding[0].display;
+                        if (condition[i].resourceType != "OperationOutcome") {
+                            if (condition != null) {
+                                if (condition.length > 0) {
+                                    for (var i = 0; i <= condition.length; i++) {
+                                        if (condition[i] != null) {
+                                            if (condition[i] != undefined) {
+                                                var title = "";
+                                                if (condition[i].code.coding != undefined) {
+                                                    title = condition[i].code.coding[0].display;
+                                                }
+                                                var recordeddate = condition[i].onsetDateTime;
+                                                var patientCondition = {}
+                                                patientCondition.conditionID = condition[i].id;
+                                                patientCondition.Title = "Condition - " + title;
+                                                patientCondition.RecordedDate = recordeddate;
+                                                patientCondition.PatientID = $("#CRMpatietid").val();
+                                                var dataSet = patientCondition;
+                                                var item = {};
+                                                if (dataSet.hasOwnProperty('ConditionID')) {
+                                                    item.id = dataSet.ConditionID;
+                                                }
+                                                item.name = dataSet.Title;
+                                                if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                                }
+                                                item.type = 8;
+                                                item.id = dataSet.conditionID;
+                                                if (condition[i].hasOwnProperty("encounter")) {
+                                                    item.encounterID = condition[i].encounter.reference.split('/')[1];
+                                                }
+                                                item.entity = "Condition";
+                                                list.push(item);
                                             }
-                                            var recordeddate = condition[i].onsetDateTime;
-                                            var patientCondition = {}
-                                            patientCondition.conditionID = condition[i].id;
-                                            patientCondition.Title = "Condition - " + title;
-                                            patientCondition.RecordedDate = recordeddate;
-                                            patientCondition.PatientID = $("#CRMpatietid").val();
-                                            var dataSet = patientCondition;
-                                            var item = {};
-                                            if (dataSet.hasOwnProperty('ConditionID')) {
-                                                item.id = dataSet.ConditionID;
-                                            }
-                                            item.name = dataSet.Title;
-                                            if (dataSet.hasOwnProperty('RecordedDate')) {
-                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                                            }
-                                            item.type = 8;
-                                            item.id = dataSet.conditionID;
-                                            if (condition[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = condition[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.entity = "Condition";
-                                            list.push(item);
                                         }
                                     }
                                 }
@@ -337,7 +337,7 @@
                     });
 
                     $.when(proc).done(function (procedure) {
-                        if (procedure[0].resourceType != "OperationOutcome") {
+                        if (procedure[i].resourceType != "OperationOutcome") {
                             if (procedure != null) {
                                 if (procedure.length > 0) {
                                     for (var i = 0; i <= procedure.length; i++) {
@@ -453,7 +453,7 @@
                     });
 
                     $.when(devi).done(function (device) {
-                        if (device[0].resourceType != "OperationOutcome") {
+                        if (device[i].resourceType != "OperationOutcome") {
                             if (device != null) {
                                 if (device.length > 0) {
                                     for (var i = 0; i <= device.length; i++) {
@@ -504,38 +504,40 @@
                     });
 
                     $.when(cp).done(function (careplan) {
-                        if (careplan != null) {
-                            if (careplan.length > 0) {
-                                for (var i = 0; i <= 10; i++) {
-                                    if (careplan[i] != null) {
-                                        if (careplan[i] != undefined) {
-                                            //CreateCarePlan(careplan[i].id, $("#CRMpatietid").val(), fname + " " + lname + " Care Plan", fname + " " + lname + " Care Plan", careplan[i].period.start, careplan[i].period.start);
-                                            //id, patientid, title, desc, startdate, enddate
-                                            var patientCarePlan = {}
-                                            patientCarePlan.careplanID = careplan[i].id;
-                                            patientCarePlan.Title = fname + " " + lname + " Care Plan";
-                                            patientCarePlan.Description = fname + " " + lname + " Care Plan";
-                                            patientCarePlan.STartDate = careplan[i].period.start;
-                                            patientCarePlan.EndDate = careplan[i].period.start;
-                                            patientCarePlan.PatientID = $("#CRMpatietid").val();
-                                            //patientCarePlanGlobal = patientCarePlan;
-                                            var dataSet = patientCarePlan;
-                                            var item = {};
-                                            if (dataSet.hasOwnProperty('CarePlanID')) {
-                                                item.id = dataSet.CarePlanID;
+                        if (careplan[i].resourceType != "OperationOutcome") {
+                            if (careplan != null) {
+                                if (careplan.length > 0) {
+                                    for (var i = 0; i <= 10; i++) {
+                                        if (careplan[i] != null) {
+                                            if (careplan[i] != undefined) {
+                                                //CreateCarePlan(careplan[i].id, $("#CRMpatietid").val(), fname + " " + lname + " Care Plan", fname + " " + lname + " Care Plan", careplan[i].period.start, careplan[i].period.start);
+                                                //id, patientid, title, desc, startdate, enddate
+                                                var patientCarePlan = {}
+                                                patientCarePlan.careplanID = careplan[i].id;
+                                                patientCarePlan.Title = fname + " " + lname + " Care Plan";
+                                                patientCarePlan.Description = fname + " " + lname + " Care Plan";
+                                                patientCarePlan.STartDate = careplan[i].period.start;
+                                                patientCarePlan.EndDate = careplan[i].period.start;
+                                                patientCarePlan.PatientID = $("#CRMpatietid").val();
+                                                //patientCarePlanGlobal = patientCarePlan;
+                                                var dataSet = patientCarePlan;
+                                                var item = {};
+                                                if (dataSet.hasOwnProperty('CarePlanID')) {
+                                                    item.id = dataSet.CarePlanID;
+                                                }
+                                                item.name = dataSet.Title;
+                                                if (dataSet.hasOwnProperty('STartDate')) {
+                                                    item.date = moment.utc(dataSet.STartDate).format('MM/DD/YYYY');
+                                                    item.dateTime = moment.utc(dataSet.STartDate).format('YYYY-MM-DD HH:mm:ss');
+                                                }
+                                                item.type = 9;
+                                                item.id = dataSet.careplanID;
+                                                if (careplan[i].hasOwnProperty("encounter")) {
+                                                    item.encounterID = careplan[i].encounter.reference.split('/')[1];
+                                                }
+                                                item.entity = "Care Plan";
+                                                list.push(item);
                                             }
-                                            item.name = dataSet.Title;
-                                            if (dataSet.hasOwnProperty('STartDate')) {
-                                                item.date = moment.utc(dataSet.STartDate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.STartDate).format('YYYY-MM-DD HH:mm:ss');
-                                            }
-                                            item.type = 9;
-                                            item.id = dataSet.careplanID;
-                                            if (careplan[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = careplan[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.entity = "Care Plan";
-                                            list.push(item);
                                         }
                                     }
                                 }
@@ -551,8 +553,7 @@
                     });
 
                     $.when(goal).done(function (Goal) {
-
-                        if (Goal[0].resourceType != "OperationOutcome") {
+                        if (Goal[i].resourceType != "OperationOutcome") {
                             if (Goal != null) {
                                 if (Goal.length > 0) {
                                     for (var i = 0; i <= Goal.length; i++) {
