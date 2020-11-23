@@ -89,11 +89,10 @@
 
                     ret.resolve(p);
 
-                    if (obv[i].resourceType != "OperationOutcome") {
                         if (obv != null) {
                             if (obv.length > 0) {
                                 for (var i = 0; i <= 10; i++) {
-                                    if (obv[i] != null) {
+                                    if (obv[i] != null && obv[i].resourceType != "OperationOutcome") {
                                         if (obv[i] != undefined) {
                                             var patientObservation = {};
                                             var title = obv[i].code.coding[0].display;
@@ -127,7 +126,6 @@
                                 }
                             }
                         }
-                    }
 
                     var enco = smart.patient.api.fetchAll({
                         type: 'Encounter',
