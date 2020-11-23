@@ -135,11 +135,10 @@
                     });
 
                     $.when(enco).done(function (encounter) {
-                        if (encounter[i].resourceType != "OperationOutcome") {
                             if (encounter != null) {
                                 if (encounter.length > 0) {
                                     for (var i = 0; i <= encounter.length; i++) {
-                                        if (encounter[i] != null) {
+                                        if (encounter[i] != null && encounter[i].resourceType != "OperationOutcome") {
                                             if (encounter[i] != undefined) {
                                                 if (encounter[i].hasOwnProperty('type')) {
                                                     var title = encounter[i].type[0].text;
@@ -174,7 +173,6 @@
                                     }
                                 }
                             }
-                        }
                     });
 
                     //CreatePatient(patient.id);
@@ -190,11 +188,10 @@
                     });
 
                     $.when(alrgy).done(function (Allergy) {
-                        if (Allergy[i].resourceType != "OperationOutcome") {
                             if (Allergy != null) {
                                 if (Allergy.length > 0) {
                                     for (var i = 0; i <= Allergy.length; i++) {
-                                        if (Allergy[i] != null) {
+                                        if (Allergy[i] != null && Allergy[i].resourceType != "OperationOutcome") {
                                             if (Allergy[i] != undefined) {
                                                 var title = Allergy[i].substance.text;
                                                 var recordeddate = Allergy[i].recordedDate;
@@ -227,7 +224,6 @@
                                     }
                                 }
                             }
-                        }
                     });
 
                     var cond = smart.patient.api.fetchAll({
@@ -238,11 +234,10 @@
                     });
 
                     $.when(cond).done(function (condition) {
-                        if (condition[i].resourceType != "OperationOutcome") {
                             if (condition != null) {
                                 if (condition.length > 0) {
                                     for (var i = 0; i <= condition.length; i++) {
-                                        if (condition[i] != null) {
+                                        if (condition[i] != null && condition[i].resourceType != "OperationOutcome") {
                                             if (condition[i] != undefined) {
                                                 var title = "";
                                                 if (condition[i].code.coding != undefined) {
@@ -276,7 +271,6 @@
                                     }
                                 }
                             }
-                        }
                     });
 
                     //var MedOrder = smart.patient.api.fetchAll({
@@ -335,11 +329,10 @@
                     });
 
                     $.when(proc).done(function (procedure) {
-                        if (procedure[i].resourceType != "OperationOutcome") {
                             if (procedure != null) {
                                 if (procedure.length > 0) {
                                     for (var i = 0; i <= procedure.length; i++) {
-                                        if (procedure[i] != null) {
+                                        if (procedure[i] != null && procedure[i].resourceType != "OperationOutcome") {
                                             if (procedure[i] != undefined) {
                                                 var title = procedure[i].code.coding[0].display;
                                                 var recordeddate = '';
@@ -392,7 +385,6 @@
                                     }
                                 }
                             }
-                        }
                     });
 
                     //var procReq = smart.patient.api.fetchAll({
@@ -451,11 +443,10 @@
                     });
 
                     $.when(devi).done(function (device) {
-                        if (device[i].resourceType != "OperationOutcome") {
                             if (device != null) {
                                 if (device.length > 0) {
                                     for (var i = 0; i <= device.length; i++) {
-                                        if (device[i] != null) {
+                                        if (device[i] != null && device[i].resourceType != "OperationOutcome") {
                                             if (device[i] != undefined) {
                                                 var title = device[i].type.text;
                                                 var recordeddate = device[i].meta.lastUpdated;
@@ -490,7 +481,6 @@
                                     }
                                 }
                             }
-                        }
                     });
 
                     var cp = smart.patient.api.fetchAll({
@@ -502,11 +492,10 @@
                     });
 
                     $.when(cp).done(function (careplan) {
-                        if (careplan[i].resourceType != "OperationOutcome") {
                             if (careplan != null) {
                                 if (careplan.length > 0) {
                                     for (var i = 0; i <= 10; i++) {
-                                        if (careplan[i] != null) {
+                                        if (careplan[i] != null && careplan[i].resourceType != "OperationOutcome") {
                                             if (careplan[i] != undefined) {
                                                 //CreateCarePlan(careplan[i].id, $("#CRMpatietid").val(), fname + " " + lname + " Care Plan", fname + " " + lname + " Care Plan", careplan[i].period.start, careplan[i].period.start);
                                                 //id, patientid, title, desc, startdate, enddate
@@ -540,7 +529,6 @@
                                     }
                                 }
                             }
-                        }
                     });
 
                     var goal = smart.patient.api.fetchAll({
@@ -551,11 +539,10 @@
                     });
 
                     $.when(goal).done(function (Goal) {
-                        if (Goal[i].resourceType != "OperationOutcome") {
                             if (Goal != null) {
                                 if (Goal.length > 0) {
                                     for (var i = 0; i <= Goal.length; i++) {
-                                        if (Goal[i] != null) {
+                                        if (Goal[i] != null && Goal[i].resourceType != "OperationOutcome") {
                                             if (Goal[i] != undefined) {
 
                                                 var externalEmrId = Goal[i].id;
@@ -595,7 +582,6 @@
                                     }
                                 }
                             }
-                        }
                     });
 
 
