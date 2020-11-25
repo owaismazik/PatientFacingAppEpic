@@ -234,7 +234,8 @@
                     var cond = smart.patient.api.fetchAll({
                         type: 'Condition',
                         query: {
-                            patient: patient.id
+                            patient: patient.id,
+                            'category': 'genomics'
                         }
                     });
 
