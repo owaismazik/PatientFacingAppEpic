@@ -183,7 +183,8 @@
                     var alrgy = smart.patient.api.fetchAll({
                         type: 'AllergyIntolerance',
                         query: {
-                            patient: patient.id
+                            patient: patient.id,
+                            'clinical-status': 'Active'
                         }
                     });
 
