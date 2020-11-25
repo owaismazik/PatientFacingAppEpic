@@ -509,8 +509,8 @@
                                                 patientCarePlan.careplanID = careplan[i].id;
                                                 patientCarePlan.Title = fname + " " + lname + " Care Plan";
                                                 patientCarePlan.Description = fname + " " + lname + " Care Plan";
-                                                patientCarePlan.STartDate = careplan[i].period.start;
-                                                patientCarePlan.EndDate = careplan[i].period.start;
+                                                //patientCarePlan.STartDate = careplan[i].period.start;
+                                                //patientCarePlan.EndDate = careplan[i].period.start;
                                                 patientCarePlan.PatientID = $("#CRMpatietid").val();
                                                 //patientCarePlanGlobal = patientCarePlan;
                                                 var dataSet = patientCarePlan;
