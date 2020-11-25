@@ -493,7 +493,7 @@
                         type: 'CarePlan',
                         query: {
                             patient: patient.id,
-                            'category': '734163000'
+                            'category': '38717003'
                         }
                     });
 
