@@ -194,7 +194,11 @@
                                     for (var i = 0; i <= Allergy.length; i++) {
                                         if (Allergy[i] != null && Allergy[i].resourceType != "OperationOutcome") {
                                             if (Allergy[i] != undefined) {
-                                                var title = Allergy[i].substance.text;
+                                                //var title = Allergy[i].substance.text;
+                                                var title = "";
+                                                if (Allergy[i].hasOwnProperty('reaction')) {
+                                                    title = Allergy[i].reaction[0].description;
+                                                }
                                                 var recordeddate = Allergy[i].recordedDate;
                                                 var patientAllergy = {}
                                                 patientAllergy.AllergyID = Allergy[i].id;
