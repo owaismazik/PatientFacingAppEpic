@@ -511,6 +511,9 @@
                                                 patientCarePlan.Description = fname + " " + lname + " Care Plan";
                                                 //patientCarePlan.STartDate = careplan[i].period.start;
                                                 //patientCarePlan.EndDate = careplan[i].period.start;
+                                                var d = new Date(2018, 11);
+                                                patientCarePlan.STartDate = d;
+                                                patientCarePlan.EndDate = d;
                                                 patientCarePlan.PatientID = $("#CRMpatietid").val();
                                                 //patientCarePlanGlobal = patientCarePlan;
                                                 var dataSet = patientCarePlan;
