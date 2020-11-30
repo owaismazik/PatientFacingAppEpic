@@ -906,7 +906,7 @@
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
                                 break;
-                            case "Procedure":
+                            case "Care Plan":
                                 imageName = "allergy.png";
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
@@ -1197,7 +1197,7 @@
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
                                 break;
-                            case "Procedure":
+                            case "Care Plan":
                                 imageName = "allergy.png";
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
