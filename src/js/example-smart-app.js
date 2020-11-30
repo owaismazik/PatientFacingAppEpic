@@ -906,6 +906,11 @@
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
                                 break;
+                            case "Procedure":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
                             case "Observation":
                                 imageName = "Observation.png";
                                 spanClass = "mzkobserspan";
@@ -1188,6 +1193,11 @@
 
                         switch (entity) {
                             case "Allergy Intolerance":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            case "Procedure":
                                 imageName = "allergy.png";
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
