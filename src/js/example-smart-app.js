@@ -315,8 +315,8 @@
                                             }
                                             item.type = 8;
                                             item.id = dataSet.ImmunizationID;
-                                            if (MedicationOrder[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = MedicationOrder[i].encounter.reference.split('/')[1];
+                                            if (Immunization[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = Immunization[i].encounter.reference.split('/')[1];
                                             }
                                             item.entity = "Immunization";
                                             list.push(item);
