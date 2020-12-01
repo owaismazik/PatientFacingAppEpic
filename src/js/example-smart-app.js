@@ -292,7 +292,7 @@
                             if (Immunization.length > 0) {
                                 for (var i = 0; i <= Immunization.length; i++) {
                                     if (Immunization[i] != null && Immunization[i].resourceType != "OperationOutcome") {
-                                        if (MedicationOrder[i] != undefined) {
+                                        if (Immunization[i] != undefined) {
                                             var title = "";
                                             if (Immunization[i].medicationCodeableConcept != undefined) {
                                                 title = Immunization[i].medicationCodeableConcept.coding[0].display;
