@@ -279,14 +279,14 @@
                             }
                     });
 
-                    var Immu = smart.patient.api.fetchAll({
+                    var Immunizate = smart.patient.api.fetchAll({
                         type: 'Immunization',
                         query: {
                             patient: patient.id
                         }
                     });
 
-                    $.when(MedOrder).done(function (Immunization) {
+                    $.when(Immunizate).done(function (Immunization) {
 
                         if (Immunization != null) {
                             if (Immunization.length > 0) {
