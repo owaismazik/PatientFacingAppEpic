@@ -298,12 +298,12 @@
                                                 title = Immunization[i].medicationCodeableConcept.coding[0].display;
                                             }
                                             var recordeddate = Immunization[i].dateWritten;
-                                            var patientMedicationOrder = {}
-                                            patientMedicationOrder.ImmunizationID = Immunization[i].id;
-                                            patientMedicationOrder.Title = "Immunization - " + title;
-                                            patientMedicationOrder.RecordedDate = recordeddate;
-                                            patientMedicationOrder.PatientID = $("#CRMpatietid").val();
-                                            var dataSet = patientMedicationOrder;
+                                            var patientImmunization = {}
+                                            patientImmunization.ImmunizationID = Immunization[i].id;
+                                            patientImmunization.Title = "Immunization - " + title;
+                                            patientImmunization.RecordedDate = recordeddate;
+                                            patientImmunization.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = patientImmunization;
                                             var item = {};
                                             //if (dataSet.hasOwnProperty('MedicationOrderID')) {
                                             //    item.id = dataSet.MedicationOrderID;
