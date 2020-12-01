@@ -291,7 +291,7 @@
                         if (Immunization != null) {
                             if (Immunization.length > 0) {
                                 for (var i = 0; i <= Immunization.length; i++) {
-                                    if (Immunization[i] != null) {
+                                    if (Immunization[i] != null && Immunization[i].resourceType != "OperationOutcome") {
                                         if (MedicationOrder[i] != undefined) {
                                             var title = "";
                                             if (Immunization[i].medicationCodeableConcept != undefined) {
