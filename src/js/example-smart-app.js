@@ -489,11 +489,13 @@
                             }
                     });
 
+                    //Longitudinal 38717003
+                    //Encounter 734163000
                     var cp = smart.patient.api.fetchAll({
                         type: 'CarePlan',
                         query: {
                             patient: patient.id,
-                            'category': '38717003'
+                            'category': '734163000'
                         }
                     });
 
