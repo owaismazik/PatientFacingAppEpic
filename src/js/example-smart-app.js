@@ -449,19 +449,67 @@
                     });
 
                     $.when(devi).done(function (device) {
-                            if (device != null) {
-                                if (device.length > 0) {
-                                    for (var i = 0; i <= device.length; i++) {
-                                        if (device[i] != null && device[i].resourceType != "OperationOutcome") {
-                                            if (device[i] != undefined) {
-                                                var title = device[i].type.text;
-                                                var recordeddate = device[i].meta.lastUpdated;
+                        if (device != null) {
+                            if (device.length > 0) {
+                                for (var i = 0; i <= device.length; i++) {
+                                    if (device[i] != null && device[i].resourceType != "OperationOutcome") {
+                                        if (device[i] != undefined) {
+                                            var title = device[i].type.text;
+                                            var recordeddate = device[i].meta.lastUpdated;
+                                            //CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
+                                            var patientDevice = {}
+                                            patientDevice.deviceID = device[i].id;
+                                            patientDevice.Title = "Device - " + title;
+                                            patientDevice.RecordedDate = recordeddate;
+                                            patientDevice.PatientID = $("#CRMpatietid").val();
+                                            //patientDeviceGlobal = patientDevice;
+                                            var dataSet = patientDevice;
+                                            var item = {};
+
+                                            if (dataSet.hasOwnProperty('DeviceID')) {
+                                                item.id = dataSet.DeviceID;
+                                            }
+                                            item.name = dataSet.Title;
+
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 5;
+                                            item.id = dataSet.deviceID;
+                                            if (device[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = device[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "Device";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    var CareTeamObj = smart.patient.api.fetchAll({
+                        type: 'CareTeam',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(CareTeamObj).done(function (CareTeam) {
+                        if (CareTeam != null) {
+                            if (CareTeam.length > 0) {
+                                for (var i = 0; i <= CareTeam.length; i++) {
+                                    if (CareTeam[i] != null && CareTeam[i].resourceType != "OperationOutcome") {
+                                        if (CareTeam[i] != undefined) {
+                                            var title = CareTeam[i].type.text;
+                                            var recordeddate = CareTeam[i].meta.lastUpdated;
                                                 //CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
-                                                var patientDevice = {}
-                                                patientDevice.deviceID = device[i].id;
-                                                patientDevice.Title = "Device - " + title;
-                                                patientDevice.RecordedDate = recordeddate;
-                                                patientDevice.PatientID = $("#CRMpatietid").val();
+                                            var CareTeamDevice = {}
+                                            CareTeamDevice.deviceID = CareTeam[i].id;
+                                            CareTeamDevice.Title = "CareTeam - " + title;
+                                            CareTeamDevice.RecordedDate = recordeddate;
+                                            CareTeamDevice.PatientID = $("#CRMpatietid").val();
                                                 //patientDeviceGlobal = patientDevice;
                                                 var dataSet = patientDevice;
                                                 var item = {};
@@ -480,7 +528,7 @@
                                                 if (device[i].hasOwnProperty("encounter")) {
                                                     item.encounterID = device[i].encounter.reference.split('/')[1];
                                                 }
-                                                item.entity = "Device";
+                                            item.entity = "CareTeam";
                                                 list.push(item);
                                             }
                                         }
