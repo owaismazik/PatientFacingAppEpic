@@ -537,6 +537,55 @@
                             }
                     });
 
+
+                    var DocumentReferenceObj = smart.patient.api.fetchAll({
+                        type: 'DocumentReference',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(DocumentReferenceObj).done(function (DocumentReference) {
+                        if (DocumentReference != null) {
+                            if (DocumentReference.length > 0) {
+                                for (var i = 0; i <= DocumentReference.length; i++) {
+                                    if (DocumentReference[i] != null && DocumentReference[i].resourceType != "OperationOutcome") {
+                                        if (DocumentReference[i] != undefined) {
+                                            var title = DocumentReference[i].type.text;
+                                            var recordeddate = DocumentReference[i].meta.lastUpdated;
+                                            //CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
+                                            var DocumentReferencePatient = {}
+                                            DocumentReferencePatient.deviceID = DocumentReference[i].id;
+                                            DocumentReferencePatient.Title = "DocumentReference - " + title;
+                                            DocumentReferencePatient.RecordedDate = recordeddate;
+                                            DocumentReferencePatient.PatientID = $("#CRMpatietid").val();
+                                            //patientDeviceGlobal = patientDevice;
+                                            var dataSet = patientDevice;
+                                            var item = {};
+
+                                            if (dataSet.hasOwnProperty('DeviceID')) {
+                                                item.id = dataSet.DeviceID;
+                                            }
+                                            item.name = dataSet.Title;
+
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 5;
+                                            item.id = dataSet.deviceID;
+                                            if (DocumentReference[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = DocumentReference[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "DocumentReference";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
                     //Longitudinal 38717003
                     //Encounter 734163000
                     var cp = smart.patient.api.fetchAll({
