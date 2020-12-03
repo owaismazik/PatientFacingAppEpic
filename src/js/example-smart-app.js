@@ -1013,6 +1013,11 @@
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
                                 break;
+                            case "DocumentReference":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
                             case "Care Plan":
                                 imageName = "allergy.png";
                                 spanClass = "mzkaleryspan";
@@ -1305,6 +1310,11 @@
                                 imgClass = 'mzkalergyimg';
                                 break;
                             case "Immunization":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            case "DocumentReference":
                                 imageName = "allergy.png";
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
