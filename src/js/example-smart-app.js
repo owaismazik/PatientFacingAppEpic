@@ -552,7 +552,9 @@
                                     if (DocumentReference[i] != null && DocumentReference[i].resourceType != "OperationOutcome") {
                                         if (DocumentReference[i] != undefined) {
                                             var title = DocumentReference[i].type.text;
-                                            var recordeddate = DocumentReference[i].meta.lastUpdated;
+                                            var recordeddate = DocumentReference[i].date;
+                                            //DocumentReference[0].date
+                                            //DocumentReference[i].meta.lastUpdated
                                             //CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
                                             var DocumentReferencePatient = {}
                                             DocumentReferencePatient.deviceID = DocumentReference[i].id;
