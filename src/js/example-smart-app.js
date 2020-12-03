@@ -562,7 +562,7 @@
                                             DocumentReferencePatient.RecordedDate = recordeddate;
                                             DocumentReferencePatient.PatientID = $("#CRMpatietid").val();
                                             //patientDeviceGlobal = patientDevice;
-                                            var dataSet = patientDevice;
+                                            var dataSet = DocumentReferencePatient;
                                             var item = {};
 
                                             if (dataSet.hasOwnProperty('DeviceID')) {
