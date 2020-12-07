@@ -1108,6 +1108,12 @@
                                 imgClass = 'mzkalergyimg';
                                 break;
                             //Immunization
+                            //DiagnosticReport
+                            case "DiagnosticReport":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
                             case "Immunization":
                                 imageName = "allergy.png";
                                 spanClass = "mzkaleryspan";
@@ -1405,6 +1411,11 @@
 
                         switch (entity) {
                             case "Allergy Intolerance":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            case "DiagnosticReport":
                                 imageName = "allergy.png";
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
