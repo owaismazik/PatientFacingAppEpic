@@ -427,6 +427,53 @@
                         }
                     }); 
 
+                    var MedicationRequestObj = smart.patient.api.fetchAll({
+                        type: 'MedicationRequest',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(MedicationRequestObj).done(function (MedicationRequest) {
+                        if (MedicationRequest != null) {
+                            if (MedicationRequest.length > 0) {
+                                for (var i = 0; i <= MedicationRequest.length; i++) {
+                                    if (MedicationRequest[i] != null && MedicationRequest[i].resourceType != "OperationOutcome") {
+                                        if (MedicationRequest[i] != undefined) {
+                                            var title = "";
+                                            if (MedicationRequest[i].medicationCodeableConcept != undefined) {
+                                                title = MedicationRequest[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = MedicationRequest[i].dateWritten;
+                                            var MedicationRequestReport = {}
+                                            MedicationRequestReport.MedicationRequestID = DiagnosticReport[i].id;
+                                            MedicationRequestReport.Title = "MedicationRequest - " + title;
+                                            MedicationRequestReport.RecordedDate = recordeddate;
+                                            MedicationRequestReport.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = MedicationRequestReport;
+                                            var item = {};
+                                            //if (dataSet.hasOwnProperty('MedicationOrderID')) {
+                                            //    item.id = dataSet.MedicationOrderID;
+                                            //}
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.MedicationRequestID;
+                                            if (MedicationRequest[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = MedicationRequest[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "MedicationRequest";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }); 
+
                     var proc = smart.patient.api.fetchAll({
                         type: 'Procedure',
                         query: {
@@ -492,54 +539,6 @@
                                 }
                             }
                     });
-
-                    //var procReq = smart.patient.api.fetchAll({
-                    //    type: 'ProcedureRequest',
-                    //    query: {
-                    //        patient: patient.id
-                    //    }
-                    //});
-
-                    //$.when(procReq).done(function (procedureRequest) {
-                    //    if (procedureRequest != null) {
-                    //        if (procedureRequest.length > 0) {
-                    //            for (var i = 0; i <= procedureRequest.length; i++) {
-                    //                if (procedureRequest[i] != null) {
-                    //                    if (procedureRequest[i] != undefined) {
-                    //                        var title = procedureRequest[i].code.text;
-                    //                        var recordeddate = procedureRequest[i].scheduledDateTime;                                            
-                    //                        //CreateProcedureRequest(procedureRequest[i].id, $("#CRMpatietid").val(), "procedureRequest - " + title, recordeddate);
-                    //                        var patientProcedure = {}
-                    //                        patientProcedure.procedureRequestID = procedureRequest[i].id;
-                    //                        patientProcedure.Title = "procedureRequest - " + title;
-                    //                        patientProcedure.RecordedDate = recordeddate;
-                    //                        patientProcedure.PatientID = $("#CRMpatietid").val();
-                    //                        //patientProcedureRequestGlobal = patientProcedure;
-                    //                        var dataSet = patientProcedure;
-                    //                        var item = {};
-
-                    //                        if (dataSet.hasOwnProperty('ProcedureRequestID')) {
-                    //                            item.id = dataSet.ProcedureRequestID;
-                    //                        }
-                    //                        item.name = dataSet.Title;
-
-                    //                        if (dataSet.hasOwnProperty('RecordedDate')) {
-                    //                            item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                    //                            item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                    //                        }
-                    //                        item.type = 13;
-                    //                        item.id = dataSet.procedureRequestID;
-                    //                        if (procedureRequest[i].hasOwnProperty("encounter")) {
-                    //                            item.encounterID = procedureRequest[i].encounter.reference.split('/')[1];
-                    //                        }
-                    //                        item.entity = "ProcedureRequest";
-                    //                        list.push(item);
-                    //                    }
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //});
 
                     var devi = smart.patient.api.fetchAll({
                         type: 'Device',
