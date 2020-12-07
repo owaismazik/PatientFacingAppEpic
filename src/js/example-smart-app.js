@@ -327,6 +327,54 @@
                         }
                     });  
 
+                    var PractitionerObj = smart.patient.api.fetchAll({
+                        type: 'Practitioner',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(PractitionerObj).done(function (Practitioner) {
+
+                        if (Practitioner != null) {
+                            if (Practitioner.length > 0) {
+                                for (var i = 0; i <= Practitioner.length; i++) {
+                                    if (Practitioner[i] != null && Practitioner[i].resourceType != "OperationOutcome") {
+                                        if (Practitioner[i] != undefined) {
+                                            var title = "";
+                                            if (Practitioner[i].medicationCodeableConcept != undefined) {
+                                                title = Practitioner[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = Practitioner[i].dateWritten;
+                                            var patientPractitioner = {}
+                                            patientPractitioner.ImmunizationID = Practitioner[i].id;
+                                            patientPractitioner.Title = "Immunization - " + title;
+                                            patientPractitioner.RecordedDate = recordeddate;
+                                            patientPractitioner.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = patientPractitioner;
+                                            var item = {};
+                                            //if (dataSet.hasOwnProperty('MedicationOrderID')) {
+                                            //    item.id = dataSet.MedicationOrderID;
+                                            //}
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.PractitionerID;
+                                            if (Immunization[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = Immunization[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "Practitioner";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }); 
+
                     var proc = smart.patient.api.fetchAll({
                         type: 'Procedure',
                         query: {
