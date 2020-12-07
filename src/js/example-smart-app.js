@@ -330,7 +330,9 @@
                     var PractitionerObj = smart.patient.api.fetchAll({
                         type: 'Practitioner',
                         query: {
-                            patient: patient.id
+                            patient: patient.id,
+                            given: patient.name[0].given.join(' '),
+                            family: patient.name[0].family
                         }
                     });
 
