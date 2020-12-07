@@ -331,8 +331,8 @@
                         type: 'Practitioner',
                         query: {
                             patient: patient.id,
-                            given: patient.name[0].given.join(' '),
-                            family: patient.name[0].family
+                            given: fname,
+                            family: lname
                         }
                     });
 
