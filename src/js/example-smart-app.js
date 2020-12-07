@@ -287,7 +287,6 @@
                     });
 
                     $.when(Immunizate).done(function (Immunization) {
-
                         if (Immunization != null) {
                             if (Immunization.length > 0) {
                                 for (var i = 0; i <= Immunization.length; i++) {
@@ -342,7 +341,6 @@
                     });
 
                     $.when(PractitionerObj).done(function (Practitioner) {
-
                         if (Practitioner != null) {
                             if (Practitioner.length > 0) {
                                 for (var i = 0; i <= Practitioner.length; i++) {
@@ -354,8 +352,8 @@
                                             }
                                             var recordeddate = Practitioner[i].dateWritten;
                                             var patientPractitioner = {}
-                                            patientPractitioner.ImmunizationID = Practitioner[i].id;
-                                            patientPractitioner.Title = "Immunization - " + title;
+                                            patientPractitioner.PractitionerID = Practitioner[i].id;
+                                            patientPractitioner.Title = "Practitioner - " + title;
                                             patientPractitioner.RecordedDate = recordeddate;
                                             patientPractitioner.PatientID = $("#CRMpatietid").val();
                                             var dataSet = patientPractitioner;
@@ -374,6 +372,53 @@
                                                 item.encounterID = Immunization[i].encounter.reference.split('/')[1];
                                             }
                                             item.entity = "Practitioner";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }); 
+
+                    var DiagnosticReportObj = smart.patient.api.fetchAll({
+                        type: 'DiagnosticReport',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(DiagnosticReportObj).done(function (DiagnosticReport) {
+                        if (DiagnosticReport != null) {
+                            if (DiagnosticReport.length > 0) {
+                                for (var i = 0; i <= DiagnosticReport.length; i++) {
+                                    if (DiagnosticReport[i] != null && DiagnosticReport[i].resourceType != "OperationOutcome") {
+                                        if (DiagnosticReport[i] != undefined) {
+                                            var title = "";
+                                            if (DiagnosticReport[i].medicationCodeableConcept != undefined) {
+                                                title = DiagnosticReport[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = DiagnosticReport[i].dateWritten;
+                                            var patientDiagnosticReport = {}
+                                            patientDiagnosticReport.DiagnosticReportID = DiagnosticReport[i].id;
+                                            patientDiagnosticReport.Title = "DiagnosticReport - " + title;
+                                            patientDiagnosticReport.RecordedDate = recordeddate;
+                                            patientDiagnosticReport.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = patientDiagnosticReport;
+                                            var item = {};
+                                            //if (dataSet.hasOwnProperty('MedicationOrderID')) {
+                                            //    item.id = dataSet.MedicationOrderID;
+                                            //}
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.DiagnosticReportID;
+                                            if (Immunization[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = DiagnosticReport[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "DiagnosticReport";
                                             list.push(item);
                                         }
                                     }
