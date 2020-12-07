@@ -415,7 +415,7 @@
                                             }
                                             item.type = 8;
                                             item.id = dataSet.DiagnosticReportID;
-                                            if (Immunization[i].hasOwnProperty("encounter")) {
+                                            if (DiagnosticReport[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = DiagnosticReport[i].encounter.reference.split('/')[1];
                                             }
                                             item.entity = "DiagnosticReport";
