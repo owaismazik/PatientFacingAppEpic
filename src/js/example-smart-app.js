@@ -327,6 +327,11 @@
                         }
                     });  
 
+                    if (fname == "" || lname == "") {
+                        fname = "abc"
+                        lname = "xyz"
+                    }
+
                     var PractitionerObj = smart.patient.api.fetchAll({
                         type: 'Practitioner',
                         query: {
