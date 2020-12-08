@@ -474,6 +474,54 @@
                         }
                     }); 
 
+
+                    var ServiceRequestObj = smart.patient.api.fetchAll({
+                        type: 'ServiceRequest',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(ServiceRequestObj).done(function (ServiceRequest) {
+                        if (ServiceRequest != null) {
+                            if (ServiceRequest.length > 0) {
+                                for (var i = 0; i <= ServiceRequest.length; i++) {
+                                    if (ServiceRequest[i] != null && ServiceRequest[i].resourceType != "OperationOutcome") {
+                                        if (ServiceRequest[i] != undefined) {
+                                            var title = "";
+                                            if (ServiceRequest[i].medicationCodeableConcept != undefined) {
+                                                title = ServiceRequest[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = ServiceRequest[i].dateWritten;
+                                            var ServiceRequestReport = {}
+                                            ServiceRequestReport.ServiceRequestID = ServiceRequest[i].id;
+                                            ServiceRequestReport.Title = "ServiceRequest - " + title;
+                                            ServiceRequestReport.RecordedDate = recordeddate;
+                                            ServiceRequestReport.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = ServiceRequestReport;
+                                            var item = {};
+                                            //if (dataSet.hasOwnProperty('MedicationOrderID')) {
+                                            //    item.id = dataSet.MedicationOrderID;
+                                            //}
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.ServiceRequestID;
+                                            if (ServiceRequest[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = ServiceRequest[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "ServiceRequest";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }); 
+
                     var proc = smart.patient.api.fetchAll({
                         type: 'Procedure',
                         query: {
