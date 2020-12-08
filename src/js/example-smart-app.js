@@ -446,7 +446,7 @@
                                             }
                                             var recordeddate = MedicationRequest[i].dateWritten;
                                             var MedicationRequestReport = {}
-                                            MedicationRequestReport.MedicationRequestID = DiagnosticReport[i].id;
+                                            MedicationRequestReport.MedicationRequestID = MedicationRequest[i].id;
                                             MedicationRequestReport.Title = "MedicationRequest - " + title;
                                             MedicationRequestReport.RecordedDate = recordeddate;
                                             MedicationRequestReport.PatientID = $("#CRMpatietid").val();
