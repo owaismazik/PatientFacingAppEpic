@@ -522,6 +522,55 @@
                         }
                     }); 
 
+
+                    var PractitionerRoleObj = smart.patient.api.fetchAll({
+                        type: 'PractitionerRole',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(PractitionerRoleObj).done(function (PractitionerRole) {
+                        if (PractitionerRole != null) {
+                            if (PractitionerRole.length > 0) {
+                                for (var i = 0; i <= PractitionerRole.length; i++) {
+                                    if (ServiceRequest[i] != null && PractitionerRole[i].resourceType != "OperationOutcome") {
+                                        if (PractitionerRole[i] != undefined) {
+                                            var title = "";
+                                            if (PractitionerRole[i].medicationCodeableConcept != undefined) {
+                                                title = PractitionerRole[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = PractitionerRole[i].dateWritten;
+                                            var PractitionerRoleReport = {}
+                                            PractitionerRoleReport.PractitionerRoleID = PractitionerRole[i].id;
+                                            PractitionerRoleReport.Title = "ServiceRequest - " + title;
+                                            PractitionerRoleReport.RecordedDate = recordeddate;
+                                            PractitionerRoleReport.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = PractitionerRoleReport;
+                                            var item = {};
+                                            //if (dataSet.hasOwnProperty('MedicationOrderID')) {
+                                            //    item.id = dataSet.MedicationOrderID;
+                                            //}
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.PractitionerRoleID;
+                                            if (PractitionerRole[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = PractitionerRole[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "PractitionerRole";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }); 
+
+
                     var proc = smart.patient.api.fetchAll({
                         type: 'Procedure',
                         query: {
