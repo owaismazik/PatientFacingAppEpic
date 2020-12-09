@@ -570,6 +570,53 @@
                         }
                     }); 
 
+                    var CoverageObj = smart.patient.api.fetchAll({
+                        type: 'Coverage',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(CoverageObj).done(function (Coverage) {
+                        if (Coverage != null) {
+                            if (Coverage.length > 0) {
+                                for (var i = 0; i <= Coverage.length; i++) {
+                                    if (Coverage[i] != null && Coverage[i].resourceType != "OperationOutcome") {
+                                        if (Coverage[i] != undefined) {
+                                            var title = "";
+                                            if (Coverage[i].medicationCodeableConcept != undefined) {
+                                                title = Coverage[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = Coverage[i].dateWritten;
+                                            var CoverageReport = {}
+                                            CoverageReport.CoverageID = Coverage[i].id;
+                                            CoverageReport.Title = "Coverage - " + title;
+                                            CoverageReport.RecordedDate = recordeddate;
+                                            CoverageReport.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = CoverageReport;
+                                            var item = {};
+                                            //if (dataSet.hasOwnProperty('MedicationOrderID')) {
+                                            //    item.id = dataSet.MedicationOrderID;
+                                            //}
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.CoverageID;
+                                            if (Coverage[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = Coverage[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "Coverage";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }); 
+
 
                     var proc = smart.patient.api.fetchAll({
                         type: 'Procedure',
