@@ -378,6 +378,51 @@
                         }
                     });  
 
+                    //ExplanationOfBenefit
+                    var ExplanationOfBenefitObj = smart.patient.api.fetchAll({
+                        type: 'ExplanationOfBenefit',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(ExplanationOfBenefitObj).done(function (ExplanationOfBenefit) {
+                        if (ExplanationOfBenefit != null) {
+                            if (ExplanationOfBenefit.length > 0) {
+                                for (var i = 0; i <= ExplanationOfBenefit.length; i++) {
+                                    if (ExplanationOfBenefit[i] != null && ExplanationOfBenefit[i].resourceType != "OperationOutcome") {
+                                        if (ExplanationOfBenefit[i] != undefined) {
+                                            var title = "";
+                                            if (ExplanationOfBenefit[i].medicationCodeableConcept != undefined) {
+                                                title = ExplanationOfBenefit[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = ExplanationOfBenefit[i].dateWritten;
+                                            var patientExplanationOfBenefit = {}
+                                            patientExplanationOfBenefit.ExplanationOfBenefitID = ExplanationOfBenefit[i].id;
+                                            patientExplanationOfBenefit.Title = "ResearchStudy - " + title;
+                                            patientExplanationOfBenefit.RecordedDate = recordeddate;
+                                            patientExplanationOfBenefit.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = patientExplanationOfBenefit;
+                                            var item = {};
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.ExplanationOfBenefitID;
+                                            if (ExplanationOfBenefit[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = ExplanationOfBenefit[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "ExplanationOfBenefit";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });  
+
                     if (fname == "" || lname == "") {
                         fname = "abc"
                         lname = "xyz"
