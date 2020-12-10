@@ -1257,6 +1257,27 @@
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
                                 break;
+                            case "MedicationRequest":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            case "ServiceRequest":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            case "Coverage":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            //Coverage
+                            case "PractitionerRole":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
                             //Immunization
                             //DiagnosticReport
                             case "DiagnosticReport":
@@ -1561,6 +1582,27 @@
 
                         switch (entity) {
                             case "Allergy Intolerance":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            case "MedicationRequest":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            case "ServiceRequest":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            case "Coverage":
+                                imageName = "allergy.png";
+                                spanClass = "mzkaleryspan";
+                                imgClass = 'mzkalergyimg';
+                                break;
+                            //Coverage
+                            case "PractitionerRole":
                                 imageName = "allergy.png";
                                 spanClass = "mzkaleryspan";
                                 imgClass = 'mzkalergyimg';
