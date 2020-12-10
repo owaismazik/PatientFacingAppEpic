@@ -333,6 +333,51 @@
                         }
                     });  
 
+                    //ResearchStudy
+                    var ResearchStudyObj = smart.patient.api.fetchAll({
+                        type: 'ResearchStudy',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(ResearchStudyObj).done(function (ResearchStudy) {
+                        if (ResearchStudy != null) {
+                            if (ResearchStudy.length > 0) {
+                                for (var i = 0; i <= ResearchStudy.length; i++) {
+                                    if (ResearchStudy[i] != null && ResearchStudy[i].resourceType != "OperationOutcome") {
+                                        if (ResearchStudy[i] != undefined) {
+                                            var title = "";
+                                            if (ResearchStudy[i].medicationCodeableConcept != undefined) {
+                                                title = ResearchStudy[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = ResearchStudy[i].dateWritten;
+                                            var patientResearchStudy = {}
+                                            patientResearchStudy.ResearchStudyID = Immunization[i].id;
+                                            patientResearchStudy.Title = "ResearchStudy - " + title;
+                                            patientResearchStudy.RecordedDate = recordeddate;
+                                            patientResearchStudy.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = patientResearchStudy;
+                                            var item = {};
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.ResearchStudyID;
+                                            if (ResearchStudy[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = Immunization[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "ResearchStudy";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });  
+
                     if (fname == "" || lname == "") {
                         fname = "abc"
                         lname = "xyz"
