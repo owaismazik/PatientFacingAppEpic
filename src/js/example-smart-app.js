@@ -423,6 +423,96 @@
                         }
                     });  
 
+                    //Consent
+                    var ConsentObj = smart.patient.api.fetchAll({
+                        type: 'Consent',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(ConsentObj).done(function (Consent) {
+                        if (Consent != null) {
+                            if (Consent.length > 0) {
+                                for (var i = 0; i <= Consent.length; i++) {
+                                    if (Consent[i] != null && Consent[i].resourceType != "OperationOutcome") {
+                                        if (Consent[i] != undefined) {
+                                            var title = "";
+                                            if (Consent[i].medicationCodeableConcept != undefined) {
+                                                title = Consent[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = Consent[i].dateWritten;
+                                            var patientConsent = {}
+                                            patientConsent.ConsentID = Consent[i].id;
+                                            patientConsent.Title = "Consent - " + title;
+                                            patientConsent.RecordedDate = recordeddate;
+                                            patientConsent.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = patientConsent;
+                                            var item = {};
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.ConsentID;
+                                            if (ExplanationOfBenefit[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = Consent[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "Consent";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }); 
+
+                    //AdverseEvent
+                    var AdverseEventObj = smart.patient.api.fetchAll({
+                        type: 'AdverseEvent',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(AdverseEventObj).done(function (AdverseEvent) {
+                        if (AdverseEvent != null) {
+                            if (AdverseEvent.length > 0) {
+                                for (var i = 0; i <= AdverseEvent.length; i++) {
+                                    if (AdverseEvent[i] != null && AdverseEvent[i].resourceType != "OperationOutcome") {
+                                        if (AdverseEvent[i] != undefined) {
+                                            var title = "";
+                                            if (AdverseEvent[i].medicationCodeableConcept != undefined) {
+                                                title = AdverseEvent[i].medicationCodeableConcept.coding[0].display;
+                                            }
+                                            var recordeddate = AdverseEvent[i].dateWritten;
+                                            var patientAdverseEvent = {}
+                                            patientAdverseEvent.AdverseEventID = Consent[i].id;
+                                            patientAdverseEvent.Title = "AdverseEvent - " + title;
+                                            patientAdverseEvent.RecordedDate = recordeddate;
+                                            patientAdverseEvent.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = patientAdverseEvent;
+                                            var item = {};
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 8;
+                                            item.id = dataSet.AdverseEventID;
+                                            if (patientAdverseEvent[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = patientAdverseEvent[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "patientAdverseEvent";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }); 
+
                     if (fname == "" || lname == "") {
                         fname = "abc"
                         lname = "xyz"
