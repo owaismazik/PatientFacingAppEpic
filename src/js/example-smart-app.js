@@ -36,6 +36,7 @@
                     var lname = '';
                     var phone = '';
                     var email = '';
+                    var PractitionerID = '';
 
                     if (patient.hasOwnProperty('name')) {
                         if (typeof patient.name[0] !== 'undefined') {
@@ -49,6 +50,12 @@
                                 fname = patient.name[1].family;
                                 lname = patient.name[1].given[0];
                             }
+                        }
+                    }
+
+                    if (patient.hasOwnProperty('generalPractitioner')) {
+                        if (patient.generalPractitioner[0].hasOwnProperty('reference')) {
+                            PractitionerID = patient.generalPractitioner[0].reference.split('/')[1];
                         }
                     }
 
@@ -526,7 +533,7 @@
                     var PractitionerRoleObj = smart.patient.api.fetchAll({
                         type: 'PractitionerRole',
                         query: {
-                            patient: patient.id
+                            practitioner: PractitionerID
                         }
                     });
 
@@ -534,7 +541,7 @@
                         if (PractitionerRole != null) {
                             if (PractitionerRole.length > 0) {
                                 for (var i = 0; i <= PractitionerRole.length; i++) {
-                                    if (ServiceRequest[i] != null && PractitionerRole[i].resourceType != "OperationOutcome") {
+                                    if (PractitionerRole[i] != null && PractitionerRole[i].resourceType != "OperationOutcome") {
                                         if (PractitionerRole[i] != undefined) {
                                             var title = "";
                                             if (PractitionerRole[i].medicationCodeableConcept != undefined) {
@@ -543,7 +550,7 @@
                                             var recordeddate = PractitionerRole[i].dateWritten;
                                             var PractitionerRoleReport = {}
                                             PractitionerRoleReport.PractitionerRoleID = PractitionerRole[i].id;
-                                            PractitionerRoleReport.Title = "ServiceRequest - " + title;
+                                            PractitionerRoleReport.Title = "PractitionerRole - " + title;
                                             PractitionerRoleReport.RecordedDate = recordeddate;
                                             PractitionerRoleReport.PatientID = $("#CRMpatietid").val();
                                             var dataSet = PractitionerRoleReport;
