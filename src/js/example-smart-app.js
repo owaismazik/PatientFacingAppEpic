@@ -474,7 +474,8 @@
                         type: 'AdverseEvent',
                         query: {
                             subject: patient.id,
-                            study:'eAO.XWJpIicOp3xl5CLneUQ3'
+                            study: 'eAO.XWJpIicOp3xl5CLneUQ3'
+                            category: 'http://loinc.org|59284-0'
 
                         }
                     });
