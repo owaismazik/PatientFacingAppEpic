@@ -474,7 +474,7 @@
                     var AdverseEventObj = smart.patient.api.fetchAll({
                         type: 'AdverseEvent',
                         query: {
-                            subject: patient.id,
+                            subject: 'eea8Msv-9WjX-ffbBcv-4rw3',
                             study: 'eAO.XWJpIicOp3xl5CLneUQ3'
                         }
                     });
