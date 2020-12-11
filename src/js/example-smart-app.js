@@ -428,7 +428,8 @@
                         type: 'Consent',
                         query: {
                             patient: patient.id,
-                            'status': 'active'
+                            'status': 'active',
+                            category: 'http://loinc.org|59284-0'
                         }
                     });
 
@@ -474,9 +475,7 @@
                         type: 'AdverseEvent',
                         query: {
                             subject: patient.id,
-                            study: 'eAO.XWJpIicOp3xl5CLneUQ3',
-                            category: 'http://loinc.org|59284-0'
-
+                            study: 'eAO.XWJpIicOp3xl5CLneUQ3'
                         }
                     });
 
@@ -492,7 +491,7 @@
                                             }
                                             var recordeddate = AdverseEvent[i].dateWritten;
                                             var patientAdverseEvent = {}
-                                            patientAdverseEvent.AdverseEventID = Consent[i].id;
+                                            patientAdverseEvent.AdverseEventID = AdverseEvent[i].id;
                                             patientAdverseEvent.Title = "AdverseEvent - " + title;
                                             patientAdverseEvent.RecordedDate = recordeddate;
                                             patientAdverseEvent.PatientID = $("#CRMpatietid").val();
