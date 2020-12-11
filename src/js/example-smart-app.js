@@ -427,7 +427,8 @@
                     var ConsentObj = smart.patient.api.fetchAll({
                         type: 'Consent',
                         query: {
-                            patient: patient.id
+                            patient: patient.id,
+                            'status': 'active'
                         }
                     });
 
