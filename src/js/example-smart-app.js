@@ -1127,6 +1127,57 @@
                             }
                     });
 
+                    var BinaryObj = smart.patient.api.fetchAll({
+                        type: 'Binary',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(BinaryObj).done(function (Binary) {
+                        if (Binary != null) {
+                            if (Binary.length > 0) {
+                                for (var i = 0; i <= Binary.length; i++) {
+                                    if (Binary[i] != null && Binary[i].resourceType != "OperationOutcome") {
+                                        if (Binary[i] != undefined) {
+
+                                            var externalEmrId = Binary[i].id;
+                                            var startdate = Binary[i].startDate;
+                                            var targetdate = Binary[i].targetDate;
+                                            var category = Binary[i].category[0].text;
+                                            var description = Binary[i].description;
+                                            var BinaryPatient = {}
+                                            BinaryPatient.Externalemrid = externalEmrId;
+                                            BinaryPatient.Patientid = $("#CRMpatietid").val();
+                                            BinaryPatient.Startdate = startdate;
+                                            BinaryPatient.TargetDate = targetdate;
+                                            BinaryPatient.Category = category;
+                                            BinaryPatient.Description = description;
+                                            var dataSet = BinaryPatient;
+                                            var item = {};
+
+                                            if (dataSet.hasOwnProperty('BinaryId')) {
+                                                item.id = dataSet.GoalId;
+                                            }
+                                            item.name = dataSet.Category;
+
+                                            if (dataSet.hasOwnProperty('Startdate')) {
+                                                item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            if (Binary[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = Binary[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.type = 10;
+                                            item.entity = "Binary";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
 
                     var ReviewCollectionObj = smart.patient.api.fetchAll({
                         type: 'ReviewCollection',
