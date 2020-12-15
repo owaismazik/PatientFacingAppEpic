@@ -1128,6 +1128,58 @@
                     });
 
 
+                    var ReviewCollectionObj = smart.patient.api.fetchAll({
+                        type: 'ReviewCollection',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(ReviewCollectionObj).done(function (ReviewCollection) {
+                        if (ReviewCollection != null) {
+                            if (ReviewCollection.length > 0) {
+                                for (var i = 0; i <= ReviewCollection.length; i++) {
+                                    if (ReviewCollection[i] != null && ReviewCollection[i].resourceType != "OperationOutcome") {
+                                        if (ReviewCollection[i] != undefined) {
+
+                                            var externalEmrId = ReviewCollection[i].id;
+                                            var startdate = ReviewCollection[i].startDate;
+                                            var targetdate = ReviewCollection[i].targetDate;
+                                            var category = ReviewCollection[i].category[0].text;
+                                            var description = ReviewCollection[i].description;
+                                            var ReviewCollectionPatient = {}
+                                            ReviewCollectionPatient.Externalemrid = externalEmrId;
+                                            ReviewCollectionPatient.Patientid = $("#CRMpatietid").val();
+                                            ReviewCollectionPatient.Startdate = startdate;
+                                            ReviewCollectionPatient.TargetDate = targetdate;
+                                            ReviewCollectionPatient.Category = category;
+                                            ReviewCollectionPatient.Description = description;
+                                            var dataSet = ReviewCollectionPatient;
+                                            var item = {};
+
+                                            if (dataSet.hasOwnProperty('ReviewCollectionId')) {
+                                                item.id = dataSet.GoalId;
+                                            }
+                                            item.name = dataSet.Category;
+
+                                            if (dataSet.hasOwnProperty('Startdate')) {
+                                                item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            if (ReviewCollection[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = ReviewCollection[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.type = 10;
+                                            item.entity = "ReviewCollection";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+
                     setTimeout(function () {
                         $("#timeline").show();
                         timeline();
