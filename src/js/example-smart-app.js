@@ -1230,6 +1230,58 @@
                         }
                     });
 
+                    //RelatedPerson
+                    var RelatedPersonObj = smart.patient.api.fetchAll({
+                        type: 'RelatedPerson',
+                        query: {
+                            patient: patient.id
+                        }
+                    });
+
+                    $.when(RelatedPersonObj).done(function (RelatedPerson) {
+                        if (RelatedPerson != null) {
+                            if (RelatedPerson.length > 0) {
+                                for (var i = 0; i <= RelatedPerson.length; i++) {
+                                    if (RelatedPerson[i] != null && RelatedPerson[i].resourceType != "OperationOutcome") {
+                                        if (RelatedPerson[i] != undefined) {
+
+                                            var externalEmrId = RelatedPerson[i].id;
+                                            var startdate = RelatedPerson[i].startDate;
+                                            var targetdate = RelatedPerson[i].targetDate;
+                                            var category = RelatedPerson[i].category[0].text;
+                                            var description = RelatedPerson[i].description;
+                                            var RelatedPersonPatient = {}
+                                            RelatedPersonPatient.Externalemrid = externalEmrId;
+                                            RelatedPersonPatient.Patientid = $("#CRMpatietid").val();
+                                            RelatedPersonPatient.Startdate = startdate;
+                                            RelatedPersonPatient.TargetDate = targetdate;
+                                            RelatedPersonPatient.Category = category;
+                                            RelatedPersonPatient.Description = description;
+                                            var dataSet = RelatedPersonPatient;
+                                            var item = {};
+
+                                            if (dataSet.hasOwnProperty('RelatedPersonId')) {
+                                                item.id = dataSet.RelatedPersonId;
+                                            }
+                                            item.name = dataSet.Category;
+
+                                            if (dataSet.hasOwnProperty('Startdate')) {
+                                                item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            if (RelatedPerson[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = RelatedPerson[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.type = 10;
+                                            item.entity = "RelatedPerson";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
 
                     setTimeout(function () {
                         $("#timeline").show();
