@@ -121,7 +121,7 @@
                                                 item.date = moment.utc(recordeddate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(recordeddate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 12;
+                                            item.type = 1;
                                             item.id = obv[i].id;
                                             if (obv[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = obv[i].encounter.reference.split('/')[1];
@@ -171,7 +171,7 @@
                                                     item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                     item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                                 }
-                                                item.type = 6;
+                                                item.type = 2;
                                                 item.id = dataSet.encounterID;
                                                 item.entity = "Encounter";
                                                 list.push(item);
@@ -224,7 +224,7 @@
                                                     item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                     item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                                 }
-                                                item.type = 11;
+                                                item.type = 3;
                                                 item.id = dataSet.AllergyID;
                                                 if (Allergy[i].hasOwnProperty("encounter")) {
                                                     item.encounterID = Allergy[i].encounter.reference.split('/')[1];
@@ -272,7 +272,7 @@
                                                     item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                     item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                                 }
-                                                item.type = 8;
+                                                item.type = 4;
                                                 item.id = dataSet.conditionID;
                                                 if (condition[i].hasOwnProperty("encounter")) {
                                                     item.encounterID = condition[i].encounter.reference.split('/')[1];
@@ -319,7 +319,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 5;
                                             item.id = dataSet.ImmunizationID;
                                             if (Immunization[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = Immunization[i].encounter.reference.split('/')[1];
@@ -364,7 +364,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 6;
                                             item.id = dataSet.ResearchStudyID;
                                             if (ResearchStudy[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = Immunization[i].encounter.reference.split('/')[1];
@@ -409,7 +409,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 7;
                                             item.id = dataSet.ExplanationOfBenefitID;
                                             if (ExplanationOfBenefit[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = ExplanationOfBenefit[i].encounter.reference.split('/')[1];
@@ -502,7 +502,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 9;
                                             item.id = dataSet.AdverseEventID;
                                             if (patientAdverseEvent[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = patientAdverseEvent[i].encounter.reference.split('/')[1];
@@ -556,7 +556,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 10;
                                             item.id = dataSet.PractitionerID;
                                             if (Immunization[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = Immunization[i].encounter.reference.split('/')[1];
@@ -603,7 +603,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 11;
                                             item.id = dataSet.DiagnosticReportID;
                                             if (DiagnosticReport[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = DiagnosticReport[i].encounter.reference.split('/')[1];
@@ -650,7 +650,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 12;
                                             item.id = dataSet.MedicationRequestID;
                                             if (MedicationRequest[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = MedicationRequest[i].encounter.reference.split('/')[1];
@@ -698,7 +698,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 13;
                                             item.id = dataSet.ServiceRequestID;
                                             if (ServiceRequest[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = ServiceRequest[i].encounter.reference.split('/')[1];
@@ -746,7 +746,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 14;
                                             item.id = dataSet.PractitionerRoleID;
                                             if (PractitionerRole[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = PractitionerRole[i].encounter.reference.split('/')[1];
@@ -793,7 +793,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 8;
+                                            item.type = 15;
                                             item.id = dataSet.CoverageID;
                                             if (Coverage[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = Coverage[i].encounter.reference.split('/')[1];
@@ -860,7 +860,7 @@
                                                     item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                     item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                                 }
-                                                item.type = 7;
+                                                item.type = 16;
                                                 item.id = dataSet.procedureID;
                                                 if (procedure[i].hasOwnProperty("encounter")) {
                                                     item.encounterID = procedure[i].encounter.reference.split('/')[1];
@@ -908,7 +908,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 5;
+                                            item.type = 17;
                                             item.id = dataSet.deviceID;
                                             if (device[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = device[i].encounter.reference.split('/')[1];
@@ -956,7 +956,7 @@
                                                     item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                     item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                                 }
-                                                item.type = 5;
+                                                item.type = 18;
                                                 item.id = dataSet.deviceID;
                                                 if (device[i].hasOwnProperty("encounter")) {
                                                     item.encounterID = device[i].encounter.reference.split('/')[1];
@@ -1007,7 +1007,7 @@
                                                 item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
                                                 item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
                                             }
-                                            item.type = 5;
+                                            item.type = 19;
                                             item.id = dataSet.deviceID;
                                             if (DocumentReference[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = DocumentReference[i].encounter.reference.split('/')[1];
@@ -1060,7 +1060,7 @@
                                                     item.date = moment.utc(dataSet.STartDate).format('MM/DD/YYYY');
                                                     item.dateTime = moment.utc(dataSet.STartDate).format('YYYY-MM-DD HH:mm:ss');
                                                 }
-                                                item.type = 9;
+                                                item.type = 20;
                                                 item.id = dataSet.careplanID;
                                                 if (careplan[i].hasOwnProperty("encounter")) {
                                                     item.encounterID = careplan[i].encounter.reference.split('/')[1];
@@ -1117,7 +1117,7 @@
                                                 if (Goal[i].hasOwnProperty("encounter")) {
                                                     item.encounterID = Goal[i].encounter.reference.split('/')[1];
                                                 }
-                                                item.type = 10;
+                                                item.type = 21;
                                                 item.entity = "Goal";
                                                 list.push(item);
                                             }
@@ -1157,7 +1157,7 @@
                                             var item = {};
 
                                             if (dataSet.hasOwnProperty('BinaryId')) {
-                                                item.id = dataSet.GoalId;
+                                                item.id = dataSet.BinaryId;
                                             }
                                             item.name = dataSet.Category;
 
@@ -1168,7 +1168,7 @@
                                             if (Binary[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = Binary[i].encounter.reference.split('/')[1];
                                             }
-                                            item.type = 10;
+                                            item.type = 22;
                                             item.entity = "Binary";
                                             list.push(item);
                                         }
@@ -1220,7 +1220,7 @@
                                             if (ReviewCollection[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = ReviewCollection[i].encounter.reference.split('/')[1];
                                             }
-                                            item.type = 10;
+                                            item.type = 23;
                                             item.entity = "ReviewCollection";
                                             list.push(item);
                                         }
@@ -1272,7 +1272,7 @@
                                             if (RelatedPerson[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = RelatedPerson[i].encounter.reference.split('/')[1];
                                             }
-                                            item.type = 10;
+                                            item.type = 24;
                                             item.entity = "RelatedPerson";
                                             list.push(item);
                                         }
@@ -1323,7 +1323,7 @@
                                             if (Location[i].hasOwnProperty("encounter")) {
                                                 item.encounterID = Location[i].encounter.reference.split('/')[1];
                                             }
-                                            item.type = 10;
+                                            item.type = 25;
                                             item.entity = "Location";
                                             list.push(item);
                                         }
@@ -1332,6 +1332,58 @@
                             }
                         }
                     });
+
+                    //Organization
+                    //var LocationObj = smart.patient.api.fetchAll({
+                    //    type: 'Location',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
+
+                    //$.when(Location).done(function (Location) {
+                    //    if (Location != null) {
+                    //        if (Location.length > 0) {
+                    //            for (var i = 0; i <= Location.length; i++) {
+                    //                if (Location[i] != null && Location[i].resourceType != "OperationOutcome") {
+                    //                    if (Location[i] != undefined) {
+
+                    //                        var externalEmrId = Location[i].id;
+                    //                        var startdate = Location[i].startDate;
+                    //                        var targetdate = Location[i].targetDate;
+                    //                        var category = Location[i].category[0].text;
+                    //                        var description = Location[i].description;
+                    //                        var LocationPatient = {}
+                    //                        LocationPatient.Externalemrid = externalEmrId;
+                    //                        LocationPatient.Patientid = $("#CRMpatietid").val();
+                    //                        LocationPatient.Startdate = startdate;
+                    //                        LocationPatient.TargetDate = targetdate;
+                    //                        LocationPatient.Category = category;
+                    //                        LocationPatient.Description = description;
+                    //                        var dataSet = LocationPatient;
+                    //                        var item = {};
+
+                    //                        if (dataSet.hasOwnProperty('RelatedPersonId')) {
+                    //                            item.id = dataSet.RelatedPersonId;
+                    //                        }
+                    //                        item.name = dataSet.Category;
+
+                    //                        if (dataSet.hasOwnProperty('Startdate')) {
+                    //                            item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                    //                            item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                    //                        }
+                    //                        if (Location[i].hasOwnProperty("encounter")) {
+                    //                            item.encounterID = Location[i].encounter.reference.split('/')[1];
+                    //                        }
+                    //                        item.type = 10;
+                    //                        item.entity = "Location";
+                    //                        list.push(item);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //});
 
 
                     setTimeout(function () {
@@ -1464,8 +1516,8 @@
                     checkedEvents.push(ev[index].value);
             }
 
-            if (!checkedEvents.includes('6') && checkedEvents.length >= 1) {
-                checkedEvents.push('6');
+            if (!checkedEvents.includes('2') && checkedEvents.length >= 1) {
+                checkedEvents.push('2');
                 ev[1].checked = true;
             }
 
