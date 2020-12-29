@@ -193,7 +193,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
         position: absolute;
         z-index: 1000;
         box-sizing: border-box;
-        max-height: 30em;
+        max-height: 67vh;
         overflow: auto;
         font-family: "Roboto", sans-serif;
         color: #656565;
