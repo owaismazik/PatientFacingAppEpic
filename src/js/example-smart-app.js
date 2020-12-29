@@ -471,50 +471,50 @@
                     //}); 
 
                     //AdverseEvent
-                    var AdverseEventObj = smart.patient.api.fetchAll({
-                        type: 'AdverseEvent',
-                        query: {
-                            subject: 'eea8Msv-9WjX-ffbBcv-4rw3',
-                            study: 'eAO.XWJpIicOp3xl5CLneUQ3'
-                        }
-                    });
+                    //var AdverseEventObj = smart.patient.api.fetchAll({
+                    //    type: 'AdverseEvent',
+                    //    query: {
+                    //        subject: 'eea8Msv-9WjX-ffbBcv-4rw3',
+                    //        study: 'eAO.XWJpIicOp3xl5CLneUQ3'
+                    //    }
+                    //});
 
-                    $.when(AdverseEventObj).done(function (AdverseEvent) {
-                        if (AdverseEvent != null) {
-                            if (AdverseEvent.length > 0) {
-                                for (var i = 0; i <= AdverseEvent.length; i++) {
-                                    if (AdverseEvent[i] != null && AdverseEvent[i].resourceType != "OperationOutcome") {
-                                        if (AdverseEvent[i] != undefined) {
-                                            var title = "";
-                                            if (AdverseEvent[i].medicationCodeableConcept != undefined) {
-                                                title = AdverseEvent[i].medicationCodeableConcept.coding[0].display;
-                                            }
-                                            var recordeddate = AdverseEvent[i].dateWritten;
-                                            var patientAdverseEvent = {}
-                                            patientAdverseEvent.AdverseEventID = AdverseEvent[i].id;
-                                            patientAdverseEvent.Title = "AdverseEvent - " + title;
-                                            patientAdverseEvent.RecordedDate = recordeddate;
-                                            patientAdverseEvent.PatientID = $("#CRMpatietid").val();
-                                            var dataSet = patientAdverseEvent;
-                                            var item = {};
-                                            item.name = dataSet.Title;
-                                            if (dataSet.hasOwnProperty('RecordedDate')) {
-                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                                            }
-                                            item.type = 9;
-                                            item.id = dataSet.AdverseEventID;
-                                            if (patientAdverseEvent[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = patientAdverseEvent[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.entity = "patientAdverseEvent";
-                                            list.push(item);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }); 
+                    //$.when(AdverseEventObj).done(function (AdverseEvent) {
+                    //    if (AdverseEvent != null) {
+                    //        if (AdverseEvent.length > 0) {
+                    //            for (var i = 0; i <= AdverseEvent.length; i++) {
+                    //                if (AdverseEvent[i] != null && AdverseEvent[i].resourceType != "OperationOutcome") {
+                    //                    if (AdverseEvent[i] != undefined) {
+                    //                        var title = "";
+                    //                        if (AdverseEvent[i].medicationCodeableConcept != undefined) {
+                    //                            title = AdverseEvent[i].medicationCodeableConcept.coding[0].display;
+                    //                        }
+                    //                        var recordeddate = AdverseEvent[i].dateWritten;
+                    //                        var patientAdverseEvent = {}
+                    //                        patientAdverseEvent.AdverseEventID = AdverseEvent[i].id;
+                    //                        patientAdverseEvent.Title = "AdverseEvent - " + title;
+                    //                        patientAdverseEvent.RecordedDate = recordeddate;
+                    //                        patientAdverseEvent.PatientID = $("#CRMpatietid").val();
+                    //                        var dataSet = patientAdverseEvent;
+                    //                        var item = {};
+                    //                        item.name = dataSet.Title;
+                    //                        if (dataSet.hasOwnProperty('RecordedDate')) {
+                    //                            item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                    //                            item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                    //                        }
+                    //                        item.type = 9;
+                    //                        item.id = dataSet.AdverseEventID;
+                    //                        if (patientAdverseEvent[i].hasOwnProperty("encounter")) {
+                    //                            item.encounterID = patientAdverseEvent[i].encounter.reference.split('/')[1];
+                    //                        }
+                    //                        item.entity = "patientAdverseEvent";
+                    //                        list.push(item);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //}); 
 
                     if (fname == "" || lname == "") {
                         fname = "abc"
@@ -922,53 +922,53 @@
                         }
                     });
 
-                    var CareTeamObj = smart.patient.api.fetchAll({
-                        type: 'CareTeam',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    //var CareTeamObj = smart.patient.api.fetchAll({
+                    //    type: 'CareTeam',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
 
-                    $.when(CareTeamObj).done(function (CareTeam) {
-                        if (CareTeam != null) {
-                            if (CareTeam.length > 0) {
-                                for (var i = 0; i <= CareTeam.length; i++) {
-                                    if (CareTeam[i] != null && CareTeam[i].resourceType != "OperationOutcome") {
-                                        if (CareTeam[i] != undefined) {
-                                            var title = CareTeam[i].type.text;
-                                            var recordeddate = CareTeam[i].meta.lastUpdated;
-                                                //CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
-                                            var CareTeamDevice = {}
-                                            CareTeamDevice.deviceID = CareTeam[i].id;
-                                            CareTeamDevice.Title = "CareTeam - " + title;
-                                            CareTeamDevice.RecordedDate = recordeddate;
-                                            CareTeamDevice.PatientID = $("#CRMpatietid").val();
-                                                //patientDeviceGlobal = patientDevice;
-                                                var dataSet = patientDevice;
-                                                var item = {};
+                    //$.when(CareTeamObj).done(function (CareTeam) {
+                    //    if (CareTeam != null) {
+                    //        if (CareTeam.length > 0) {
+                    //            for (var i = 0; i <= CareTeam.length; i++) {
+                    //                if (CareTeam[i] != null && CareTeam[i].resourceType != "OperationOutcome") {
+                    //                    if (CareTeam[i] != undefined) {
+                    //                        var title = CareTeam[i].type.text;
+                    //                        var recordeddate = CareTeam[i].meta.lastUpdated;
+                    //                            //CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
+                    //                        var CareTeamDevice = {}
+                    //                        CareTeamDevice.deviceID = CareTeam[i].id;
+                    //                        CareTeamDevice.Title = "CareTeam - " + title;
+                    //                        CareTeamDevice.RecordedDate = recordeddate;
+                    //                        CareTeamDevice.PatientID = $("#CRMpatietid").val();
+                    //                            //patientDeviceGlobal = patientDevice;
+                    //                            var dataSet = patientDevice;
+                    //                            var item = {};
 
-                                                if (dataSet.hasOwnProperty('DeviceID')) {
-                                                    item.id = dataSet.DeviceID;
-                                                }
-                                                item.name = dataSet.Title;
+                    //                            if (dataSet.hasOwnProperty('DeviceID')) {
+                    //                                item.id = dataSet.DeviceID;
+                    //                            }
+                    //                            item.name = dataSet.Title;
 
-                                                if (dataSet.hasOwnProperty('RecordedDate')) {
-                                                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                                                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                                                }
-                                                item.type = 18;
-                                                item.id = dataSet.deviceID;
-                                                if (device[i].hasOwnProperty("encounter")) {
-                                                    item.encounterID = device[i].encounter.reference.split('/')[1];
-                                                }
-                                            item.entity = "CareTeam";
-                                                list.push(item);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                    });
+                    //                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                    //                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                    //                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                    //                            }
+                    //                            item.type = 18;
+                    //                            item.id = dataSet.deviceID;
+                    //                            if (device[i].hasOwnProperty("encounter")) {
+                    //                                item.encounterID = device[i].encounter.reference.split('/')[1];
+                    //                            }
+                    //                        item.entity = "CareTeam";
+                    //                            list.push(item);
+                    //                        }
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //});
 
 
                     var DocumentReferenceObj = smart.patient.api.fetchAll({
