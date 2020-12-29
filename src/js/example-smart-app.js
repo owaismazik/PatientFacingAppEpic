@@ -424,51 +424,51 @@
                     });  
 
                     //Consent
-                    var ConsentObj = smart.patient.api.fetchAll({
-                        type: 'Consent',
-                        query: {
-                            patient: patient.id,
-                            'status': 'active',
-                            category: 'http://loinc.org|59284-0'
-                        }
-                    });
+                    //var ConsentObj = smart.patient.api.fetchAll({
+                    //    type: 'Consent',
+                    //    query: {
+                    //        patient: patient.id,
+                    //        'status': 'active',
+                    //        category: 'http://loinc.org|59284-0'
+                    //    }
+                    //});
 
-                    $.when(ConsentObj).done(function (Consent) {
-                        if (Consent != null) {
-                            if (Consent.length > 0) {
-                                for (var i = 0; i <= Consent.length; i++) {
-                                    if (Consent[i] != null && Consent[i].resourceType != "OperationOutcome") {
-                                        if (Consent[i] != undefined) {
-                                            var title = "";
-                                            if (Consent[i].medicationCodeableConcept != undefined) {
-                                                title = Consent[i].medicationCodeableConcept.coding[0].display;
-                                            }
-                                            var recordeddate = Consent[i].dateWritten;
-                                            var patientConsent = {}
-                                            patientConsent.ConsentID = Consent[i].id;
-                                            patientConsent.Title = "Consent - " + title;
-                                            patientConsent.RecordedDate = recordeddate;
-                                            patientConsent.PatientID = $("#CRMpatietid").val();
-                                            var dataSet = patientConsent;
-                                            var item = {};
-                                            item.name = dataSet.Title;
-                                            if (dataSet.hasOwnProperty('RecordedDate')) {
-                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                                            }
-                                            item.type = 8;
-                                            item.id = dataSet.ConsentID;
-                                            if (ExplanationOfBenefit[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = Consent[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.entity = "Consent";
-                                            list.push(item);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }); 
+                    //$.when(ConsentObj).done(function (Consent) {
+                    //    if (Consent != null) {
+                    //        if (Consent.length > 0) {
+                    //            for (var i = 0; i <= Consent.length; i++) {
+                    //                if (Consent[i] != null && Consent[i].resourceType != "OperationOutcome") {
+                    //                    if (Consent[i] != undefined) {
+                    //                        var title = "";
+                    //                        if (Consent[i].medicationCodeableConcept != undefined) {
+                    //                            title = Consent[i].medicationCodeableConcept.coding[0].display;
+                    //                        }
+                    //                        var recordeddate = Consent[i].dateWritten;
+                    //                        var patientConsent = {}
+                    //                        patientConsent.ConsentID = Consent[i].id;
+                    //                        patientConsent.Title = "Consent - " + title;
+                    //                        patientConsent.RecordedDate = recordeddate;
+                    //                        patientConsent.PatientID = $("#CRMpatietid").val();
+                    //                        var dataSet = patientConsent;
+                    //                        var item = {};
+                    //                        item.name = dataSet.Title;
+                    //                        if (dataSet.hasOwnProperty('RecordedDate')) {
+                    //                            item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                    //                            item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                    //                        }
+                    //                        item.type = 8;
+                    //                        item.id = dataSet.ConsentID;
+                    //                        if (ExplanationOfBenefit[i].hasOwnProperty("encounter")) {
+                    //                            item.encounterID = Consent[i].encounter.reference.split('/')[1];
+                    //                        }
+                    //                        item.entity = "Consent";
+                    //                        list.push(item);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //}); 
 
                     //AdverseEvent
                     var AdverseEventObj = smart.patient.api.fetchAll({
@@ -1179,56 +1179,56 @@
                     //});
 
 
-                    var ReviewCollectionObj = smart.patient.api.fetchAll({
-                        type: 'ReviewCollection',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    //var ReviewCollectionObj = smart.patient.api.fetchAll({
+                    //    type: 'ReviewCollection',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
 
-                    $.when(ReviewCollectionObj).done(function (ReviewCollection) {
-                        if (ReviewCollection != null) {
-                            if (ReviewCollection.length > 0) {
-                                for (var i = 0; i <= ReviewCollection.length; i++) {
-                                    if (ReviewCollection[i] != null && ReviewCollection[i].resourceType != "OperationOutcome") {
-                                        if (ReviewCollection[i] != undefined) {
+                    //$.when(ReviewCollectionObj).done(function (ReviewCollection) {
+                    //    if (ReviewCollection != null) {
+                    //        if (ReviewCollection.length > 0) {
+                    //            for (var i = 0; i <= ReviewCollection.length; i++) {
+                    //                if (ReviewCollection[i] != null && ReviewCollection[i].resourceType != "OperationOutcome") {
+                    //                    if (ReviewCollection[i] != undefined) {
 
-                                            var externalEmrId = ReviewCollection[i].id;
-                                            var startdate = ReviewCollection[i].startDate;
-                                            var targetdate = ReviewCollection[i].targetDate;
-                                            var category = ReviewCollection[i].category[0].text;
-                                            var description = ReviewCollection[i].description;
-                                            var ReviewCollectionPatient = {}
-                                            ReviewCollectionPatient.Externalemrid = externalEmrId;
-                                            ReviewCollectionPatient.Patientid = $("#CRMpatietid").val();
-                                            ReviewCollectionPatient.Startdate = startdate;
-                                            ReviewCollectionPatient.TargetDate = targetdate;
-                                            ReviewCollectionPatient.Category = category;
-                                            ReviewCollectionPatient.Description = description;
-                                            var dataSet = ReviewCollectionPatient;
-                                            var item = {};
+                    //                        var externalEmrId = ReviewCollection[i].id;
+                    //                        var startdate = ReviewCollection[i].startDate;
+                    //                        var targetdate = ReviewCollection[i].targetDate;
+                    //                        var category = ReviewCollection[i].category[0].text;
+                    //                        var description = ReviewCollection[i].description;
+                    //                        var ReviewCollectionPatient = {}
+                    //                        ReviewCollectionPatient.Externalemrid = externalEmrId;
+                    //                        ReviewCollectionPatient.Patientid = $("#CRMpatietid").val();
+                    //                        ReviewCollectionPatient.Startdate = startdate;
+                    //                        ReviewCollectionPatient.TargetDate = targetdate;
+                    //                        ReviewCollectionPatient.Category = category;
+                    //                        ReviewCollectionPatient.Description = description;
+                    //                        var dataSet = ReviewCollectionPatient;
+                    //                        var item = {};
 
-                                            if (dataSet.hasOwnProperty('ReviewCollectionId')) {
-                                                item.id = dataSet.GoalId;
-                                            }
-                                            item.name = dataSet.Category;
+                    //                        if (dataSet.hasOwnProperty('ReviewCollectionId')) {
+                    //                            item.id = dataSet.GoalId;
+                    //                        }
+                    //                        item.name = dataSet.Category;
 
-                                            if (dataSet.hasOwnProperty('Startdate')) {
-                                                item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
-                                            }
-                                            if (ReviewCollection[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = ReviewCollection[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.type = 23;
-                                            item.entity = "ReviewCollection";
-                                            list.push(item);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
+                    //                        if (dataSet.hasOwnProperty('Startdate')) {
+                    //                            item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                    //                            item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                    //                        }
+                    //                        if (ReviewCollection[i].hasOwnProperty("encounter")) {
+                    //                            item.encounterID = ReviewCollection[i].encounter.reference.split('/')[1];
+                    //                        }
+                    //                        item.type = 23;
+                    //                        item.entity = "ReviewCollection";
+                    //                        list.push(item);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //});
 
                     //RelatedPerson
                     //var RelatedPersonObj = smart.patient.api.fetchAll({
