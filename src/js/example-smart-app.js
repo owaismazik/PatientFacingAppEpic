@@ -1128,11 +1128,12 @@
                     });
 
                     var BinaryObj = smart.patient.api.fetchAll({
-                        type: 'Binary',
-                        query: {
-                            //patient: patient.id
-                            id: 'e1Aa5.W2M8iS873-A9H.S8w3'
-                        }
+                        type: 'Binary/e1Aa5.W2M8iS873-A9H.S8w3'
+                        //,
+                        //query: {
+                        //    //patient: patient.id
+                        //    id: 'e1Aa5.W2M8iS873-A9H.S8w3'
+                        //}
                     });
 
                     $.when(BinaryObj).done(function (Binary) {
