@@ -1130,7 +1130,8 @@
                     var BinaryObj = smart.patient.api.fetchAll({
                         type: 'Binary',
                         query: {
-                            patient: patient.id
+                            //patient: patient.id
+                            id: 'e1Aa5.W2M8iS873-A9H.S8w3'
                         }
                     });
 
