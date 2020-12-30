@@ -1341,56 +1341,57 @@
                     });
 
                     //Organization
-                    //var LocationObj = smart.patient.api.fetchAll({
-                    //    type: 'Location',
-                    //    query: {
-                    //        patient: patient.id
-                    //    }
-                    //});
+                    var OrganizationObj = smart.patient.api.fetchAll({
+                        type: 'Organization' + '/eeNokRCBmmrYFeeVdV8l5fO9o5IYP-YzoXHEV2zjGzXM3'
+                        //,
+                        //query: {
+                        //    patient: patient.id
+                        //}
+                    });
 
-                    //$.when(Location).done(function (Location) {
-                    //    if (Location != null) {
-                    //        if (Location.length > 0) {
-                    //            for (var i = 0; i <= Location.length; i++) {
-                    //                if (Location[i] != null && Location[i].resourceType != "OperationOutcome") {
-                    //                    if (Location[i] != undefined) {
+                    $.when(OrganizationObj).done(function (Organization) {
+                        if (Organization != null) {
+                            if (Organization.length > 0) {
+                                for (var i = 0; i <= Organization.length; i++) {
+                                    if (Organization[i] != null && Organization[i].resourceType != "OperationOutcome") {
+                                        if (Organization[i] != undefined) {
 
-                    //                        var externalEmrId = Location[i].id;
-                    //                        var startdate = Location[i].startDate;
-                    //                        var targetdate = Location[i].targetDate;
-                    //                        var category = Location[i].category[0].text;
-                    //                        var description = Location[i].description;
-                    //                        var LocationPatient = {}
-                    //                        LocationPatient.Externalemrid = externalEmrId;
-                    //                        LocationPatient.Patientid = $("#CRMpatietid").val();
-                    //                        LocationPatient.Startdate = startdate;
-                    //                        LocationPatient.TargetDate = targetdate;
-                    //                        LocationPatient.Category = category;
-                    //                        LocationPatient.Description = description;
-                    //                        var dataSet = LocationPatient;
-                    //                        var item = {};
+                                            var externalEmrId = Organization[i].id;
+                                            var startdate = Organization[i].startDate;
+                                            var targetdate = Organization[i].targetDate;
+                                            var category = Organization[i].category[0].text;
+                                            var description = Organization[i].description;
+                                            var OrganizationPatient = {}
+                                            OrganizationPatient.Externalemrid = externalEmrId;
+                                            OrganizationPatient.Patientid = $("#CRMpatietid").val();
+                                            OrganizationPatient.Startdate = startdate;
+                                            OrganizationPatient.TargetDate = targetdate;
+                                            OrganizationPatient.Category = category;
+                                            OrganizationPatient.Description = description;
+                                            var dataSet = OrganizationPatient;
+                                            var item = {};
 
-                    //                        if (dataSet.hasOwnProperty('RelatedPersonId')) {
-                    //                            item.id = dataSet.RelatedPersonId;
-                    //                        }
-                    //                        item.name = dataSet.Category;
+                                            if (dataSet.hasOwnProperty('OrganizationId')) {
+                                                item.id = dataSet.OrganizationId;
+                                            }
+                                            item.name = dataSet.Category;
 
-                    //                        if (dataSet.hasOwnProperty('Startdate')) {
-                    //                            item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
-                    //                            item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
-                    //                        }
-                    //                        if (Location[i].hasOwnProperty("encounter")) {
-                    //                            item.encounterID = Location[i].encounter.reference.split('/')[1];
-                    //                        }
-                    //                        item.type = 10;
-                    //                        item.entity = "Location";
-                    //                        list.push(item);
-                    //                    }
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //});
+                                            if (dataSet.hasOwnProperty('Startdate')) {
+                                                item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            if (Organization[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = Organization[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.type = 26;
+                                            item.entity = "Organization";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
 
 
                     setTimeout(function () {
