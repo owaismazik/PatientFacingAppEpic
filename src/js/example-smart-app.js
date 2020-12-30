@@ -1285,7 +1285,7 @@
                     var LocationObj = smart.patient.api.fetchAll({
                         type: 'Location',
                         query: {
-                            patient: patient.id
+                            _id: 'eMRHhr1Ry-G-RV0fqAju6kA3'
                         }
                     });
 
