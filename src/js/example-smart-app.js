@@ -1230,7 +1230,7 @@
                         }
                     });
 
-                    RelatedPerson
+                    //RelatedPerson
                     var RelatedPersonObj = smart.patient.api.fetchAll({
                         type: 'RelatedPerson',
                         query: {
