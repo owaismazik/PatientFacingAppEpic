@@ -1235,10 +1235,11 @@
 
                     //RelatedPerson
                     var RelatedPersonObj = smart.patient.api.fetchAll({
-                        type: 'RelatedPerson',
-                        query: {
-                            patient: patient.id
-                        }
+                        type: 'RelatedPerson/' + patient.id
+                        //,
+                        //query: {
+                        //    patient: patient.id
+                        //}
                     });
 
                     $.when(RelatedPersonObj).done(function (RelatedPerson) {
