@@ -1282,8 +1282,10 @@
                         }
                     });
 
+                    //eM5CWtq15N0WJeuCet5bJlQ3 prac
+                    //enRyWnSP963FYDpoks4NHOA3 mo
                     var LocationObj = smart.patient.api.fetchAll({
-                        type: 'Location/e4AcaDYG7W5HIU-OWP85F4w3'
+                        type: 'Location/eM5CWtq15N0WJeuCet5bJlQ3'
                         //,
                         //query: {
                         //    _id: 'eMRHhr1Ry-G-RV0fqAju6kA3'
