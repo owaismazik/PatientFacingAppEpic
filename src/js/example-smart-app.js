@@ -287,6 +287,57 @@
                         }
                     });
 
+                    //Observation.Search (Core Characteristics) (R4)
+                    var observationObj = smart.patient.api.fetchAll({
+                        type: 'Observation',
+                        query: {
+                            patient: patient.id,
+                            'category': 'core-characteristics'
+                        }
+                    });
+
+                    $.when(observationObj).done(function (Observation) {
+                        if (Observation != null) {
+                            if (Observation.length > 0) {
+                                for (var i = 0; i <= Observation.length; i++) {
+                                    if (Observation[i] != null && Observation[i].resourceType != "OperationOutcome") {
+                                        if (Observation[i] != undefined) {
+                                            var title = "";
+                                            if (Observation[i].hasOwnProperty('reaction')) {
+                                                title = Observation[i].reaction[0].description;
+                                            }
+                                            var recordeddate = Observation[i].recordedDate;
+                                            var patientObservation = {}
+                                            patientObservation.AllergyID = Observation[i].id;
+                                            patientObservation.name = "Observation Core Characteristics- " + title;
+                                            patientObservation.patientId = $("#CRMpatietid").val();
+                                            patientObservation.RecordedDate = recordeddate;
+                                            var dataSet = patientObservation;
+                                            var item = {};
+
+                                            if (dataSet.hasOwnProperty('Id')) {
+                                                item.id = dataSet.Id;
+                                            }
+                                            item.name = dataSet.name;
+
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 3;
+                                            item.id = dataSet.ObservationID;
+                                            if (Observation[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = Observation[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "Observation Core Characteristics";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
                     var cond = smart.patient.api.fetchAll({
                         type: 'Condition',
                         query: {
