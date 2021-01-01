@@ -376,6 +376,7 @@
                     });  
 
                     //ExplanationOfBenefit
+                    function() {
                     //var ExplanationOfBenefitObj = smart.patient.api.fetchAll({
                     //    type: 'ExplanationOfBenefit',
                     //    query: {
@@ -419,6 +420,7 @@
                     //        }
                     //    }
                     //});  
+                    }
 
                     //Consent
                     var ConsentObj = smart.patient.api.fetchAll({
@@ -468,7 +470,8 @@
                     }); 
 
                     //AdverseEvent
-                    //var AdverseEventObj = smart.patient.api.fetchAll({
+                    function() {
+//var AdverseEventObj = smart.patient.api.fetchAll({
                     //    type: 'AdverseEvent',
                     //    query: {
                     //        subject: 'eea8Msv-9WjX-ffbBcv-4rw3',
@@ -512,6 +515,7 @@
                     //        }
                     //    }
                     //}); 
+                    }
 
                     if (fname == "" || lname == "") {
                         fname = "abc"
@@ -1124,60 +1128,63 @@
                             }
                     });
 
-                    //var BinaryObj = smart.patient.api.fetchAll({
-                    //    type: 'Binary/e1Aa5.W2M8iS873-A9H.S8w3'
-                    //    //,
-                    //    //query: {
-                    //    //    //patient: patient.id
-                    //    //    id: 'e1Aa5.W2M8iS873-A9H.S8w3'
-                    //    //}
-                    //});
+                    function Binary() {
+                    /* Binary
+                //var BinaryObj = smart.patient.api.fetchAll({
+                //    type: 'Binary/e1Aa5.W2M8iS873-A9H.S8w3'
+                //    //,
+                //    //query: {
+                //    //    //patient: patient.id
+                //    //    id: 'e1Aa5.W2M8iS873-A9H.S8w3'
+                //    //}
+                //});
 
-                    //$.when(BinaryObj).done(function (Binary) {
-                    //    if (Binary != null) {
-                    //        if (Binary.length > 0) {
-                    //            for (var i = 0; i <= Binary.length; i++) {
-                    //                if (Binary[i] != null && Binary[i].resourceType != "OperationOutcome") {
-                    //                    if (Binary[i] != undefined) {
+                //$.when(BinaryObj).done(function (Binary) {
+                //    if (Binary != null) {
+                //        if (Binary.length > 0) {
+                //            for (var i = 0; i <= Binary.length; i++) {
+                //                if (Binary[i] != null && Binary[i].resourceType != "OperationOutcome") {
+                //                    if (Binary[i] != undefined) {
 
-                    //                        var externalEmrId = Binary[i].id;
-                    //                        var startdate = Binary[i].startDate;
-                    //                        var targetdate = Binary[i].targetDate;
-                    //                        var category = Binary[i].category[0].text;
-                    //                        var description = Binary[i].description;
-                    //                        var BinaryPatient = {}
-                    //                        BinaryPatient.Externalemrid = externalEmrId;
-                    //                        BinaryPatient.Patientid = $("#CRMpatietid").val();
-                    //                        BinaryPatient.Startdate = startdate;
-                    //                        BinaryPatient.TargetDate = targetdate;
-                    //                        BinaryPatient.Category = category;
-                    //                        BinaryPatient.Description = description;
-                    //                        var dataSet = BinaryPatient;
-                    //                        var item = {};
+                //                        var externalEmrId = Binary[i].id;
+                //                        var startdate = Binary[i].startDate;
+                //                        var targetdate = Binary[i].targetDate;
+                //                        var category = Binary[i].category[0].text;
+                //                        var description = Binary[i].description;
+                //                        var BinaryPatient = {}
+                //                        BinaryPatient.Externalemrid = externalEmrId;
+                //                        BinaryPatient.Patientid = $("#CRMpatietid").val();
+                //                        BinaryPatient.Startdate = startdate;
+                //                        BinaryPatient.TargetDate = targetdate;
+                //                        BinaryPatient.Category = category;
+                //                        BinaryPatient.Description = description;
+                //                        var dataSet = BinaryPatient;
+                //                        var item = {};
 
-                    //                        if (dataSet.hasOwnProperty('BinaryId')) {
-                    //                            item.id = dataSet.BinaryId;
-                    //                        }
-                    //                        item.name = dataSet.Category;
+                //                        if (dataSet.hasOwnProperty('BinaryId')) {
+                //                            item.id = dataSet.BinaryId;
+                //                        }
+                //                        item.name = dataSet.Category;
 
-                    //                        if (dataSet.hasOwnProperty('Startdate')) {
-                    //                            item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
-                    //                            item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
-                    //                        }
-                    //                        if (Binary[i].hasOwnProperty("encounter")) {
-                    //                            item.encounterID = Binary[i].encounter.reference.split('/')[1];
-                    //                        }
-                    //                        item.type = 22;
-                    //                        item.entity = "Binary";
-                    //                        list.push(item);
-                    //                    }
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //});
-
-
+                //                        if (dataSet.hasOwnProperty('Startdate')) {
+                //                            item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                //                            item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                //                        }
+                //                        if (Binary[i].hasOwnProperty("encounter")) {
+                //                            item.encounterID = Binary[i].encounter.reference.split('/')[1];
+                //                        }
+                //                        item.type = 22;
+                //                        item.entity = "Binary";
+                //                        list.push(item);
+                //                    }
+                //                }
+                //            }
+                //        }
+                //    }
+                //});
+                 */
+                    }
+                 
                     var ReviewCollectionObj = smart.patient.api.fetchAll({
                         type: 'ReviewCollection/' + patient.id
                         //,
@@ -1285,16 +1292,16 @@
 
                     // TODO encounter.search give you location fhir id
                     // location fhir id issue
-
-                    //eM5CWtq15N0WJeuCet5bJlQ3 prac
+                    function() {
+                                            //eM5CWtq15N0WJeuCet5bJlQ3 prac
                     //enRyWnSP963FYDpoks4NHOA3 mo
-                    var LocationObj = smart.patient.api.fetchAll({
-                        type: 'Location/eM5CWtq15N0WJeuCet5bJlQ3'
-                        //,
-                        //query: {
-                        //    _id: 'eMRHhr1Ry-G-RV0fqAju6kA3'
-                        //}
-                    });
+                    //var LocationObj = smart.patient.api.fetchAll({
+                    //    type: 'Location/eM5CWtq15N0WJeuCet5bJlQ3'
+                    //    //,
+                    //    //query: {
+                    //    //    _id: 'eMRHhr1Ry-G-RV0fqAju6kA3'
+                    //    //}
+                    //});
 
                     //$.when(Location).done(function (Location) {
                     //    if (Location != null) {
@@ -1339,6 +1346,7 @@
                     //        }
                     //    }
                     //});
+                    }
 
                     //Organization
                     var OrganizationObj = smart.patient.api.fetchAll({
