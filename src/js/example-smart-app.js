@@ -184,9 +184,6 @@
 
                     //CreatePatient(patient.id);
 
-
-
-
                     var alrgy = smart.patient.api.fetchAll({
                         type: 'AllergyIntolerance',
                         query: {
@@ -1282,56 +1279,59 @@
                         }
                     });
 
-                    var LocationObj = smart.patient.api.fetchAll({
-                        type: 'Location',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    // TODO encounter.search give you location fhir id
+                    // location fhir id issue
 
-                    $.when(Location).done(function (Location) {
-                        if (Location != null) {
-                            if (Location.length > 0) {
-                                for (var i = 0; i <= Location.length; i++) {
-                                    if (Location[i] != null && Location[i].resourceType != "OperationOutcome") {
-                                        if (Location[i] != undefined) {
+                    //var LocationObj = smart.patient.api.fetchAll({
+                    //    type: 'Location',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
 
-                                            var externalEmrId = Location[i].id;
-                                            var startdate = Location[i].startDate;
-                                            var targetdate = Location[i].targetDate;
-                                            var category = Location[i].category[0].text;
-                                            var description = Location[i].description;
-                                            var LocationPatient = {}
-                                            LocationPatient.Externalemrid = externalEmrId;
-                                            LocationPatient.Patientid = $("#CRMpatietid").val();
-                                            LocationPatient.Startdate = startdate;
-                                            LocationPatient.TargetDate = targetdate;
-                                            LocationPatient.Category = category;
-                                            LocationPatient.Description = description;
-                                            var dataSet = LocationPatient;
-                                            var item = {};
+                    //$.when(Location).done(function (Location) {
+                    //    if (Location != null) {
+                    //        if (Location.length > 0) {
+                    //            for (var i = 0; i <= Location.length; i++) {
+                    //                if (Location[i] != null && Location[i].resourceType != "OperationOutcome") {
+                    //                    if (Location[i] != undefined) {
 
-                                            if (dataSet.hasOwnProperty('RelatedPersonId')) {
-                                                item.id = dataSet.RelatedPersonId;
-                                            }
-                                            item.name = dataSet.Category;
+                    //                        var externalEmrId = Location[i].id;
+                    //                        var startdate = Location[i].startDate;
+                    //                        var targetdate = Location[i].targetDate;
+                    //                        var category = Location[i].category[0].text;
+                    //                        var description = Location[i].description;
+                    //                        var LocationPatient = {}
+                    //                        LocationPatient.Externalemrid = externalEmrId;
+                    //                        LocationPatient.Patientid = $("#CRMpatietid").val();
+                    //                        LocationPatient.Startdate = startdate;
+                    //                        LocationPatient.TargetDate = targetdate;
+                    //                        LocationPatient.Category = category;
+                    //                        LocationPatient.Description = description;
+                    //                        var dataSet = LocationPatient;
+                    //                        var item = {};
 
-                                            if (dataSet.hasOwnProperty('Startdate')) {
-                                                item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
-                                            }
-                                            if (Location[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = Location[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.type = 25;
-                                            item.entity = "Location";
-                                            list.push(item);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
+                    //                        if (dataSet.hasOwnProperty('RelatedPersonId')) {
+                    //                            item.id = dataSet.RelatedPersonId;
+                    //                        }
+                    //                        item.name = dataSet.Category;
+
+                    //                        if (dataSet.hasOwnProperty('Startdate')) {
+                    //                            item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                    //                            item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                    //                        }
+                    //                        if (Location[i].hasOwnProperty("encounter")) {
+                    //                            item.encounterID = Location[i].encounter.reference.split('/')[1];
+                    //                        }
+                    //                        item.type = 25;
+                    //                        item.entity = "Location";
+                    //                        list.push(item);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //});
 
                     //Organization
                     //var LocationObj = smart.patient.api.fetchAll({
