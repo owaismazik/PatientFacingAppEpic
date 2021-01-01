@@ -1124,63 +1124,66 @@
                             }
                     });
 
-                    var BinaryObj = smart.patient.api.fetchAll({
-                        type: 'Binary',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    //var BinaryObj = smart.patient.api.fetchAll({
+                    //    type: 'Binary/e1Aa5.W2M8iS873-A9H.S8w3'
+                    //    //,
+                    //    //query: {
+                    //    //    //patient: patient.id
+                    //    //    id: 'e1Aa5.W2M8iS873-A9H.S8w3'
+                    //    //}
+                    //});
 
-                    $.when(BinaryObj).done(function (Binary) {
-                        if (Binary != null) {
-                            if (Binary.length > 0) {
-                                for (var i = 0; i <= Binary.length; i++) {
-                                    if (Binary[i] != null && Binary[i].resourceType != "OperationOutcome") {
-                                        if (Binary[i] != undefined) {
+                    //$.when(BinaryObj).done(function (Binary) {
+                    //    if (Binary != null) {
+                    //        if (Binary.length > 0) {
+                    //            for (var i = 0; i <= Binary.length; i++) {
+                    //                if (Binary[i] != null && Binary[i].resourceType != "OperationOutcome") {
+                    //                    if (Binary[i] != undefined) {
 
-                                            var externalEmrId = Binary[i].id;
-                                            var startdate = Binary[i].startDate;
-                                            var targetdate = Binary[i].targetDate;
-                                            var category = Binary[i].category[0].text;
-                                            var description = Binary[i].description;
-                                            var BinaryPatient = {}
-                                            BinaryPatient.Externalemrid = externalEmrId;
-                                            BinaryPatient.Patientid = $("#CRMpatietid").val();
-                                            BinaryPatient.Startdate = startdate;
-                                            BinaryPatient.TargetDate = targetdate;
-                                            BinaryPatient.Category = category;
-                                            BinaryPatient.Description = description;
-                                            var dataSet = BinaryPatient;
-                                            var item = {};
+                    //                        var externalEmrId = Binary[i].id;
+                    //                        var startdate = Binary[i].startDate;
+                    //                        var targetdate = Binary[i].targetDate;
+                    //                        var category = Binary[i].category[0].text;
+                    //                        var description = Binary[i].description;
+                    //                        var BinaryPatient = {}
+                    //                        BinaryPatient.Externalemrid = externalEmrId;
+                    //                        BinaryPatient.Patientid = $("#CRMpatietid").val();
+                    //                        BinaryPatient.Startdate = startdate;
+                    //                        BinaryPatient.TargetDate = targetdate;
+                    //                        BinaryPatient.Category = category;
+                    //                        BinaryPatient.Description = description;
+                    //                        var dataSet = BinaryPatient;
+                    //                        var item = {};
 
-                                            if (dataSet.hasOwnProperty('BinaryId')) {
-                                                item.id = dataSet.BinaryId;
-                                            }
-                                            item.name = dataSet.Category;
+                    //                        if (dataSet.hasOwnProperty('BinaryId')) {
+                    //                            item.id = dataSet.BinaryId;
+                    //                        }
+                    //                        item.name = dataSet.Category;
 
-                                            if (dataSet.hasOwnProperty('Startdate')) {
-                                                item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
-                                                item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
-                                            }
-                                            if (Binary[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = Binary[i].encounter.reference.split('/')[1];
-                                            }
-                                            item.type = 22;
-                                            item.entity = "Binary";
-                                            list.push(item);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
+                    //                        if (dataSet.hasOwnProperty('Startdate')) {
+                    //                            item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                    //                            item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                    //                        }
+                    //                        if (Binary[i].hasOwnProperty("encounter")) {
+                    //                            item.encounterID = Binary[i].encounter.reference.split('/')[1];
+                    //                        }
+                    //                        item.type = 22;
+                    //                        item.entity = "Binary";
+                    //                        list.push(item);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //});
 
 
                     var ReviewCollectionObj = smart.patient.api.fetchAll({
-                        type: 'ReviewCollection',
-                        query: {
-                            patient: patient.id
-                        }
+                        type: 'ReviewCollection/' + patient.id
+                        //,
+                        //query: {
+                        //    patient: patient.id
+                        //}
                     });
 
                     $.when(ReviewCollectionObj).done(function (ReviewCollection) {
@@ -1227,12 +1230,13 @@
                         }
                     });
 
-                    RelatedPerson
+                    //RelatedPerson
                     var RelatedPersonObj = smart.patient.api.fetchAll({
-                        type: 'RelatedPerson',
-                        query: {
-                            patient: patient.id
-                        }
+                        type: 'RelatedPerson/' + patient.id
+                        //,
+                        //query: {
+                        //    patient: patient.id
+                        //}
                     });
 
                     $.when(RelatedPersonObj).done(function (RelatedPerson) {
@@ -1282,12 +1286,15 @@
                     // TODO encounter.search give you location fhir id
                     // location fhir id issue
 
-                    //var LocationObj = smart.patient.api.fetchAll({
-                    //    type: 'Location',
-                    //    query: {
-                    //        patient: patient.id
-                    //    }
-                    //});
+                    //eM5CWtq15N0WJeuCet5bJlQ3 prac
+                    //enRyWnSP963FYDpoks4NHOA3 mo
+                    var LocationObj = smart.patient.api.fetchAll({
+                        type: 'Location/eM5CWtq15N0WJeuCet5bJlQ3'
+                        //,
+                        //query: {
+                        //    _id: 'eMRHhr1Ry-G-RV0fqAju6kA3'
+                        //}
+                    });
 
                     //$.when(Location).done(function (Location) {
                     //    if (Location != null) {
@@ -1334,56 +1341,57 @@
                     //});
 
                     //Organization
-                    //var LocationObj = smart.patient.api.fetchAll({
-                    //    type: 'Location',
-                    //    query: {
-                    //        patient: patient.id
-                    //    }
-                    //});
+                    var OrganizationObj = smart.patient.api.fetchAll({
+                        type: 'Organization' + '/eeNokRCBmmrYFeeVdV8l5fO9o5IYP-YzoXHEV2zjGzXM3'
+                        //,
+                        //query: {
+                        //    patient: patient.id
+                        //}
+                    });
 
-                    //$.when(Location).done(function (Location) {
-                    //    if (Location != null) {
-                    //        if (Location.length > 0) {
-                    //            for (var i = 0; i <= Location.length; i++) {
-                    //                if (Location[i] != null && Location[i].resourceType != "OperationOutcome") {
-                    //                    if (Location[i] != undefined) {
+                    $.when(OrganizationObj).done(function (Organization) {
+                        if (Organization != null) {
+                            if (Organization.length > 0) {
+                                for (var i = 0; i <= Organization.length; i++) {
+                                    if (Organization[i] != null && Organization[i].resourceType != "OperationOutcome") {
+                                        if (Organization[i] != undefined) {
 
-                    //                        var externalEmrId = Location[i].id;
-                    //                        var startdate = Location[i].startDate;
-                    //                        var targetdate = Location[i].targetDate;
-                    //                        var category = Location[i].category[0].text;
-                    //                        var description = Location[i].description;
-                    //                        var LocationPatient = {}
-                    //                        LocationPatient.Externalemrid = externalEmrId;
-                    //                        LocationPatient.Patientid = $("#CRMpatietid").val();
-                    //                        LocationPatient.Startdate = startdate;
-                    //                        LocationPatient.TargetDate = targetdate;
-                    //                        LocationPatient.Category = category;
-                    //                        LocationPatient.Description = description;
-                    //                        var dataSet = LocationPatient;
-                    //                        var item = {};
+                                            var externalEmrId = Organization[i].id;
+                                            var startdate = Organization[i].startDate;
+                                            var targetdate = Organization[i].targetDate;
+                                            var category = Organization[i].category[0].text;
+                                            var description = Organization[i].description;
+                                            var OrganizationPatient = {}
+                                            OrganizationPatient.Externalemrid = externalEmrId;
+                                            OrganizationPatient.Patientid = $("#CRMpatietid").val();
+                                            OrganizationPatient.Startdate = startdate;
+                                            OrganizationPatient.TargetDate = targetdate;
+                                            OrganizationPatient.Category = category;
+                                            OrganizationPatient.Description = description;
+                                            var dataSet = OrganizationPatient;
+                                            var item = {};
 
-                    //                        if (dataSet.hasOwnProperty('RelatedPersonId')) {
-                    //                            item.id = dataSet.RelatedPersonId;
-                    //                        }
-                    //                        item.name = dataSet.Category;
+                                            if (dataSet.hasOwnProperty('OrganizationId')) {
+                                                item.id = dataSet.OrganizationId;
+                                            }
+                                            item.name = dataSet.Category;
 
-                    //                        if (dataSet.hasOwnProperty('Startdate')) {
-                    //                            item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
-                    //                            item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
-                    //                        }
-                    //                        if (Location[i].hasOwnProperty("encounter")) {
-                    //                            item.encounterID = Location[i].encounter.reference.split('/')[1];
-                    //                        }
-                    //                        item.type = 10;
-                    //                        item.entity = "Location";
-                    //                        list.push(item);
-                    //                    }
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //});
+                                            if (dataSet.hasOwnProperty('Startdate')) {
+                                                item.date = moment.utc(dataSet.Startdate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.Startdate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            if (Organization[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = Organization[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.type = 26;
+                                            item.entity = "Organization";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
 
 
                     setTimeout(function () {
