@@ -376,7 +376,7 @@
                     });  
 
                     //ExplanationOfBenefit
-                    function() {
+                    function location() {
                     //var ExplanationOfBenefitObj = smart.patient.api.fetchAll({
                     //    type: 'ExplanationOfBenefit',
                     //    query: {
@@ -470,8 +470,8 @@
                     }); 
 
                     //AdverseEvent
-                    function() {
-//var AdverseEventObj = smart.patient.api.fetchAll({
+                    function AdverseEvent() {
+                    //var AdverseEventObj = smart.patient.api.fetchAll({
                     //    type: 'AdverseEvent',
                     //    query: {
                     //        subject: 'eea8Msv-9WjX-ffbBcv-4rw3',
@@ -1292,8 +1292,8 @@
 
                     // TODO encounter.search give you location fhir id
                     // location fhir id issue
-                    function() {
-                                            //eM5CWtq15N0WJeuCet5bJlQ3 prac
+                    function location() {
+                    //eM5CWtq15N0WJeuCet5bJlQ3 prac
                     //enRyWnSP963FYDpoks4NHOA3 mo
                     //var LocationObj = smart.patient.api.fetchAll({
                     //    type: 'Location/eM5CWtq15N0WJeuCet5bJlQ3'
