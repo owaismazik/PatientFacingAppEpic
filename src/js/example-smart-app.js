@@ -436,6 +436,55 @@
                         }
                     });
 
+                    //Condition.Search (Problems) (R4)
+                    var cond = smart.patient.api.fetchAll({
+                        type: 'Condition',
+                        query: {
+                            patient: patient.id,
+                            'category': 'problem-list-item'
+                        }
+                    });
+
+                    $.when(cond).done(function (condition) {
+                        if (condition != null) {
+                            if (condition.length > 0) {
+                                for (var i = 0; i <= condition.length; i++) {
+                                    if (condition[i] != null && condition[i].resourceType != "OperationOutcome") {
+                                        if (condition[i] != undefined) {
+                                            var title = "";
+                                            if (condition[i].code.coding != undefined) {
+                                                title = condition[i].code.coding[0].display;
+                                            }
+                                            var recordeddate = condition[i].onsetDateTime;
+                                            var patientCondition = {}
+                                            patientCondition.conditionID = condition[i].id;
+                                            patientCondition.Title = "Condition Problems - " + title;
+                                            patientCondition.RecordedDate = recordeddate;
+                                            patientCondition.PatientID = $("#CRMpatietid").val();
+                                            var dataSet = patientCondition;
+                                            var item = {};
+                                            if (dataSet.hasOwnProperty('ConditionID')) {
+                                                item.id = dataSet.ConditionID;
+                                            }
+                                            item.name = dataSet.Title;
+                                            if (dataSet.hasOwnProperty('RecordedDate')) {
+                                                item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+                                                item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+                                            }
+                                            item.type = 4;
+                                            item.id = dataSet.conditionID;
+                                            if (condition[i].hasOwnProperty("encounter")) {
+                                                item.encounterID = condition[i].encounter.reference.split('/')[1];
+                                            }
+                                            item.entity = "Condition Problems";
+                                            list.push(item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
                     var Immunizate = smart.patient.api.fetchAll({
                         type: 'Immunization',
                         query: {
