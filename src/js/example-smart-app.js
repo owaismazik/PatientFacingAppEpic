@@ -536,7 +536,8 @@
                     var ResearchStudyObj = smart.patient.api.fetchAll({
                         type: 'ResearchStudy',
                         query: {
-                            patient: patient.id
+                            identifier=101,
+                            //patient: patient.id
                         }
                     });
 
@@ -552,7 +553,7 @@
                                             }
                                             var recordeddate = ResearchStudy[i].dateWritten;
                                             var patientResearchStudy = {}
-                                            patientResearchStudy.ResearchStudyID = Immunization[i].id;
+                                            patientResearchStudy.ResearchStudyID = ResearchStudy[i].id;
                                             patientResearchStudy.Title = "ResearchStudy - " + title;
                                             patientResearchStudy.RecordedDate = recordeddate;
                                             patientResearchStudy.PatientID = $("#CRMpatietid").val();
@@ -566,7 +567,7 @@
                                             item.type = 6;
                                             item.id = dataSet.ResearchStudyID;
                                             if (ResearchStudy[i].hasOwnProperty("encounter")) {
-                                                item.encounterID = Immunization[i].encounter.reference.split('/')[1];
+                                                item.encounterID = ResearchStudy[i].encounter.reference.split('/')[1];
                                             }
                                             item.entity = "ResearchStudy";
                                             list.push(item);
