@@ -536,7 +536,7 @@
                     var ResearchStudyObj = smart.patient.api.fetchAll({
                         type: 'ResearchStudy',
                         query: {
-                            identifier=101,
+                            identifier:101,
                             //patient: patient.id
                         }
                     });
