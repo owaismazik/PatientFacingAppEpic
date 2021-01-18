@@ -1848,7 +1848,7 @@
                     else
                         eventSelect.innerText = checkedYears.length + " out of " + ev.length + " events " + arrow
 
-                LoadTimeline();
+                 LoadTimeline();
             });
 
 
@@ -1911,88 +1911,8 @@
                         var spanClass = "";
                         var imgClass = "";
 
-                        switch (entity) {
-                            case "Allergy Intolerance":
-                                imageName = "allergy.png";
-                                spanClass = "mzkaleryspan";
-                                imgClass = 'mzkalergyimg';
-                                break;
-                            case "MedicationRequest":
-                                imageName = "allergy.png";
-                                spanClass = "mzkaleryspan";
-                                imgClass = 'mzkalergyimg';
-                                break;
-                            case "ServiceRequest":
-                                imageName = "allergy.png";
-                                spanClass = "mzkaleryspan";
-                                imgClass = 'mzkalergyimg';
-                                break;
-                            case "Coverage":
-                                imageName = "allergy.png";
-                                spanClass = "mzkaleryspan";
-                                imgClass = 'mzkalergyimg';
-                                break;
-                            //Coverage
-                            case "PractitionerRole":
-                                imageName = "allergy.png";
-                                spanClass = "mzkaleryspan";
-                                imgClass = 'mzkalergyimg';
-                                break;
-                            //Immunization
-                            //DiagnosticReport
-                            case "DiagnosticReport":
-                                imageName = "allergy.png";
-                                spanClass = "mzkaleryspan";
-                                imgClass = 'mzkalergyimg';
-                                break;
-                            case "Immunization":
-                                imageName = "allergy.png";
-                                spanClass = "mzkaleryspan";
-                                imgClass = 'mzkalergyimg';
-                                break;
-                            case "DocumentReference":
-                                imageName = "allergy.png";
-                                spanClass = "mzkaleryspan";
-                                imgClass = 'mzkalergyimg';
-                                break;
-                            case "Care Plan":
-                                imageName = "allergy.png";
-                                spanClass = "mzkaleryspan";
-                                imgClass = 'mzkalergyimg';
-                                break;
-                            case "Observation":
-                                imageName = "Observation.png";
-                                spanClass = "mzkobserspan";
-                                imgClass = 'mzkobserimg';
-                                break;
-                            case "Condition":
-                                imageName = "conditon.png";
-                                spanClass = "mzkobserspan";
-                                imgClass = 'mzkobserimg';
-                                break;
-                            case "MedicationOrder":
-                                imageName = "MedicationOrder.png";
-                                spanClass = "mzkmedicationspan";
-                                imgClass = 'mzkmedicationimg';
-                                break;
-                            case "Procedure":
-                                imageName = "procedure.png";
-                                spanClass = "mzkprocedurerspan";
-                                imgClass = 'mzkprocedureimg';
-                                break;
-                            case "ProcedureRequest":
-                                imageName = "request.png";
-                                spanClass = "mzkprocreqspan";
-                                imgClass = 'mzkprocreqimg';
-                                break;
-                            case "Encounter":
-                                imageName = "encounter.png";
-                                spanClass = "mzkencounterspan";
-                                imgClass = 'mzkencounterimg';
-                                break;
-                            default:
-                                imageName = "";
-                        }
+                        GetEntityImageData(entity)
+
                         //console.log("entity:year:item " + entity + ' - ' + year + ' - ' + item);
                         //console.log("id " + id);
                         //console.log("===============================================");
@@ -2627,6 +2547,93 @@
             return 0;
         };
 
+    }
+
+    function GetEntityImageData() {
+        var spanClass = "";
+        var imgClass = "";
+        switch (entity) {
+            case "Allergy Intolerance":
+                imageName = "allergy.png";
+                spanClass = "mzkaleryspan";
+                imgClass = 'mzkalergyimg';
+                break;
+            case "MedicationRequest":
+                imageName = "allergy.png";
+                spanClass = "mzkaleryspan";
+                imgClass = 'mzkalergyimg';
+                break;
+            case "ServiceRequest":
+                imageName = "allergy.png";
+                spanClass = "mzkaleryspan";
+                imgClass = 'mzkalergyimg';
+                break;
+            case "Coverage":
+                imageName = "allergy.png";
+                spanClass = "mzkaleryspan";
+                imgClass = 'mzkalergyimg';
+                break;
+            //Coverage
+            case "PractitionerRole":
+                imageName = "allergy.png";
+                spanClass = "mzkaleryspan";
+                imgClass = 'mzkalergyimg';
+                break;
+            //Immunization
+            //DiagnosticReport
+            case "DiagnosticReport":
+                imageName = "allergy.png";
+                spanClass = "mzkaleryspan";
+                imgClass = 'mzkalergyimg';
+                break;
+            case "Immunization":
+                imageName = "allergy.png";
+                spanClass = "mzkaleryspan";
+                imgClass = 'mzkalergyimg';
+                break;
+            case "DocumentReference":
+                imageName = "allergy.png";
+                spanClass = "mzkaleryspan";
+                imgClass = 'mzkalergyimg';
+                break;
+            case "Care Plan":
+                imageName = "allergy.png";
+                spanClass = "mzkaleryspan";
+                imgClass = 'mzkalergyimg';
+                break;
+            case "Observation":
+                imageName = "Observation.png";
+                spanClass = "mzkobserspan";
+                imgClass = 'mzkobserimg';
+                break;
+            case "Condition":
+                imageName = "conditon.png";
+                spanClass = "mzkobserspan";
+                imgClass = 'mzkobserimg';
+                break;
+            case "MedicationOrder":
+                imageName = "MedicationOrder.png";
+                spanClass = "mzkmedicationspan";
+                imgClass = 'mzkmedicationimg';
+                break;
+            case "Procedure":
+                imageName = "procedure.png";
+                spanClass = "mzkprocedurerspan";
+                imgClass = 'mzkprocedureimg';
+                break;
+            case "ProcedureRequest":
+                imageName = "request.png";
+                spanClass = "mzkprocreqspan";
+                imgClass = 'mzkprocreqimg';
+                break;
+            case "Encounter":
+                imageName = "encounter.png";
+                spanClass = "mzkencounterspan";
+                imgClass = 'mzkencounterimg';
+                break;
+            default:
+                imageName = "";
+        }
     }
 
     $(".changeOrderClass").on("click", function () {
