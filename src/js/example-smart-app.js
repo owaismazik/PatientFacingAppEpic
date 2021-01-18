@@ -2598,11 +2598,6 @@
                 objData.spanClass = "mzkDocumentReferencespan";
                 objData.imgClass = 'mzkDocumentReferenceimg';
                 break;
-            case "Care Plan":
-                objData.imageName = "allergy.png";
-                objData.spanClass = "mzkaleryspan";
-                objData.imgClass = 'mzkalergyimg';
-                break;
             case "Observation":
                 objData.imageName = "Observation.png";
                 objData.spanClass = "mzkobserspan";
