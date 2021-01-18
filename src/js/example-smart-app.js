@@ -2428,24 +2428,16 @@
                 objData.spanClass = "mzkaleryspan";
                 objData.imgClass = 'mzkalergyimg';
                 break;
-            case "MedicationRequest":
-                objData.imageName = "allergy.png";
-                objData.spanClass = "mzkaleryspan";
-                objData.imgClass = 'mzkalergyimg';
-                break;
-            case "Coverage":
-                objData.imageName = "allergy.png";
-                objData.spanClass = "mzkaleryspan";
-                objData.imgClass = 'mzkalergyimg';
-                break;
-            //Coverage
-            case "PractitionerRole":
-                objData.imageName = "allergy.png";
-                objData.spanClass = "mzkaleryspan";
-                objData.imgClass = 'mzkalergyimg';
-                break;
-            //Immunization
-            //DiagnosticReport
+            //case "MedicationRequest":
+            //    objData.imageName = "allergy.png";
+            //    objData.spanClass = "mzkaleryspan";
+            //    objData.imgClass = 'mzkalergyimg';
+            //    break;
+            //case "PractitionerRole":
+            //    objData.imageName = "allergy.png";
+            //    objData.spanClass = "mzkaleryspan";
+            //    objData.imgClass = 'mzkalergyimg';
+            //    break;
             case "DiagnosticReport":
                 objData.imageName = "DiagnosticReport.png";
                 objData.spanClass = "mzkDiagnosticReportspan";
@@ -2511,7 +2503,7 @@
                 objData.spanClass = "mzkCareTeamspan";
                 objData.imgClass = 'mzkCareTeamimg';
                 break;
-            case "Careplan":
+            case "Care plan":
                 objData.imageName = "Careplan.png";
                 objData.spanClass = "mzkCareplanspan";
                 objData.imgClass = 'mzkCareplanimg';
