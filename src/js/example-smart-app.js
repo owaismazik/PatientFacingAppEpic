@@ -1862,9 +1862,9 @@
             $("#timelinecontrolnew").hide()
             $("#timeline").html("");
             var value = $('#changeOrder').val();
-            var breaker = false;
-            var counter = 0;
-            var loopBreakingValue = 100;
+            //var breaker = false;
+            //var counter = 0;
+            //var loopBreakingValue = 100;
 
             var filterdata = list.filter(function (e) { return this.indexOf(e.type.toString()) > -1; }, checkedEvents);
 
@@ -1873,23 +1873,12 @@
             if (value == "true") {
                 var newArray = filterdata.sort((a, b) => (a.type == 6) ? -1 : 1); // for encounter ascending
                 for (var j = 0; j < checkedYears.length; j++) {
-                    //if (breaker == true) {
-                    //    break;
-                    //}
                     counter = 0;
                     var item = checkedYears[j];
                     html = '<div class="timeline__group" id="' + item + '"><span class="timeline__year" >' + item + '</span></div>';
                     //console.log(html);
                     $("#timeline").append(html);
                     for (var i = 0; i < newArray.length; i++) {
-                        //console.log("j_i: " + j+'_'+i);
-                        //if (i == loopBreakingValue) {
-                        //    breaker = true;
-                        //    break;
-                        //}
-                        //if (filterdata[i].entity == "Encounter") {
-                        //    continue;
-                        //}
                         var date = new Date(newArray[i].date)
                         var id = newArray[i].id;
                         var name = newArray[i].name;
@@ -1914,198 +1903,199 @@
                         imageName = objData.imageName;
 
                         if (year == item) {
-                              var imageUrl = "https://owaismazik.github.io/PatientFacingAppEpic/src/images/";
-                            var yeardivcount = $("#" + year).length;
-                            var idEncounter = '#' + encounterID;
-                            if (yeardivcount > 0) {
-                                var thistimelineboxcount = $("#" + year).find(".timeline__box").length;
-                                if (thistimelineboxcount > 0) {
-                                    var daydivcount = $("#" + year).find(".timeline__box").find("." + day).length;
-                                    var daydivmonth = $("#" + year).find(".timeline__box").find("." + month).length;
-                                    if (daydivcount > 0 && daydivmonth > 0) {
-                                        if (encounterID != undefined && entity != "Encounter") {
-                                            if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
-                                                html = '<div class="timeline__post">' +
-                                                    '<div class="timeline__content"> ' +
-                                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                    '<p> ' + name + '</p>' +
-                                                    '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                    '</span>' +
-                                                    '</div></div>';
-                                                $(idEncounter).parent().parent().parent().siblings().append(html);
-                                                html = "";
-                                            }
-                                            else {
-                                                html = '<div class="timeline__box mzkheight mzktimelinebox">' +
-                                                    '<div class="timeline__post">' +
-                                                    '<div class="timeline__content"> ' +
-                                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                    '<p> ' + name + '</p>' +
-                                                    '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                    '</span>' +
-                                                    '</div></div></div>';
-                                                $(idEncounter).parent().parent().parent().parent().append(html);
-                                                html = "";
-                                            }
-                                        }
-                                        else {
-                                            html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox">' +
-                                                '<div class="timeline__post">' +
-                                                '<div class="timeline__content"> ' +
-                                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
-                                                '<p> ' + name + '</p>' +
-                                                '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                '</span>' +
-                                                '</div></div></div></div>';
-                                        }
-                                    }
-                                    else {
-                                        if (encounterID != undefined && entity != "Encounter") {
-                                            if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
-                                                html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                                    '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                    '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                    '<div class="timeline__post">' +
-                                                    '<div class="timeline__content"> ' +
-                                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                    '<p> ' + name + '</p>' +
-                                                    '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                    '</span>' +
-                                                    '</div></div></div>';
-                                                $(idEncounter).parent().parent().parent().siblings().append(html);
-                                                html = "";
-                                            }
-                                            else {
-                                                html = '<div class="timeline__box mzkheight mzktimelinebox">' +
-                                                    // TODO testing
-                                                    //'<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                    //'<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                    '<div class="timeline__post">' +
-                                                    '<div class="timeline__content"> ' +
-                                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                    '<p> ' + name + '</p>' +
-                                                    '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                    '</span>' +
-                                                    '</div></div></div>';
-                                                $(idEncounter).parent().parent().parent().parent().append(html);
-                                                html = "";
-                                            }
-                                        }
-                                        else {
-                                            html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
-                                                '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                '<div class="timeline__post">' +
-                                                '<div class="timeline__content"> ' +
-                                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
-                                                '<p> ' + name + '</p>' +
-                                                '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                '</span>' +
-                                                '</div></div></div></div>';
-                                        }
-                                    }
-                                }
-                                else {
-                                    if (encounterID != undefined && entity != "Encounter") {
-                                        if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
-                                            html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                                '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                '<div class="timeline__post">' +
-                                                '<div class="timeline__content"> ' +
-                                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                '<p> ' + name + '</p>' +
-                                                '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                '</span>' +
-                                                '</div></div></div>';
-                                            $(idEncounter).parent().parent().parent().siblings().append(html);
-                                            html = "";
-                                        }
-                                        else {
-                                            html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                                '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                '<div class="timeline__post">' +
-                                                '<div class="timeline__content"> ' +
-                                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                '<p> ' + name + '</p>' +
-                                                '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                '</span>' +
-                                                '</div></div></div>';
-                                            $(idEncounter).parent().parent().parent().parent().append(html);
-                                            html = "";
-                                        }
-                                    }
-                                    else {
-                                        html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
-                                            '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                            '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                            '<div class="timeline__post">' +
-                                            '<div class="timeline__content"> ' +
-                                            '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
-                                            '<p> ' + name + '</p>' +
-                                            '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                            '</span>' +
-                                            '</div></div></div></div>';
-                                    }
-                                }
-                            }
-                            else {
-                                if (encounterID != undefined && entity != "Encounter") {
-                                    if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
-                                        html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                            '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                            '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                            '<div class="timeline__post">' +
-                                            '<div class="timeline__content"> ' +
-                                            '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                            '<p> ' + name + '</p>' +
-                                            '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                            '</span>' +
-                                            '</div></div></div>';
-                                        $(idEncounter).parent().parent().parent().siblings().append(html);
-                                        html = "";
-                                    }
-                                    else {
-                                        html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                            '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                            '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                            '<div class="timeline__post">' +
-                                            '<div class="timeline__content"> ' +
-                                            '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                            '<p> ' + name + '</p>' +
-                                            '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                            '</span>' +
-                                            '</div></div></div>';
-                                        $(idEncounter).parent().parent().parent().parent().append(html);
-                                        html = "";
-                                    }
-                                }
-                                else {
-                                    html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
-                                        '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                        '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                        '<div class="timeline__post">' +
-                                        '<div class="timeline__content"> ' +
-                                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
-                                        '<p> ' + name + '</p>' +
-                                        '<span class="mzkicon ' + spanClass + '">' +
-                                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                        '</span>' +
-                                        '</div></div></div></div>';
-                                }
-                            }
+                            var { yeardivcount, idEncounter, thistimelineboxcount, daydivcount, daydivmonth } = GenerateHTML();
+                            //  var imageUrl = "https://owaismazik.github.io/PatientFacingAppEpic/src/images/";
+                            //var yeardivcount = $("#" + year).length;
+                            //var idEncounter = '#' + encounterID;
+                            //if (yeardivcount > 0) {
+                            //    var thistimelineboxcount = $("#" + year).find(".timeline__box").length;
+                            //    if (thistimelineboxcount > 0) {
+                            //        var daydivcount = $("#" + year).find(".timeline__box").find("." + day).length;
+                            //        var daydivmonth = $("#" + year).find(".timeline__box").find("." + month).length;
+                            //        if (daydivcount > 0 && daydivmonth > 0) {
+                            //            if (encounterID != undefined && entity != "Encounter") {
+                            //                if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
+                            //                    html = '<div class="timeline__post">' +
+                            //                        '<div class="timeline__content"> ' +
+                            //                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                            //                        '<p> ' + name + '</p>' +
+                            //                        '<span class="mzkicon ' + spanClass + '">' +
+                            //                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                        '</span>' +
+                            //                        '</div></div>';
+                            //                    $(idEncounter).parent().parent().parent().siblings().append(html);
+                            //                    html = "";
+                            //                }
+                            //                else {
+                            //                    html = '<div class="timeline__box mzkheight mzktimelinebox">' +
+                            //                        '<div class="timeline__post">' +
+                            //                        '<div class="timeline__content"> ' +
+                            //                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                            //                        '<p> ' + name + '</p>' +
+                            //                        '<span class="mzkicon ' + spanClass + '">' +
+                            //                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                        '</span>' +
+                            //                        '</div></div></div>';
+                            //                    $(idEncounter).parent().parent().parent().parent().append(html);
+                            //                    html = "";
+                            //                }
+                            //            }
+                            //            else {
+                            //                html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox">' +
+                            //                    '<div class="timeline__post">' +
+                            //                    '<div class="timeline__content"> ' +
+                            //                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
+                            //                    '<p> ' + name + '</p>' +
+                            //                    '<span class="mzkicon ' + spanClass + '">' +
+                            //                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                    '</span>' +
+                            //                    '</div></div></div></div>';
+                            //            }
+                            //        }
+                            //        else {
+                            //            if (encounterID != undefined && entity != "Encounter") {
+                            //                if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
+                            //                    html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                            //                        '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            //                        '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            //                        '<div class="timeline__post">' +
+                            //                        '<div class="timeline__content"> ' +
+                            //                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                            //                        '<p> ' + name + '</p>' +
+                            //                        '<span class="mzkicon ' + spanClass + '">' +
+                            //                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                        '</span>' +
+                            //                        '</div></div></div>';
+                            //                    $(idEncounter).parent().parent().parent().siblings().append(html);
+                            //                    html = "";
+                            //                }
+                            //                else {
+                            //                    html = '<div class="timeline__box mzkheight mzktimelinebox">' +
+                            //                        // TODO testing
+                            //                        //'<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            //                        //'<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            //                        '<div class="timeline__post">' +
+                            //                        '<div class="timeline__content"> ' +
+                            //                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                            //                        '<p> ' + name + '</p>' +
+                            //                        '<span class="mzkicon ' + spanClass + '">' +
+                            //                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                        '</span>' +
+                            //                        '</div></div></div>';
+                            //                    $(idEncounter).parent().parent().parent().parent().append(html);
+                            //                    html = "";
+                            //                }
+                            //            }
+                            //            else {
+                            //                html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
+                            //                    '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            //                    '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            //                    '<div class="timeline__post">' +
+                            //                    '<div class="timeline__content"> ' +
+                            //                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
+                            //                    '<p> ' + name + '</p>' +
+                            //                    '<span class="mzkicon ' + spanClass + '">' +
+                            //                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                    '</span>' +
+                            //                    '</div></div></div></div>';
+                            //            }
+                            //        }
+                            //    }
+                            //    else {
+                            //        if (encounterID != undefined && entity != "Encounter") {
+                            //            if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
+                            //                html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                            //                    '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            //                    '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            //                    '<div class="timeline__post">' +
+                            //                    '<div class="timeline__content"> ' +
+                            //                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                            //                    '<p> ' + name + '</p>' +
+                            //                    '<span class="mzkicon ' + spanClass + '">' +
+                            //                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                    '</span>' +
+                            //                    '</div></div></div>';
+                            //                $(idEncounter).parent().parent().parent().siblings().append(html);
+                            //                html = "";
+                            //            }
+                            //            else {
+                            //                html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                            //                    '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            //                    '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            //                    '<div class="timeline__post">' +
+                            //                    '<div class="timeline__content"> ' +
+                            //                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                            //                    '<p> ' + name + '</p>' +
+                            //                    '<span class="mzkicon ' + spanClass + '">' +
+                            //                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                    '</span>' +
+                            //                    '</div></div></div>';
+                            //                $(idEncounter).parent().parent().parent().parent().append(html);
+                            //                html = "";
+                            //            }
+                            //        }
+                            //        else {
+                            //            html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
+                            //                '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            //                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            //                '<div class="timeline__post">' +
+                            //                '<div class="timeline__content"> ' +
+                            //                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
+                            //                '<p> ' + name + '</p>' +
+                            //                '<span class="mzkicon ' + spanClass + '">' +
+                            //                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                '</span>' +
+                            //                '</div></div></div></div>';
+                            //        }
+                            //    }
+                            //}
+                            //else {
+                            //    if (encounterID != undefined && entity != "Encounter") {
+                            //        if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
+                            //            html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                            //                '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            //                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            //                '<div class="timeline__post">' +
+                            //                '<div class="timeline__content"> ' +
+                            //                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                            //                '<p> ' + name + '</p>' +
+                            //                '<span class="mzkicon ' + spanClass + '">' +
+                            //                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                '</span>' +
+                            //                '</div></div></div>';
+                            //            $(idEncounter).parent().parent().parent().siblings().append(html);
+                            //            html = "";
+                            //        }
+                            //        else {
+                            //            html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                            //                '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            //                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            //                '<div class="timeline__post">' +
+                            //                '<div class="timeline__content"> ' +
+                            //                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                            //                '<p> ' + name + '</p>' +
+                            //                '<span class="mzkicon ' + spanClass + '">' +
+                            //                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //                '</span>' +
+                            //                '</div></div></div>';
+                            //            $(idEncounter).parent().parent().parent().parent().append(html);
+                            //            html = "";
+                            //        }
+                            //    }
+                            //    else {
+                            //        html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
+                            //            '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            //            '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            //            '<div class="timeline__post">' +
+                            //            '<div class="timeline__content"> ' +
+                            //            '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
+                            //            '<p> ' + name + '</p>' +
+                            //            '<span class="mzkicon ' + spanClass + '">' +
+                            //            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            //            '</span>' +
+                            //            '</div></div></div></div>';
+                            //    }
+                            //}
                         }
                         //console.log(html);
                         $("#" + year).append(html);
@@ -2116,19 +2106,11 @@
             else {
                 // for desending
                 for (var j = checkedYears.length - 1; j >= 0; j--) {
-                    //if (breaker == true) {
-                    //    break;
-                    //}
                     var item = checkedYears[j];
                     html = '<div class="timeline__group" id="' + item + '"><span class="timeline__year" >' + item + '</span></div>';
                     $("#timeline").append(html);
                     filterdata.sort((a, b) => (a.type == 6) ? 1 : -1) // for encounter descending
                     for (var i = filterdata.length - 1; i >= 0; i--) {
-                        //console.log("j_i: " + j + '_' + i);
-                        //if (i == loopBreakingValue) {
-                        //    breaker = true;
-                        //    break;
-                        //}
                         var date = new Date(filterdata[i].date)
                         var id = filterdata[i].id;
                         var name = filterdata[i].name;
@@ -2152,208 +2134,8 @@
                         imgClass = objData.imgClass;
                         imageName = objData.imageName;
 
-                        //console.log("entity:year:item " + entity + ' - ' + year + ' - ' + item);
-                        //console.log("id: " + id);
-                        //console.log("===============================================");
                         if (year == item) {
-                            //if (entity == "MedicationOrder") {
-                            //    console.log("===============================================");
-                            //    console.log("entity: " + entity);
-                            //    console.log("encounterID: " + encounterID);
-                            //    console.log("id: " + id);
-                            //console.log("=========== " + id + " ==========");
-                            //}
-                            var yeardivcount = $("#" + year).length;
-                            var idEncounter = '#' + encounterID;
-                            if (yeardivcount > 0) {
-                                var thistimelineboxcount = $("#" + year).find(".timeline__box").length;
-                                if (thistimelineboxcount > 0) {
-                                    var daydivcount = $("#" + year).find(".timeline__box").find("." + day).length;
-                                    var daydivmonth = $("#" + year).find(".timeline__box").find("." + month).length;
-                                    if (daydivcount > 0 && daydivmonth > 0) {
-                                        if (encounterID != undefined && entity != "Encounter") {
-                                            if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
-                                                html = '<div class="timeline__post">' +
-                                                    '<div class="timeline__content"> ' +
-                                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                    '<p> ' + name + '</p>' +
-                                                    '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                    '</span>' +
-                                                    '</div></div>';
-                                                $(idEncounter).parent().parent().parent().siblings().append(html);
-                                                html = "";
-                                            }
-                                            else {
-                                                html = '<div class="timeline__box mzkheight mzktimelinebox">' +
-                                                    '<div class="timeline__post">' +
-                                                    '<div class="timeline__content"> ' +
-                                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                    '<p> ' + name + '</p>' +
-                                                    '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                    '</span>' +
-                                                    '</div></div></div>';
-                                                $(idEncounter).parent().parent().parent().parent().append(html);
-                                                html = "";
-                                            }
-                                        }
-                                        else {
-                                            html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox">' +
-                                                '<div class="timeline__post">' +
-                                                '<div class="timeline__content"> ' +
-                                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
-                                                '<p> ' + name + '</p>' +
-                                                '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                '</span>' +
-                                                '</div></div></div></div>';
-                                        }
-                                    }
-                                    else {
-                                        if (encounterID != undefined && entity != "Encounter") {
-                                            if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
-                                                html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                                    '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                    '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                    '<div class="timeline__post">' +
-                                                    '<div class="timeline__content"> ' +
-                                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                    '<p> ' + name + '</p>' +
-                                                    '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                    '</span>' +
-                                                    '</div></div></div>';
-                                                $(idEncounter).parent().parent().parent().siblings().append(html);
-                                                html = "";
-                                            }
-                                            else {
-                                                html = '<div class="timeline__box mzkheight mzktimelinebox">' +
-                                                    // testing comment TODO
-                                                    //'<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                    //'<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                    '<div class="timeline__post">' +
-                                                    '<div class="timeline__content"> ' +
-                                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                    '<p> ' + name + '</p>' +
-                                                    '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                    '</span>' +
-                                                    '</div></div></div>';
-                                                $(idEncounter).parent().parent().parent().parent().append(html);
-                                                html = "";
-                                            }
-                                        }
-                                        else {
-                                            html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
-                                                '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                '<div class="timeline__post">' +
-                                                '<div class="timeline__content"> ' +
-                                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
-                                                '<p> ' + name + '</p>' +
-                                                '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                '</span>' +
-                                                '</div></div></div></div>';
-                                        }
-                                    }
-                                }
-                                else {
-                                    if (encounterID != undefined && entity != "Encounter") {
-                                        if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
-                                            html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                                '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                '<div class="timeline__post">' +
-                                                '<div class="timeline__content"> ' +
-                                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                '<p> ' + name + '</p>' +
-                                                '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                '</span>' +
-                                                '</div></div></div>';
-                                            $(idEncounter).parent().parent().parent().siblings().append(html);
-                                            html = "";
-                                        }
-                                        else {
-                                            html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                                '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                                '<div class="timeline__post">' +
-                                                '<div class="timeline__content"> ' +
-                                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                                '<p> ' + name + '</p>' +
-                                                '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                                '</span>' +
-                                                '</div></div></div>';
-                                            $(idEncounter).parent().parent().parent().parent().append(html);
-                                            html = "";
-                                        }
-                                    }
-                                    else {
-                                        html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
-                                            '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                            '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                            '<div class="timeline__post">' +
-                                            '<div class="timeline__content"> ' +
-                                            '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
-                                            '<p> ' + name + '</p>' +
-                                            '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                            '</span>' +
-                                            '</div></div></div></div>';
-                                    }
-                                }
-                            }
-                            else {
-                                if (encounterID != undefined && entity != "Encounter") {
-                                    if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
-                                        html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                            '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                            '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                            '<div class="timeline__post">' +
-                                            '<div class="timeline__content"> ' +
-                                            '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                            '<p> ' + name + '</p>' +
-                                            '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                            '</span>' +
-                                            '</div></div></div>';
-                                        $(idEncounter).parent().parent().parent().siblings().append(html);
-                                        html = "";
-                                    }
-                                    else {
-                                        html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
-                                            '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                            '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                            '<div class="timeline__post">' +
-                                            '<div class="timeline__content"> ' +
-                                            '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
-                                            '<p> ' + name + '</p>' +
-                                            '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                            '</span>' +
-                                            '</div></div></div>';
-                                        $(idEncounter).parent().parent().parent().parent().append(html);
-                                        html = "";
-                                    }
-                                }
-                                else {
-                                    html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
-                                        '<span class="timeline__day ' + day + '">' + day + '</span>' +
-                                        '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
-                                        '<div class="timeline__post">' +
-                                        '<div class="timeline__content"> ' +
-                                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
-                                        '<p> ' + name + '</p>' +
-                                        '<span class="mzkicon ' + spanClass + '">' +
-                                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
-                                        '</span>' +
-                                        '</div></div></div></div>';
-                                }
-                            }
+                            var { yeardivcount, idEncounter, thistimelineboxcount, daydivcount, daydivmonth } = GenerateHTML();
                         }
                         $("#" + year).append(html);
                         html = "";
@@ -2385,43 +2167,235 @@
             var collapseAll = function () {
                 $(".accordion").accordion("option");
             }
-        }
 
-        function getTypeImageName(a) {
-            switch (a) {
-                case 1: return "../webresources/msemr_AppointmentsEMRSVG";
-                case 2: return "../webresources/msemr_devicesvg";
-                case 3: return "../webresources/msemr_medicationrequestSVG";
-                case 4: return "../webresources/msemr_NutritionOrdersSVG";
-                case 5: return "../webresources/msemr_tc_icon_task_svg";
-                case 6: return "../webresources/msemr_ProceduresSVG";
-                case 7: return "../webresources/msemr_ReferralRequestsSVG";
-                case 8: return "../webresources/msemr_EncountersSVG";
-                case 9: return "./src/images/msemr_careplanSVG.svg";
-                case 10: return "../webresources/msemr_CarePlanGoalSVG";
-                case 11: return "./src/images/msemr_allergyintolerancesSVG.svg";
-                case 12: return "./src/images/msemr_ObservationSVG.svg";
-                default: return "./src/images/msemr_careplanSVG.svg";
+            function GenerateHTML() {
+                var yeardivcount = $("#" + year).length;
+                var idEncounter = '#' + encounterID;
+                if (yeardivcount > 0) {
+                    var thistimelineboxcount = $("#" + year).find(".timeline__box").length;
+                    if (thistimelineboxcount > 0) {
+                        var daydivcount = $("#" + year).find(".timeline__box").find("." + day).length;
+                        var daydivmonth = $("#" + year).find(".timeline__box").find("." + month).length;
+                        if (daydivcount > 0 && daydivmonth > 0) {
+                            if (encounterID != undefined && entity != "Encounter") {
+                                if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
+                                    html = '<div class="timeline__post">' +
+                                        '<div class="timeline__content"> ' +
+                                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                                        '<p> ' + name + '</p>' +
+                                        '<span class="mzkicon ' + spanClass + '">' +
+                                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                        '</span>' +
+                                        '</div></div>';
+                                    $(idEncounter).parent().parent().parent().siblings().append(html);
+                                    html = "";
+                                }
+                                else {
+                                    html = '<div class="timeline__box mzkheight mzktimelinebox">' +
+                                        '<div class="timeline__post">' +
+                                        '<div class="timeline__content"> ' +
+                                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                                        '<p> ' + name + '</p>' +
+                                        '<span class="mzkicon ' + spanClass + '">' +
+                                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                        '</span>' +
+                                        '</div></div></div>';
+                                    $(idEncounter).parent().parent().parent().parent().append(html);
+                                    html = "";
+                                }
+                            }
+                            else {
+                                html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox">' +
+                                    '<div class="timeline__post">' +
+                                    '<div class="timeline__content"> ' +
+                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
+                                    '<p> ' + name + '</p>' +
+                                    '<span class="mzkicon ' + spanClass + '">' +
+                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                    '</span>' +
+                                    '</div></div></div></div>';
+                            }
+                        }
+                        else {
+                            if (encounterID != undefined && entity != "Encounter") {
+                                if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
+                                    html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                                        '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                                        '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                                        '<div class="timeline__post">' +
+                                        '<div class="timeline__content"> ' +
+                                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                                        '<p> ' + name + '</p>' +
+                                        '<span class="mzkicon ' + spanClass + '">' +
+                                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                        '</span>' +
+                                        '</div></div></div>';
+                                    $(idEncounter).parent().parent().parent().siblings().append(html);
+                                    html = "";
+                                }
+                                else {
+                                    html = '<div class="timeline__box mzkheight mzktimelinebox">' +
+                                        '<div class="timeline__post">' +
+                                        '<div class="timeline__content"> ' +
+                                        '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                                        '<p> ' + name + '</p>' +
+                                        '<span class="mzkicon ' + spanClass + '">' +
+                                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                        '</span>' +
+                                        '</div></div></div>';
+                                    $(idEncounter).parent().parent().parent().parent().append(html);
+                                    html = "";
+                                }
+                            }
+                            else {
+                                html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
+                                    '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                                    '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                                    '<div class="timeline__post">' +
+                                    '<div class="timeline__content"> ' +
+                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
+                                    '<p> ' + name + '</p>' +
+                                    '<span class="mzkicon ' + spanClass + '">' +
+                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                    '</span>' +
+                                    '</div></div></div></div>';
+                            }
+                        }
+                    }
+                    else {
+                        if (encounterID != undefined && entity != "Encounter") {
+                            if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
+                                html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                                    '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                                    '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                                    '<div class="timeline__post">' +
+                                    '<div class="timeline__content"> ' +
+                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                                    '<p> ' + name + '</p>' +
+                                    '<span class="mzkicon ' + spanClass + '">' +
+                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                    '</span>' +
+                                    '</div></div></div>';
+                                $(idEncounter).parent().parent().parent().siblings().append(html);
+                                html = "";
+                            }
+                            else {
+                                html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                                    '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                                    '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                                    '<div class="timeline__post">' +
+                                    '<div class="timeline__content"> ' +
+                                    '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                                    '<p> ' + name + '</p>' +
+                                    '<span class="mzkicon ' + spanClass + '">' +
+                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                    '</span>' +
+                                    '</div></div></div>';
+                                $(idEncounter).parent().parent().parent().parent().append(html);
+                                html = "";
+                            }
+                        }
+                        else {
+                            html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
+                                '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                                '<div class="timeline__post">' +
+                                '<div class="timeline__content"> ' +
+                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
+                                '<p> ' + name + '</p>' +
+                                '<span class="mzkicon ' + spanClass + '">' +
+                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                '</span>' +
+                                '</div></div></div></div>';
+                        }
+                    }
+                }
+                else {
+                    if (encounterID != undefined && entity != "Encounter") {
+                        if ($(idEncounter).parent().parent().parent().siblings().children().length >= 1) {
+                            html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                                '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                                '<div class="timeline__post">' +
+                                '<div class="timeline__content"> ' +
+                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                                '<p> ' + name + '</p>' +
+                                '<span class="mzkicon ' + spanClass + '">' +
+                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                '</span>' +
+                                '</div></div></div>';
+                            $(idEncounter).parent().parent().parent().siblings().append(html);
+                            html = "";
+                        }
+                        else {
+                            html = '<div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date mzkpanalchild">' +
+                                '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                                '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                                '<div class="timeline__post">' +
+                                '<div class="timeline__content"> ' +
+                                '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
+                                '<p> ' + name + '</p>' +
+                                '<span class="mzkicon ' + spanClass + '">' +
+                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                                '</span>' +
+                                '</div></div></div>';
+                            $(idEncounter).parent().parent().parent().parent().append(html);
+                            html = "";
+                        }
+                    }
+                    else {
+                        html = '<div class="accordion"><div class="timeline__box mzkheight mzktimelinebox"><div class="timeline__date">' +
+                            '<span class="timeline__day ' + day + '">' + day + '</span>' +
+                            '<span class="timeline__month ' + month + '">' + month + '</span></div>' +
+                            '<div class="timeline__post">' +
+                            '<div class="timeline__content"> ' +
+                            '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
+                            '<p> ' + name + '</p>' +
+                            '<span class="mzkicon ' + spanClass + '">' +
+                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
+                            '</span>' +
+                            '</div></div></div></div>';
+                    }
+                }
+                return { yeardivcount, idEncounter, thistimelineboxcount, daydivcount, daydivmonth };
             }
         }
 
-        function getTypeImageAltName(a) {
-            switch (a) {
-                case 1: return "Appointment";
-                case 2: return "Device";
-                case 3: return "Medication";
-                case 4: return "Nutrition Order";
-                case 5: return "Task";
-                case 6: return "Procedure";
-                case 7: return "Referral";
-                case 8: return "Encounter";
-                case 9: return "Care Plan";
-                case 10: return "Goal";
-                case 11: return "Allergy";
-                case 12: return "Observation";
-                default: return "";
-            }
-        }
+        //function getTypeImageName(a) {
+        //    switch (a) {
+        //        case 1: return "../webresources/msemr_AppointmentsEMRSVG";
+        //        case 2: return "../webresources/msemr_devicesvg";
+        //        case 3: return "../webresources/msemr_medicationrequestSVG";
+        //        case 4: return "../webresources/msemr_NutritionOrdersSVG";
+        //        case 5: return "../webresources/msemr_tc_icon_task_svg";
+        //        case 6: return "../webresources/msemr_ProceduresSVG";
+        //        case 7: return "../webresources/msemr_ReferralRequestsSVG";
+        //        case 8: return "../webresources/msemr_EncountersSVG";
+        //        case 9: return "./src/images/msemr_careplanSVG.svg";
+        //        case 10: return "../webresources/msemr_CarePlanGoalSVG";
+        //        case 11: return "./src/images/msemr_allergyintolerancesSVG.svg";
+        //        case 12: return "./src/images/msemr_ObservationSVG.svg";
+        //        default: return "./src/images/msemr_careplanSVG.svg";
+        //    }
+        //}
+
+        //function getTypeImageAltName(a) {
+        //    switch (a) {
+        //        case 1: return "Appointment";
+        //        case 2: return "Device";
+        //        case 3: return "Medication";
+        //        case 4: return "Nutrition Order";
+        //        case 5: return "Task";
+        //        case 6: return "Procedure";
+        //        case 7: return "Referral";
+        //        case 8: return "Encounter";
+        //        case 9: return "Care Plan";
+        //        case 10: return "Goal";
+        //        case 11: return "Allergy";
+        //        case 12: return "Observation";
+        //        default: return "";
+        //    }
+        //}
 
         function openForm(recordId, entityName) {
             var entityFormOptions = {};
@@ -2447,9 +2421,6 @@
     }
 
     function GetEntityImageData(entity) {
-        ////var spanClass = "";
-        ////var imgClass = "";
-        //var obj = "";
         switch (entity) {
             case "Allergy Intolerance":
                 objData.imageName = "allergy.png";
