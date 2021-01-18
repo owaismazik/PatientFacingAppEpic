@@ -1913,6 +1913,10 @@
 
                         GetEntityImageData(entity)
 
+                        spanClass = obj.spanClass;
+                        imgClass = obj.imgClass;
+                        imageName = obj.imageName;
+
                         //console.log("entity:year:item " + entity + ' - ' + year + ' - ' + item);
                         //console.log("id " + id);
                         //console.log("===============================================");
@@ -2550,90 +2554,94 @@
     }
 
     function GetEntityImageData(entity) {
-        var spanClass = "";
-        var imgClass = "";
+        //var spanClass = "";
+        //var imgClass = "";
+        var obj = "";
         switch (entity) {
             case "Allergy Intolerance":
-                imageName = "allergy.png";
-                spanClass = "mzkaleryspan";
-                imgClass = 'mzkalergyimg';
+                obj.imageName = "allergy.png";
+                obj.spanClass = "mzkaleryspan";
+                obj.imgClass = 'mzkalergyimg';
                 break;
             case "MedicationRequest":
-                imageName = "allergy.png";
-                spanClass = "mzkaleryspan";
-                imgClass = 'mzkalergyimg';
+                obj.imageName = "allergy.png";
+                obj.spanClass = "mzkaleryspan";
+                obj.imgClass = 'mzkalergyimg';
                 break;
             case "ServiceRequest":
-                imageName = "allergy.png";
-                spanClass = "mzkaleryspan";
-                imgClass = 'mzkalergyimg';
+                obj.imageName = "allergy.png";
+                obj.spanClass = "mzkaleryspan";
+                obj.imgClass = 'mzkalergyimg';
                 break;
             case "Coverage":
-                imageName = "allergy.png";
-                spanClass = "mzkaleryspan";
-                imgClass = 'mzkalergyimg';
+                obj.imageName = "allergy.png";
+                obj.spanClass = "mzkaleryspan";
+                obj.imgClass = 'mzkalergyimg';
                 break;
             //Coverage
             case "PractitionerRole":
-                imageName = "allergy.png";
-                spanClass = "mzkaleryspan";
-                imgClass = 'mzkalergyimg';
+                obj.imageName = "allergy.png";
+                obj.spanClass = "mzkaleryspan";
+                obj.imgClass = 'mzkalergyimg';
                 break;
             //Immunization
             //DiagnosticReport
             case "DiagnosticReport":
-                imageName = "allergy.png";
-                spanClass = "mzkaleryspan";
-                imgClass = 'mzkalergyimg';
+                obj.imageName = "allergy.png";
+                obj.spanClass = "mzkaleryspan";
+                obj.imgClass = 'mzkalergyimg';
                 break;
             case "Immunization":
-                imageName = "allergy.png";
-                spanClass = "mzkaleryspan";
-                imgClass = 'mzkalergyimg';
+                obj.imageName = "allergy.png";
+                obj.spanClass = "mzkaleryspan";
+                obj.imgClass = 'mzkalergyimg';
                 break;
             case "DocumentReference":
-                imageName = "allergy.png";
-                spanClass = "mzkaleryspan";
-                imgClass = 'mzkalergyimg';
+                obj.imageName = "allergy.png";
+                obj.spanClass = "mzkaleryspan";
+                obj.imgClass = 'mzkalergyimg';
                 break;
             case "Care Plan":
-                imageName = "allergy.png";
-                spanClass = "mzkaleryspan";
-                imgClass = 'mzkalergyimg';
+                obj.imageName = "allergy.png";
+                obj.spanClass = "mzkaleryspan";
+                obj.imgClass = 'mzkalergyimg';
                 break;
             case "Observation":
-                imageName = "Observation.png";
-                spanClass = "mzkobserspan";
-                imgClass = 'mzkobserimg';
+                obj.imageName = "Observation.png";
+                obj.spanClass = "mzkobserspan";
+                obj.imgClass = 'mzkobserimg';
                 break;
             case "Condition":
-                imageName = "conditon.png";
-                spanClass = "mzkobserspan";
-                imgClass = 'mzkobserimg';
+                obj.imageName = "conditon.png";
+                obj.spanClass = "mzkobserspan";
+                obj.imgClass = 'mzkobserimg';
                 break;
             case "MedicationOrder":
-                imageName = "MedicationOrder.png";
-                spanClass = "mzkmedicationspan";
-                imgClass = 'mzkmedicationimg';
+                obj.imageName = "MedicationOrder.png";
+                obj.spanClass = "mzkmedicationspan";
+                obj.imgClass = 'mzkmedicationimg';
                 break;
             case "Procedure":
-                imageName = "procedure.png";
-                spanClass = "mzkprocedurerspan";
-                imgClass = 'mzkprocedureimg';
+                obj.imageName = "procedure.png";
+                obj.spanClass = "mzkprocedurerspan";
+                obj.imgClass = 'mzkprocedureimg';
                 break;
             case "ProcedureRequest":
-                imageName = "request.png";
-                spanClass = "mzkprocreqspan";
-                imgClass = 'mzkprocreqimg';
+                obj.imageName = "request.png";
+                obj.spanClass = "mzkprocreqspan";
+                obj.imgClass = 'mzkprocreqimg';
                 break;
             case "Encounter":
-                imageName = "encounter.png";
-                spanClass = "mzkencounterspan";
-                imgClass = 'mzkencounterimg';
+                obj.imageName = "encounter.png";
+                obj.spanClass = "mzkencounterspan";
+                obj.imgClass = 'mzkencounterimg';
                 break;
             default:
-                imageName = "";
+                obj.imageName = "";
+                obj.spanClass = "";
+                obj.imgClass = "";
         }
+        return obj;
     }
 
     $(".changeOrderClass").on("click", function () {
