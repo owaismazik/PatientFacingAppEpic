@@ -2570,11 +2570,6 @@
                 objData.spanClass = "mzkaleryspan";
                 objData.imgClass = 'mzkalergyimg';
                 break;
-            case "ServiceRequest":
-                objData.imageName = "allergy.png";
-                objData.spanClass = "mzkaleryspan";
-                objData.imgClass = 'mzkalergyimg';
-                break;
             case "Coverage":
                 objData.imageName = "allergy.png";
                 objData.spanClass = "mzkaleryspan";
@@ -2589,19 +2584,19 @@
             //Immunization
             //DiagnosticReport
             case "DiagnosticReport":
-                objData.imageName = "allergy.png";
-                objData.spanClass = "mzkaleryspan";
-                objData.imgClass = 'mzkalergyimg';
+                objData.imageName = "DiagnosticReport.png";
+                objData.spanClass = "mzkDiagnosticReportspan";
+                objData.imgClass = 'mzkDiagnosticReportimg';
                 break;
             case "Immunization":
-                objData.imageName = "allergy.png";
-                objData.spanClass = "mzkaleryspan";
-                objData.imgClass = 'mzkalergyimg';
+                objData.imageName = "Immunization.png";
+                objData.spanClass = "mzkImmunizationpan";
+                objData.imgClass = 'mzkImmunizationimg';
                 break;
             case "DocumentReference":
-                objData.imageName = "allergy.png";
-                objData.spanClass = "mzkaleryspan";
-                objData.imgClass = 'mzkalergyimg';
+                objData.imageName = "DocumentReference.png";
+                objData.spanClass = "mzkDocumentReferencespan";
+                objData.imgClass = 'mzkDocumentReferenceimg';
                 break;
             case "Care Plan":
                 objData.imageName = "allergy.png";
@@ -2637,6 +2632,91 @@
                 objData.imageName = "encounter.png";
                 objData.spanClass = "mzkencounterspan";
                 objData.imgClass = 'mzkencounterimg';
+                break;
+            case "AdverseEvent":
+                objData.imageName = "AdverseEvent.png";
+                objData.spanClass = "mzkAdverseEventspan";
+                objData.imgClass = 'mzkAdverseEventimg';
+                break;
+            case "AllergyIntolerance":
+                objData.imageName = "AllergyIntolerance.png";
+                objData.spanClass = "mzkAllergyIntolerancespan";
+                objData.imgClass = 'mzkAllergyIntoleranceimg';
+                break;
+            case "Binary":
+                objData.imageName = "Binary.png";
+                objData.spanClass = "mzkBinaryspan";
+                objData.imgClass = 'mzkBinaryimg';
+                break;
+            case "Care Team":
+                objData.imageName = "CareTeam.png";
+                objData.spanClass = "mzkCareTeamspan";
+                objData.imgClass = 'mzkCareTeamimg';
+                break;
+            case "Careplan":
+                objData.imageName = "Careplan.png";
+                objData.spanClass = "mzkCareplanspan";
+                objData.imgClass = 'mzkCareplanimg';
+                break;
+            case "Consent":
+                objData.imageName = "Consent.png";
+                objData.spanClass = "mzkConsentspan";
+                objData.imgClass = 'mzkConsentimg';
+                break;
+            case "Coverage":
+                objData.imageName = "Coverage.png";
+                objData.spanClass = "mzkCoveragespan";
+                objData.imgClass = 'mzkCoverageimg';
+                break;
+            case "Device":
+                objData.imageName = "Device.png";
+                objData.spanClass = "mzkDevicespan";
+                objData.imgClass = 'mzkDeviceimg';
+                break;
+            case "ExplanationOfBenefit":
+                objData.imageName = "ExplanationOfBenefit.png";
+                objData.spanClass = "mzkExplanationOfBenefitspan";
+                objData.imgClass = 'mzkExplanationOfBenefitimg';
+                break;
+            case "Goal":
+                objData.imageName = "Goal.png";
+                objData.spanClass = "mzkGoalspan";
+                objData.imgClass = 'mzkGoalimg';
+                break;
+            case "Location":
+                objData.imageName = "Location.png";
+                objData.spanClass = "mzkLocationspan";
+                objData.imgClass = 'mzkLocationimg';
+                break;
+            case "Organization":
+                objData.imageName = "Organization.png";
+                objData.spanClass = "mzkOrganizationspan";
+                objData.imgClass = 'mzkOrganizationimg';
+                break;
+            case "Practitioner":
+                objData.imageName = "Practitioner.png";
+                objData.spanClass = "mzkPractitionerspan";
+                objData.imgClass = 'mzkPractitionerimg';
+                break;
+            case "RelatedPerson":
+                objData.imageName = "RelatedPerson.png";
+                objData.spanClass = "mzkRelatedPersonspan";
+                objData.imgClass = 'mzkRelatedPersonimg';
+                break;
+            case "ResearchStudy":
+                objData.imageName = "ResearchStudy.png";
+                objData.spanClass = "mzkResearchStudyspan";
+                objData.imgClass = 'mzkResearchStudyimg';
+                break;
+            case "Review":
+                objData.imageName = "Review.png";
+                objData.spanClass = "mzkReviewspan";
+                objData.imgClass = 'mzkReviewimg';
+                break;
+            case "ServiceRequest":
+                objData.imageName = "ServiceRequest.png";
+                objData.spanClass = "mzkServiceRequestspan";
+                objData.imgClass = 'mzkServiceRequestimg';
                 break;
             default:
                 objData.imageName = "";
