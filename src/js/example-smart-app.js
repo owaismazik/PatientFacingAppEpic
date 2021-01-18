@@ -1903,12 +1903,7 @@
                         if (entity == "Encounter") {
                             collapseHTML = ' <i style="left:90px;margin-left: 10px" class="arrow right"></i>';
                         }
-                        //console.log("year: " + year);
-                        //console.log("item: " + item);
-                        //console.log("id: " + id);
-                        //console.log("encounterID: " + encounterID);
-                        //console.log("entity: " + entity);
-                        //console.log("counter: " + ++counter);
+
                         var spanClass = "";
                         var imgClass = "";
 
@@ -1918,17 +1913,8 @@
                         imgClass = objData.imgClass;
                         imageName = objData.imageName;
 
-                        //console.log("entity:year:item " + entity + ' - ' + year + ' - ' + item);
-                        //console.log("id " + id);
-                        //console.log("===============================================");
                         if (year == item) {
-                            //if (entity == "MedicationOrder") {
-                            //    console.log("===============================================");
-                            //    console.log("entity: " + entity);
-                            //    console.log("encounterID: " + encounterID);
-                            //    console.log("id: " + id);
-                            //console.log("=========== "+id+" ==========");
-                            //}
+                              var imageUrl = "https://owaismazik.github.io/PatientFacingAppEpic/src/images/";
                             var yeardivcount = $("#" + year).length;
                             var idEncounter = '#' + encounterID;
                             if (yeardivcount > 0) {
@@ -1944,7 +1930,7 @@
                                                     '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                     '<p> ' + name + '</p>' +
                                                     '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                     '</span>' +
                                                     '</div></div>';
                                                 $(idEncounter).parent().parent().parent().siblings().append(html);
@@ -1957,7 +1943,7 @@
                                                     '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                     '<p> ' + name + '</p>' +
                                                     '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                     '</span>' +
                                                     '</div></div></div>';
                                                 $(idEncounter).parent().parent().parent().parent().append(html);
@@ -1971,7 +1957,7 @@
                                                 '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
                                                 '<p> ' + name + '</p>' +
                                                 '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                 '</span>' +
                                                 '</div></div></div></div>';
                                         }
@@ -1987,7 +1973,7 @@
                                                     '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                     '<p> ' + name + '</p>' +
                                                     '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                     '</span>' +
                                                     '</div></div></div>';
                                                 $(idEncounter).parent().parent().parent().siblings().append(html);
@@ -2003,7 +1989,7 @@
                                                     '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                     '<p> ' + name + '</p>' +
                                                     '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                     '</span>' +
                                                     '</div></div></div>';
                                                 $(idEncounter).parent().parent().parent().parent().append(html);
@@ -2019,7 +2005,7 @@
                                                 '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
                                                 '<p> ' + name + '</p>' +
                                                 '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                 '</span>' +
                                                 '</div></div></div></div>';
                                         }
@@ -2036,7 +2022,7 @@
                                                 '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                 '<p> ' + name + '</p>' +
                                                 '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                 '</span>' +
                                                 '</div></div></div>';
                                             $(idEncounter).parent().parent().parent().siblings().append(html);
@@ -2051,7 +2037,7 @@
                                                 '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                 '<p> ' + name + '</p>' +
                                                 '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                 '</span>' +
                                                 '</div></div></div>';
                                             $(idEncounter).parent().parent().parent().parent().append(html);
@@ -2067,7 +2053,7 @@
                                             '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
                                             '<p> ' + name + '</p>' +
                                             '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                             '</span>' +
                                             '</div></div></div></div>';
                                     }
@@ -2084,7 +2070,7 @@
                                             '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                             '<p> ' + name + '</p>' +
                                             '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                             '</span>' +
                                             '</div></div></div>';
                                         $(idEncounter).parent().parent().parent().siblings().append(html);
@@ -2099,7 +2085,7 @@
                                             '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                             '<p> ' + name + '</p>' +
                                             '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                             '</span>' +
                                             '</div></div></div>';
                                         $(idEncounter).parent().parent().parent().parent().append(html);
@@ -2115,7 +2101,7 @@
                                         '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
                                         '<p> ' + name + '</p>' +
                                         '<span class="mzkicon ' + spanClass + '">' +
-                                        '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                         '</span>' +
                                         '</div></div></div></div>';
                                 }
@@ -2166,101 +2152,6 @@
                         imgClass = objData.imgClass;
                         imageName = objData.imageName;
 
-                        //switch (entity) {
-                        //    case "Allergy Intolerance":
-                        //        imageName = "allergy.png";
-                        //        spanClass = "mzkaleryspan";
-                        //        imgClass = 'mzkalergyimg';
-                        //        break;
-                        //    case "MedicationRequest":
-                        //        imageName = "allergy.png";
-                        //        spanClass = "mzkaleryspan";
-                        //        imgClass = 'mzkalergyimg';
-                        //        break;
-                        //    case "ServiceRequest":
-                        //        imageName = "allergy.png";
-                        //        spanClass = "mzkaleryspan";
-                        //        imgClass = 'mzkalergyimg';
-                        //        break;
-                        //    case "Coverage":
-                        //        imageName = "allergy.png";
-                        //        spanClass = "mzkaleryspan";
-                        //        imgClass = 'mzkalergyimg';
-                        //        break;
-                        //    //Coverage
-                        //    case "PractitionerRole":
-                        //        imageName = "allergy.png";
-                        //        spanClass = "mzkaleryspan";
-                        //        imgClass = 'mzkalergyimg';
-                        //        break;
-                        //    case "DiagnosticReport":
-                        //        imageName = "allergy.png";
-                        //        spanClass = "mzkaleryspan";
-                        //        imgClass = 'mzkalergyimg';
-                        //        break;
-                        //    case "Immunization":
-                        //        imageName = "allergy.png";
-                        //        spanClass = "mzkaleryspan";
-                        //        imgClass = 'mzkalergyimg';
-                        //        break;
-                        //    case "DocumentReference":
-                        //        imageName = "allergy.png";
-                        //        spanClass = "mzkaleryspan";
-                        //        imgClass = 'mzkalergyimg';
-                        //        break;
-                        //    case "Care Plan":
-                        //        imageName = "allergy.png";
-                        //        spanClass = "mzkaleryspan";
-                        //        imgClass = 'mzkalergyimg';
-                        //        break;
-                        //    case "Observation":
-                        //        imageName = "Observation.png";
-                        //        spanClass = "mzkobserspan";
-                        //        imgClass = 'mzkobserimg';
-                        //        break;
-                        //    case "Condition":
-                        //        imageName = "conditon.png";
-                        //        spanClass = "mzkobserspan";
-                        //        imgClass = 'mzkobserimg';
-                        //        break;
-                        //    case "MedicationOrder":
-                        //        imageName = "MedicationOrder.png";
-                        //        spanClass = "mzkmedicationspan";
-                        //        imgClass = 'mzkmedicationimg';
-                        //        break;
-                        //    case "Procedure":
-                        //        imageName = "procedure.png";
-                        //        spanClass = "mzkprocedurerspan";
-                        //        imgClass = 'mzkprocedureimg';
-                        //        break;
-                        //    case "ProcedureRequest":
-                        //        imageName = "request.png";
-                        //        spanClass = "mzkprocreqspan";
-                        //        imgClass = 'mzkprocreqimg';
-                        //        break;
-                        //    case "Encounter":
-                        //        imageName = "encounter.png";
-                        //        spanClass = "mzkencounterspan";
-                        //        imgClass = 'mzkencounterimg';
-                        //        break;
-                        //    //case "Device":
-                        //    //    imageName = "Device";
-                        //    //    spanClass = ".mzkobserspan";
-                        //    //    imgClass = '.mzkobserimg';
-                        //    //    break;
-                        //    //case "Care Plan":
-                        //    //    imageName = "Care Plan";
-                        //    //    spanClass = ".mzkobserspan";
-                        //    //    imgClass = '.mzkobserimg';
-                        //    //    break;
-                        //    //case "Goal":
-                        //    //    imageName = "Goal";
-                        //    //    spanClass = ".mzkobserspan";
-                        //    //    imgClass = '.mzkobserimg';
-                        //    //    break;
-                        //    default:
-                        //        imageName = "";
-                        //}
                         //console.log("entity:year:item " + entity + ' - ' + year + ' - ' + item);
                         //console.log("id: " + id);
                         //console.log("===============================================");
@@ -2287,7 +2178,7 @@
                                                     '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                     '<p> ' + name + '</p>' +
                                                     '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                     '</span>' +
                                                     '</div></div>';
                                                 $(idEncounter).parent().parent().parent().siblings().append(html);
@@ -2300,7 +2191,7 @@
                                                     '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                     '<p> ' + name + '</p>' +
                                                     '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                     '</span>' +
                                                     '</div></div></div>';
                                                 $(idEncounter).parent().parent().parent().parent().append(html);
@@ -2314,7 +2205,7 @@
                                                 '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
                                                 '<p> ' + name + '</p>' +
                                                 '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                 '</span>' +
                                                 '</div></div></div></div>';
                                         }
@@ -2330,7 +2221,7 @@
                                                     '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                     '<p> ' + name + '</p>' +
                                                     '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                     '</span>' +
                                                     '</div></div></div>';
                                                 $(idEncounter).parent().parent().parent().siblings().append(html);
@@ -2346,7 +2237,7 @@
                                                     '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                     '<p> ' + name + '</p>' +
                                                     '<span class="mzkicon ' + spanClass + '">' +
-                                                    '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                    '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                     '</span>' +
                                                     '</div></div></div>';
                                                 $(idEncounter).parent().parent().parent().parent().append(html);
@@ -2362,7 +2253,7 @@
                                                 '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
                                                 '<p> ' + name + '</p>' +
                                                 '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                 '</span>' +
                                                 '</div></div></div></div>';
                                         }
@@ -2379,7 +2270,7 @@
                                                 '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                 '<p> ' + name + '</p>' +
                                                 '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                 '</span>' +
                                                 '</div></div></div>';
                                             $(idEncounter).parent().parent().parent().siblings().append(html);
@@ -2394,7 +2285,7 @@
                                                 '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                                 '<p> ' + name + '</p>' +
                                                 '<span class="mzkicon ' + spanClass + '">' +
-                                                '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                                '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                                 '</span>' +
                                                 '</div></div></div>';
                                             $(idEncounter).parent().parent().parent().parent().append(html);
@@ -2410,7 +2301,7 @@
                                             '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
                                             '<p> ' + name + '</p>' +
                                             '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                             '</span>' +
                                             '</div></div></div></div>';
                                     }
@@ -2427,7 +2318,7 @@
                                             '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                             '<p> ' + name + '</p>' +
                                             '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                             '</span>' +
                                             '</div></div></div>';
                                         $(idEncounter).parent().parent().parent().siblings().append(html);
@@ -2442,7 +2333,7 @@
                                             '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + '</span>' +
                                             '<p> ' + name + '</p>' +
                                             '<span class="mzkicon ' + spanClass + '">' +
-                                            '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                            '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                             '</span>' +
                                             '</div></div></div>';
                                         $(idEncounter).parent().parent().parent().parent().append(html);
@@ -2458,7 +2349,7 @@
                                         '<span id="' + id + '" encounterID="' + encounterID + '" class="timelineentity">' + entity + collapseHTML + '</span>' +
                                         '<p> ' + name + '</p>' +
                                         '<span class="mzkicon ' + spanClass + '">' +
-                                        '<img class="mzkimg ' + imgClass + '" src="https://owaismazik.github.io/PatientTimeLine/src/images/' + imageName + '">' +
+                                        '<img class="mzkimg ' + imgClass + '" src="' + imageUrl + imageName + '">' +
                                         '</span>' +
                                         '</div></div></div></div>';
                                 }
@@ -2633,11 +2524,11 @@
                 objData.spanClass = "mzkAdverseEventspan";
                 objData.imgClass = 'mzkAdverseEventimg';
                 break;
-            case "AllergyIntolerance":
-                objData.imageName = "AllergyIntolerance.png";
-                objData.spanClass = "mzkAllergyIntolerancespan";
-                objData.imgClass = 'mzkAllergyIntoleranceimg';
-                break;
+            //case "AllergyIntolerance":
+            //    objData.imageName = "AllergyIntolerance.png";
+            //    objData.spanClass = "mzkAllergyIntolerancespan";
+            //    objData.imgClass = 'mzkAllergyIntoleranceimg';
+            //    break;
             case "Binary":
                 objData.imageName = "Binary.png";
                 objData.spanClass = "mzkBinaryspan";
