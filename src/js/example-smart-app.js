@@ -2549,7 +2549,7 @@
 
     }
 
-    function GetEntityImageData() {
+    function GetEntityImageData(entity) {
         var spanClass = "";
         var imgClass = "";
         switch (entity) {
