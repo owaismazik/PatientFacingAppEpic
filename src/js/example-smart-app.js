@@ -2169,6 +2169,7 @@
             }
 
             function GenerateHTML() {
+                var imageUrl = "https://owaismazik.github.io/PatientFacingAppEpic/src/images/";
                 var yeardivcount = $("#" + year).length;
                 var idEncounter = '#' + encounterID;
                 if (yeardivcount > 0) {
