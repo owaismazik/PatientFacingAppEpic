@@ -1904,7 +1904,8 @@
 
                         if (year == item) {
                             var { yeardivcount, idEncounter, thistimelineboxcount, daydivcount, daydivmonth } = GenerateHTML();
-                            //  var imageUrl = "https://owaismazik.github.io/PatientFacingAppEpic/src/images/";
+                            function CommentedCode() {
+                                                            //  var imageUrl = "https://owaismazik.github.io/PatientFacingAppEpic/src/images/";
                             //var yeardivcount = $("#" + year).length;
                             //var idEncounter = '#' + encounterID;
                             //if (yeardivcount > 0) {
@@ -2096,6 +2097,7 @@
                             //            '</div></div></div></div>';
                             //    }
                             //}
+                            }
                         }
                         //console.log(html);
                         $("#" + year).append(html);
