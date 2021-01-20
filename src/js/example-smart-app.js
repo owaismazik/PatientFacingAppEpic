@@ -2430,16 +2430,16 @@
                 objData.spanClass = "mzkaleryspan";
                 objData.imgClass = 'mzkalergyimg';
                 break;
-            //case "MedicationRequest":
-            //    objData.imageName = "allergy.png";
-            //    objData.spanClass = "mzkaleryspan";
-            //    objData.imgClass = 'mzkalergyimg';
-            //    break;
-            //case "PractitionerRole":
-            //    objData.imageName = "allergy.png";
-            //    objData.spanClass = "mzkaleryspan";
-            //    objData.imgClass = 'mzkalergyimg';
-            //    break;
+            case "MedicationRequest":
+                objData.imageName = "MedicationRequest.png";
+                objData.spanClass = "mzkMedicationRequestspan";
+                objData.imgClass = 'mzkMedicationRequestimg';
+                break;
+            case "PractitionerRole":
+                objData.imageName = "PractitionerRole.png";
+                objData.spanClass = "mzkPractitionerRolespan";
+                objData.imgClass = 'mzkPractitionerRoleimg';
+                break;
             case "DiagnosticReport":
                 objData.imageName = "DiagnosticReport.png";
                 objData.spanClass = "mzkDiagnosticReportspan";
